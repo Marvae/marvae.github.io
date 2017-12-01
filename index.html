@@ -252,6 +252,322 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/01/使用七牛云储存博客图片/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="MA Hongwei">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Marvae's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/12/01/使用七牛云储存博客图片/" itemprop="url">使用七牛云储存博客图片</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-01T18:33:46+08:00">
+                2017-12-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  484
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="1-选择CDN的原因"><a href="#1-选择CDN的原因" class="headerlink" title="1. 选择CDN的原因"></a>1. 选择CDN的原因</h1><p>我们写博客的时候总是少不了要放些图片上去，但是图片的存储存在一个问题，如果文章中的图片存放在本地，在一起部署到github上去的话，github pages的空间将会有很大一部分的浪费。所以选择用CDN来存储我们的图片，然后通过url插入到我们的博客中。</p>
+<p>而七牛云是国内顶尖的CDN云服务商，而且吧主要是每个月有不少的免费额度，这才是最重要的。<img src="http://p0a3iqhpa.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-12-01%20%E4%B8%8B%E5%8D%886.39.25.png" alt="收费标准"></p>
+<h1 id="2-注册"><a href="#2-注册" class="headerlink" title="2. 注册"></a>2. 注册</h1><p>先打开主页，然后按照要求注册，注册有礼哦。我们选择个人账户，然后按照要求填写相关信息即可，需要邮箱和手机验证。</p>
+<p><img src="http://p0a3iqhpa.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-12-01%20%E4%B8%8B%E5%8D%886.41.55.png" alt="账户类型"></p>
+<p>验证完成以后登陆是这样一个界面。ps. 实名认证好像会有奖励吧，但是我懒的拍照就先算了。有兴趣可以尝试一下。</p>
+<p>这是 <a href="https://developer.qiniu.com/kodo/manual/1233/console-quickstart" target="_blank" rel="external">开发文档</a> 可以看一下里面有介绍快速入门。</p>
+<p><img src="http://p0a3iqhpa.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-12-01%20%E4%B8%8B%E5%8D%886.49.19.png" alt="登陆成功"></p>
+<h1 id="3-建立存储空间并上传文件"><a href="#3-建立存储空间并上传文件" class="headerlink" title="3. 建立存储空间并上传文件"></a>3. 建立存储空间并上传文件</h1><p>我们选择<code>对象存储</code>，然后<code>新建存储空间</code>。我选择了那个10%off的。储存空间名称随便写，然后<code>确定创建</code>。体验用户只能有一个存储空间。</p>
+<p><img src="http://p0a3iqhpa.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-12-01%20%E4%B8%8B%E5%8D%886.54.14.png" alt="存储空间"></p>
+<p>创建成功后，我们就可以在<code>内容管理</code>里上传文件，或进行其他操作了。这里会为我们生成自己的外链域名。</p>
+<p>ps. 网页不能上传超过 500M 的文件，大文件请 <a href="https://developer.qiniu.com/sdk#official-tool" target="_blank" rel="external">使用工具</a> 上传.</p>
+<p><img src="http://p0a3iqhpa.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-12-01%20%E4%B8%8B%E5%8D%886.59.07.png" alt="内容管理">  </p>
+<p>点击<code>上传文件</code>，在接下来的的页面里选择文件并上传。上传的进度条变为绿色就上传成功啦！</p>
+<p><img src="http://p0a3iqhpa.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-12-01%20%E4%B8%8B%E5%8D%887.02.36.png" alt="屏幕快照 2017-12-01 下午7.02.36"> </p>
+<p>上传成功后，点击<code>关闭</code>，就能在内容管理里看到我们的图片了。然后点击右边的三个点，选择复制外链，得到我们图片的url。</p>
+<p><img src="http://p0a3iqhpa.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-12-01%20%E4%B8%8B%E5%8D%887.05.41.png" alt="屏幕快照 2017-12-01 下午7.05.41"></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/01/注册databricks账号并进行基本的spark操作/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="MA Hongwei">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Marvae's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/12/01/注册databricks账号并进行基本的spark操作/" itemprop="url">注册databricks账号并进行基本的spark操作</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-01T18:28:14+08:00">
+                2017-12-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  0
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/01/Pig和Hive简单操作/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -653,7 +969,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -666,7 +982,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>
