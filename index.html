@@ -315,7 +315,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  484
+                  1,204
                 </span>
               
 
@@ -331,7 +331,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  2
+                  4
                 </span>
               
             </div>
@@ -354,23 +354,46 @@
       
         
           
-            <h1 id="1-选择CDN的原因"><a href="#1-选择CDN的原因" class="headerlink" title="1. 选择CDN的原因"></a>1. 选择CDN的原因</h1><p>我们写博客的时候总是少不了要放些图片上去，但是图片的存储存在一个问题，如果文章中的图片存放在本地，在一起部署到github上去的话，github pages的空间将会有很大一部分的浪费。所以选择用CDN来存储我们的图片，然后通过url插入到我们的博客中。</p>
-<p>而七牛云是国内顶尖的CDN云服务商，而且吧主要是每个月有不少的免费额度，这才是最重要的。<img src="http://p0a3iqhpa.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-12-01%20%E4%B8%8B%E5%8D%886.39.25.png" alt="收费标准"></p>
-<h1 id="2-注册"><a href="#2-注册" class="headerlink" title="2. 注册"></a>2. 注册</h1><p>先打开主页，然后按照要求注册，注册有礼哦。我们选择个人账户，然后按照要求填写相关信息即可，需要邮箱和手机验证。</p>
-<p><img src="http://p0a3iqhpa.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-12-01%20%E4%B8%8B%E5%8D%886.41.55.png" alt="账户类型"></p>
+            <h1 id="选择CDN的原因"><a href="#选择CDN的原因" class="headerlink" title="选择CDN的原因"></a>选择CDN的原因</h1><p>我们写博客的时候总是少不了要放些图片上去，但是图片的存储存在一个问题，如果文章中的图片存放在本地，在一起部署到github上去的话，github pages的空间将会有很大一部分的浪费。所以选择用CDN来存储我们的图片，然后通过url插入到我们的博客中。</p>
+<p>而七牛云是国内顶尖的CDN云服务商，而且吧主要是每个月有不少的免费额度，这才是最重要的。</p>
+<p><img src="http://p0a3iqhpa.bkt.clouddn.com/static/images/qiniu/shoufei.png" alt="shoufei"></p>
+<h1 id="注册账号"><a href="#注册账号" class="headerlink" title="注册账号"></a>注册账号</h1><p>先打开<a href="https://portal.qiniu.com/signup?code=3lq4youpjbwwi" target="_blank" rel="external">主页</a>，然后按照要求注册，注册有礼哦。我们选择个人账户，然后按照要求填写相关信息即可，需要邮箱和手机验证。</p>
+<p><img src="http://p0a3iqhpa.bkt.clouddn.com/static/images/qiniu/zhanghu.png" alt="zhanghu"></p>
 <p>验证完成以后登陆是这样一个界面。ps. 实名认证好像会有奖励吧，但是我懒的拍照就先算了。有兴趣可以尝试一下。</p>
 <p>这是 <a href="https://developer.qiniu.com/kodo/manual/1233/console-quickstart" target="_blank" rel="external">开发文档</a> 可以看一下里面有介绍快速入门。</p>
-<p><img src="http://p0a3iqhpa.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-12-01%20%E4%B8%8B%E5%8D%886.49.19.png" alt="登陆成功"></p>
-<h1 id="3-建立存储空间并上传文件"><a href="#3-建立存储空间并上传文件" class="headerlink" title="3. 建立存储空间并上传文件"></a>3. 建立存储空间并上传文件</h1><p>我们选择<code>对象存储</code>，然后<code>新建存储空间</code>。我选择了那个10%off的。储存空间名称随便写，然后<code>确定创建</code>。体验用户只能有一个存储空间。</p>
-<p><img src="http://p0a3iqhpa.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-12-01%20%E4%B8%8B%E5%8D%886.54.14.png" alt="存储空间"></p>
+<p><img src="http://p0a3iqhpa.bkt.clouddn.com/static/images/qiniu/denglu.png" alt="denglu"></p>
+<h1 id="建立存储空间并上传文件"><a href="#建立存储空间并上传文件" class="headerlink" title="建立存储空间并上传文件"></a>建立存储空间并上传文件</h1><p>我们选择<code>对象存储</code>，然后<code>新建存储空间</code>。我选择了那个10%off的。储存空间名称随便写，然后<code>确定创建</code>。体验用户只能有一个存储空间。</p>
+<p><img src="http://p0a3iqhpa.bkt.clouddn.com/static/images/qiniu/chuangjian.png" alt="chuangjian"></p>
 <p>创建成功后，我们就可以在<code>内容管理</code>里上传文件，或进行其他操作了。这里会为我们生成自己的外链域名。</p>
 <p>ps. 网页不能上传超过 500M 的文件，大文件请 <a href="https://developer.qiniu.com/sdk#official-tool" target="_blank" rel="external">使用工具</a> 上传.</p>
-<p><img src="http://p0a3iqhpa.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-12-01%20%E4%B8%8B%E5%8D%886.59.07.png" alt="内容管理">  </p>
+<p><img src="http://p0a3iqhpa.bkt.clouddn.com/static/images/qiniu/neirong.png" alt="neirong">  </p>
 <p>点击<code>上传文件</code>，在接下来的的页面里选择文件并上传。上传的进度条变为绿色就上传成功啦！</p>
-<p><img src="http://p0a3iqhpa.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-12-01%20%E4%B8%8B%E5%8D%887.02.36.png" alt="屏幕快照 2017-12-01 下午7.02.36"> </p>
-<p>上传成功后，点击<code>关闭</code>，就能在内容管理里看到我们的图片了。然后点击右边的三个点，选择复制外链，得到我们图片的url。</p>
-<p><img src="http://p0a3iqhpa.bkt.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-12-01%20%E4%B8%8B%E5%8D%887.05.41.png" alt="屏幕快照 2017-12-01 下午7.05.41"></p>
-
+<p><img src="http://p0a3iqhpa.bkt.clouddn.com/static/images/qiniu/shangchuan.png" alt="shangchuan"> </p>
+<p>上传成功后，点击<code>关闭</code>，就能在内容管理里看到我们的图片了。然后点击右边的三个点，选择复制外链，得到我们图片的url。把url放到我们博客相应的位置就可以显示图片了。</p>
+<p><img src="http://p0a3iqhpa.bkt.clouddn.com/static/images/qiniu/wailian.png" alt="wailian"></p>
+<h1 id="hexo-七牛工具"><a href="#hexo-七牛工具" class="headerlink" title="hexo 七牛工具"></a>hexo 七牛工具</h1><p>插件地址：<a href="https://github.com/gyk001/hexo-qiniu-sync" target="_blank" rel="external">https://github.com/gyk001/hexo-qiniu-sync</a></p>
+<p>在你的hexo主目录下运行以下命令进行安装：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install hexo-qiniu-sync --save</div></pre></td></tr></table></figure>
+<p>添加插件配置信息到 <code>_config.yml</code> 文件中: </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">#七牛云存储设置</div><div class="line">##offline       是否离线. 离线状态将使用本地地址渲染</div><div class="line">##sync          是否同步</div><div class="line">##bucket        空间名称.</div><div class="line">##access_key    上传密钥AccessKey</div><div class="line">##secret_key    上传密钥SecretKey</div><div class="line">##secret_file   秘钥文件路径，可以将上述两个属性配置到文件内，防止泄露，json格式。绝对路径相对路径均可</div><div class="line">##dirPrefix     上传的资源子目录前缀.如设置，需与urlPrefix同步 </div><div class="line">##urlPrefix     外链前缀.</div><div class="line">##up_host      上传服务器路径,如选择华北区域的话配置为http://up-z1.qiniu.com</div><div class="line">##local_dir     本地目录.</div><div class="line">##update_exist  是否更新已经上传过的文件(仅文件大小不同或在上次上传后进行更新的才会重新上传)</div><div class="line">##image/js/css  子参数folder为不同静态资源种类的目录名称，一般不需要改动</div><div class="line">##image.extend  这是个特殊参数，用于生成缩略图或加水印等操作。具体请参考http://developer.qiniu.com/docs/v6/api/reference/fop/image/ </div><div class="line">##              可使用基本图片处理、高级图片处理、图片水印处理这3个接口。例如 ?imageView2/2/w/500 即生成宽度最多500px的缩略图</div><div class="line">qiniu:</div><div class="line">  offline: false</div><div class="line">  sync: true</div><div class="line">  bucket: bucket_name</div><div class="line">  secret_file: sec/qn.json or C:</div><div class="line">  access_key: AccessKey</div><div class="line">  secret_key: SecretKey</div><div class="line">  dirPrefix: static</div><div class="line">  urlPrefix: http://bucket_name.qiniudn.com/static</div><div class="line">  up_host: http://upload.qiniu.com</div><div class="line">  local_dir: static</div><div class="line">  update_exist: true</div><div class="line">  image: </div><div class="line">    folder: images</div><div class="line">    extend: </div><div class="line">  js:</div><div class="line">    folder: js</div><div class="line">  css:</div><div class="line">    folder: css</div></pre></td></tr></table></figure>
+<p>具体的参数说明，详见github的地址。</p>
+<p>这里有几点要注意：</p>
+<ul>
+<li><p>需要在刚才七牛的网页中的个人中心里，找到自己的秘钥，并复制到配置中的相应位置。</p>
+<p><img src="http://p0a3iqhpa.bkt.clouddn.com/static/images/qiniu/miyao.png" alt="miyao"></p>
+</li>
+<li><p><strong>bucket</strong> ：修改为你刚才申请的七牛空间名称</p>
+</li>
+<li><p><strong>urlPrefix</strong> : 七牛空间地址的前缀。就是刚才的外链地址，写在<code>/static</code>前面 <strong>重要！必填！</strong></p>
+</li>
+</ul>
+<p>这是我的配置信息。</p>
+<p><img src="http://p0a3iqhpa.bkt.clouddn.com/static/images/qiniu/peizhi.png" alt="peizhi"></p>
+<p>这样你在 <code>local_dir</code> 的<code>image命名</code>的文件夹中添加一张图片，之后运行<code>hexo（如hexo s）</code>，图片就可以在你的七牛存储空间的内容管理中看见了。<br>你会看到图片的外链URL就是<code>http://your_site/your_static(你的目录-dirPrefix参数的配置)/images/yourimage.png</code>。就是<code>域名+自定义的目录名+images（配置文件中image中folder指定的文件）+ 图片名</code></p>
+<h1 id="配置本地目录"><a href="#配置本地目录" class="headerlink" title="配置本地目录"></a>配置本地目录</h1><p>本地目录名称需要与 <code>local_dir</code> 参数的值一致。所以在 hexo主目录 下新建与 source 平级的目录 <code>static</code> ，用于存放需要上传到七牛的资源。</p>
+<p><img src="http://p0a3iqhpa.bkt.clouddn.com/static/images/qiniu/wenjian.png" alt="wenjian"></p>
+<p>最后，使用 <code>hexo s</code> 就可以上传图片到七牛啦。去看一下存储空间吧。惊不惊喜意不意外。</p>
+<h4 id="另外推荐一个mac版的markdwon-app：Typroa"><a href="#另外推荐一个mac版的markdwon-app：Typroa" class="headerlink" title="另外推荐一个mac版的markdwon app：Typroa"></a>另外推荐一个mac版的markdwon app：Typroa</h4>
           
         
       
