@@ -252,7 +252,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/01/使用七牛云储存博客图片/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/01/qiqiu/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="MA Hongwei">
@@ -271,7 +271,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/12/01/使用七牛云储存博客图片/" itemprop="url">使用七牛云储存博客图片</a></h1>
+                <a class="post-title-link" href="/2017/12/01/qiqiu/" itemprop="url">使用七牛云储存博客图片</a></h1>
         
 
         <div class="post-meta">
@@ -354,47 +354,16 @@
       
         
           
-            <h1 id="选择CDN的原因"><a href="#选择CDN的原因" class="headerlink" title="选择CDN的原因"></a>选择CDN的原因</h1><p>我们写博客的时候总是少不了要放些图片上去，但是图片的存储存在一个问题，如果文章中的图片存放在本地，在一起部署到github上去的话，github pages的空间将会有很大一部分的浪费。所以选择用CDN来存储我们的图片，然后通过url插入到我们的博客中。</p>
-<p>而七牛云是国内顶尖的CDN云服务商，而且吧主要是每个月有不少的免费额度，这才是最重要的。</p>
-<p><img src="http://p0a3iqhpa.bkt.clouddn.com/static/images/qiniu/shoufei.png" alt="shoufei"></p>
-<h1 id="注册账号"><a href="#注册账号" class="headerlink" title="注册账号"></a>注册账号</h1><p>先打开<a href="https://portal.qiniu.com/signup?code=3lq4youpjbwwi" target="_blank" rel="external">主页</a>，然后按照要求注册，注册有礼哦。我们选择个人账户，然后按照要求填写相关信息即可，需要邮箱和手机验证。</p>
-<p><img src="http://p0a3iqhpa.bkt.clouddn.com/static/images/qiniu/zhanghu.png" alt="zhanghu"></p>
-<p>验证完成以后登陆是这样一个界面。ps. 实名认证好像会有奖励吧，但是我懒的拍照就先算了。有兴趣可以尝试一下。</p>
-<p>这是 <a href="https://developer.qiniu.com/kodo/manual/1233/console-quickstart" target="_blank" rel="external">开发文档</a> 可以看一下里面有介绍快速入门。</p>
-<p><img src="http://p0a3iqhpa.bkt.clouddn.com/static/images/qiniu/denglu.png" alt="denglu"></p>
-<h1 id="建立存储空间并上传文件"><a href="#建立存储空间并上传文件" class="headerlink" title="建立存储空间并上传文件"></a>建立存储空间并上传文件</h1><p>我们选择<code>对象存储</code>，然后<code>新建存储空间</code>。我选择了那个10%off的。储存空间名称随便写，然后<code>确定创建</code>。体验用户只能有一个存储空间。</p>
-<p><img src="http://p0a3iqhpa.bkt.clouddn.com/static/images/qiniu/chuangjian.png" alt="chuangjian"></p>
-<p>创建成功后，我们就可以在<code>内容管理</code>里上传文件，或进行其他操作了。这里会为我们生成自己的外链域名。</p>
-<p>ps. 网页不能上传超过 500M 的文件，大文件请 <a href="https://developer.qiniu.com/sdk#official-tool" target="_blank" rel="external">使用工具</a> 上传.</p>
-<p><img src="http://p0a3iqhpa.bkt.clouddn.com/static/images/qiniu/neirong.png" alt="neirong">  </p>
-<p>点击<code>上传文件</code>，在接下来的的页面里选择文件并上传。上传的进度条变为绿色就上传成功啦！</p>
-<p><img src="http://p0a3iqhpa.bkt.clouddn.com/static/images/qiniu/shangchuan.png" alt="shangchuan"> </p>
-<p>上传成功后，点击<code>关闭</code>，就能在内容管理里看到我们的图片了。然后点击右边的三个点，选择复制外链，得到我们图片的url。把url放到我们博客相应的位置就可以显示图片了。</p>
-<p><img src="http://p0a3iqhpa.bkt.clouddn.com/static/images/qiniu/wailian.png" alt="wailian"></p>
-<h1 id="hexo-七牛工具"><a href="#hexo-七牛工具" class="headerlink" title="hexo 七牛工具"></a>hexo 七牛工具</h1><p>插件地址：<a href="https://github.com/gyk001/hexo-qiniu-sync" target="_blank" rel="external">https://github.com/gyk001/hexo-qiniu-sync</a></p>
-<p>在你的hexo主目录下运行以下命令进行安装：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install hexo-qiniu-sync --save</div></pre></td></tr></table></figure>
-<p>添加插件配置信息到 <code>_config.yml</code> 文件中: </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">#七牛云存储设置</div><div class="line">##offline       是否离线. 离线状态将使用本地地址渲染</div><div class="line">##sync          是否同步</div><div class="line">##bucket        空间名称.</div><div class="line">##access_key    上传密钥AccessKey</div><div class="line">##secret_key    上传密钥SecretKey</div><div class="line">##secret_file   秘钥文件路径，可以将上述两个属性配置到文件内，防止泄露，json格式。绝对路径相对路径均可</div><div class="line">##dirPrefix     上传的资源子目录前缀.如设置，需与urlPrefix同步 </div><div class="line">##urlPrefix     外链前缀.</div><div class="line">##up_host      上传服务器路径,如选择华北区域的话配置为http://up-z1.qiniu.com</div><div class="line">##local_dir     本地目录.</div><div class="line">##update_exist  是否更新已经上传过的文件(仅文件大小不同或在上次上传后进行更新的才会重新上传)</div><div class="line">##image/js/css  子参数folder为不同静态资源种类的目录名称，一般不需要改动</div><div class="line">##image.extend  这是个特殊参数，用于生成缩略图或加水印等操作。具体请参考http://developer.qiniu.com/docs/v6/api/reference/fop/image/ </div><div class="line">##              可使用基本图片处理、高级图片处理、图片水印处理这3个接口。例如 ?imageView2/2/w/500 即生成宽度最多500px的缩略图</div><div class="line">qiniu:</div><div class="line">  offline: false</div><div class="line">  sync: true</div><div class="line">  bucket: bucket_name</div><div class="line">  secret_file: sec/qn.json or C:</div><div class="line">  access_key: AccessKey</div><div class="line">  secret_key: SecretKey</div><div class="line">  dirPrefix: static</div><div class="line">  urlPrefix: http://bucket_name.qiniudn.com/static</div><div class="line">  up_host: http://upload.qiniu.com</div><div class="line">  local_dir: static</div><div class="line">  update_exist: true</div><div class="line">  image: </div><div class="line">    folder: images</div><div class="line">    extend: </div><div class="line">  js:</div><div class="line">    folder: js</div><div class="line">  css:</div><div class="line">    folder: css</div></pre></td></tr></table></figure>
-<p>具体的参数说明，详见github的地址。</p>
-<p>这里有几点要注意：</p>
-<ul>
-<li><p>需要在刚才七牛的网页中的个人中心里，找到自己的秘钥，并复制到配置中的相应位置。</p>
-<p><img src="http://p0a3iqhpa.bkt.clouddn.com/static/images/qiniu/miyao.png" alt="miyao"></p>
-</li>
-<li><p><strong>bucket</strong> ：修改为你刚才申请的七牛空间名称</p>
-</li>
-<li><p><strong>urlPrefix</strong> : 七牛空间地址的前缀。就是刚才的外链地址，写在<code>/static</code>前面 <strong>重要！必填！</strong></p>
-</li>
-</ul>
-<p>这是我的配置信息。</p>
-<p><img src="http://p0a3iqhpa.bkt.clouddn.com/static/images/qiniu/peizhi.png" alt="peizhi"></p>
-<p>这样你在 <code>local_dir</code> 的<code>image命名</code>的文件夹中添加一张图片，之后运行<code>hexo（如hexo s）</code>，图片就可以在你的七牛存储空间的内容管理中看见了。<br>你会看到图片的外链URL就是<code>http://your_site/your_static(你的目录-dirPrefix参数的配置)/images/yourimage.png</code>。就是<code>域名+自定义的目录名+images（配置文件中image中folder指定的文件）+ 图片名</code></p>
-<h1 id="配置本地目录"><a href="#配置本地目录" class="headerlink" title="配置本地目录"></a>配置本地目录</h1><p>本地目录名称需要与 <code>local_dir</code> 参数的值一致。所以在 hexo主目录 下新建与 source 平级的目录 <code>static</code> ，用于存放需要上传到七牛的资源。</p>
-<p><img src="http://p0a3iqhpa.bkt.clouddn.com/static/images/qiniu/wenjian.png" alt="wenjian"></p>
-<p>最后，使用 <code>hexo s</code> 就可以上传图片到七牛啦。去看一下存储空间吧。惊不惊喜意不意外。</p>
-<h4 id="另外推荐一个mac版的markdwon-app：Typroa"><a href="#另外推荐一个mac版的markdwon-app：Typroa" class="headerlink" title="另外推荐一个mac版的markdwon app：Typroa"></a>另外推荐一个mac版的markdwon app：Typroa</h4>
-          
+          选择CDN的原因我们写博客的时候总是少不了要放些图片上去，但是图片的存储存在一个问题，如果文章中的图片存放在本地，在一起部署到github上去的话，github pages的空间将会有很大一部分的浪费。所以选择用CDN来存储我们的图片，然后通过url插入到我们的博客中。
+而七牛云是国内顶尖的CDN云
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/12/01/qiqiu/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -441,7 +410,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/01/注册databricks账号并进行基本的spark操作/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/01/databricks/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="MA Hongwei">
@@ -460,7 +429,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/12/01/注册databricks账号并进行基本的spark操作/" itemprop="url">注册databricks账号并进行基本的spark操作</a></h1>
+                <a class="post-title-link" href="/2017/12/01/databricks/" itemprop="url">注册databricks账号并进行基本的spark操作</a></h1>
         
 
         <div class="post-meta">
@@ -504,7 +473,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  0
+                  114
                 </span>
               
 
@@ -543,8 +512,22 @@
       
         
           
-            
+          注册账号打开官网，点击右上角TRY DATABRICKS。
+然后在下面界面中选择要注册的版本，因为我只是完成一次作业，所以选择了右边的社区版，不然完整版的试用还需要添加账单信息。
+
+填写相应的信息完成注册，同意社区版的协议，然后验证邮箱完成注册。
+
+登陆后界面如下，开始玩吧。
+
+创建集群
           
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/12/01/databricks/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -591,7 +574,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/01/Pig和Hive简单操作/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/01/PigHive/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="MA Hongwei">
@@ -610,7 +593,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/12/01/Pig和Hive简单操作/" itemprop="url">Pig和Hive简单操作</a></h1>
+                <a class="post-title-link" href="/2017/12/01/PigHive/" itemprop="url">Pig和Hive简单操作</a></h1>
         
 
         <div class="post-meta">
@@ -693,70 +676,19 @@
       
         
           
-            <h1 id="Pig-and-Hive-basic-use"><a href="#Pig-and-Hive-basic-use" class="headerlink" title="Pig and Hive basic use"></a>Pig and Hive basic use</h1><h3 id="Q1-Basic-Pig-Operations"><a href="#Q1-Basic-Pig-Operations" class="headerlink" title="Q1: Basic Pig Operations"></a>Q1: Basic Pig Operations</h3><h4 id="a-Install-Pig-in-hortonworks-cluster"><a href="#a-Install-Pig-in-hortonworks-cluster" class="headerlink" title="(a) Install Pig in hortonworks cluster."></a>(a) Install Pig in hortonworks cluster.</h4><ol>
-<li><p>Login in Ambari and stop service</p>
-</li>
-<li><p>Click <code>Add Service</code>  in <code>Actions</code></p>
-<p><img src="/Users/marvae/Desktop/hw3/service.png" style="zoom:50%"></p>
-</li>
-<li><p>Choose Pig in the pop window and install</p>
-<p><img src="/Users/marvae/Desktop/hw3/pig.png" style="zoom:50%">                </p>
-</li>
-</ol>
-<h4 id="b-Upload-files-to-HDFS-1"><a href="#b-Upload-files-to-HDFS-1" class="headerlink" title="(b) Upload files to HDFS [1]"></a>(b) Upload files to HDFS [1]</h4><ol>
-<li><p>Select the <code>Files</code> from the Off-canvas menu at the top. </p>
-<p><img src="/Users/marvae/Desktop/hw3/file.png" style="zoom:50%"></p>
-</li>
-<li><p>Navigate to <code>/user/admin</code> and click on the Upload button</p>
-<p><img src="/Users/marvae/Desktop/hw3/upload.png" style="zoom:50%"></p>
-</li>
-<li><p>Click on the browse button to open a dialog box. Select the file and click <code>Open</code>. </p>
-<p><img src="/Users/marvae/Desktop/hw3/browse.png" style="zoom:50%"></p>
-</li>
-<li><p>Upload the two files and see there are two new files in the directory.</p>
-<p><img src="/Users/marvae/Desktop/hw3/upload1.png" style="zoom:50%"></p>
-</li>
-</ol>
-<h4 id="c-Pig-Script-and-Output"><a href="#c-Pig-Script-and-Output" class="headerlink" title="(c) Pig Script and Output"></a>(c) Pig Script and Output</h4><ol>
-<li><p>Click on the <code>Pig View</code> from the Off-canvas menu.</p>
-</li>
-<li><p>Click the button <code>+ New Script</code> at the top right and fill in a name, then write the code</p>
-<p><img src="/Users/marvae/Desktop/hw3/pigcode.png" style="zoom:50%"></p>
-</li>
-<li><p>Run the script by clicking on the <code>Execute</code> button at the top right of the composition area</p>
-<p><img src="/Users/marvae/Desktop/hw3/run.png" style="zoom:50%"></p>
-</li>
-<li><p>Back to <code>Files</code> and the output save in  <code>/user/admin/output/</code></p>
-<p><img src="/Users/marvae/Desktop/hw3/output.png" style="zoom:50%"></p>
-</li>
-</ol>
-<h5 id="Pig-Script-2"><a href="#Pig-Script-2" class="headerlink" title="Pig Script [2]"></a>Pig Script [2]</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">Table1 = <span class="keyword">LOAD</span><span class="string">'googlebooks-eng-all-1gram-20120701-a'</span> <span class="keyword">AS</span>(bigram:chararray,<span class="keyword">year</span>:<span class="built_in">int</span>,match_count:<span class="keyword">double</span>,volumn_count:<span class="built_in">int</span>);</div><div class="line">Table2 = <span class="keyword">LOAD</span><span class="string">'googlebooks-eng-all-1gram-20120701-b'</span> <span class="keyword">AS</span>(bigram:chararray,<span class="keyword">year</span>:<span class="built_in">int</span>,match_count:<span class="keyword">double</span>,volumn_count:<span class="built_in">int</span>);</div><div class="line">Datas = UNION Table1, Table2;</div><div class="line">Groups = GROUP Datas BY bigram;</div><div class="line">Averages = FOREACH Groups GENERATE group, AVG(Datas.match_count) AS average;</div><div class="line">Results = ORDER Averages BY average DESC;</div><div class="line">Top20 = LIMIT Results 20;</div><div class="line">DUMP Top20;</div><div class="line">STORE Top20 INTO '/user/admin/output' USING PigStorage('\t');</div></pre></td></tr></table></figure>
-<h5 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h5><p><img src="/Users/marvae/Desktop/hw3/output1.png" style="zoom:40%"></p>
-<h3 id=""><a href="#" class="headerlink" title=""></a><br><br><br><br><br><br><br><br></h3><h3 id="Q2-Basic-Hive-Operations"><a href="#Q2-Basic-Hive-Operations" class="headerlink" title="Q2: Basic Hive Operations"></a>Q2: Basic Hive Operations</h3><h4 id="a-Install-Hive-in-hortonworks-cluster"><a href="#a-Install-Hive-in-hortonworks-cluster" class="headerlink" title="(a) Install Hive in hortonworks cluster.    "></a>(a) Install Hive in hortonworks cluster.    <img src="/Users/marvae/Desktop/hw3/hive.png" style="zoom:40%"></h4><h4 id="b-Hive-Script-and-Output-3"><a href="#b-Hive-Script-and-Output-3" class="headerlink" title="(b) Hive Script and Output [3]"></a>(b) Hive Script and Output [3]</h4><ol>
-<li><h5 id="Create-table1-table2-and-load-data-from-HDFS"><a href="#Create-table1-table2-and-load-data-from-HDFS" class="headerlink" title="Create table1 table2 and load data from HDFS"></a>Create <code>table1</code> <code>table2</code> and load data from HDFS</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">create</span> <span class="keyword">table</span> table1(bigram <span class="keyword">string</span>, <span class="keyword">year</span> <span class="built_in">int</span>, match_count <span class="built_in">int</span>, volume_count <span class="built_in">int</span>)</div><div class="line">	<span class="keyword">row</span> <span class="keyword">format</span> <span class="keyword">delimited</span></div><div class="line">	<span class="keyword">fields</span> <span class="keyword">terminated</span> <span class="keyword">by</span> <span class="string">'\t'</span></div><div class="line">	<span class="keyword">stored</span> <span class="keyword">as</span> textfile;</div><div class="line"></div><div class="line"><span class="keyword">load</span> <span class="keyword">data</span> inpath <span class="string">'/user/admin/googlebooks-eng-all-1gram-20120701-a'</span> overwrite <span class="keyword">into</span> <span class="keyword">table</span> table1;</div><div class="line"></div><div class="line"><span class="keyword">create</span> <span class="keyword">table</span> table2(bigram <span class="keyword">string</span>, <span class="keyword">year</span> <span class="built_in">int</span>, match_count <span class="built_in">int</span>, volume_count <span class="built_in">int</span>)</div><div class="line">	<span class="keyword">row</span> <span class="keyword">format</span> <span class="keyword">delimited</span></div><div class="line">	<span class="keyword">fields</span> <span class="keyword">terminated</span> <span class="keyword">by</span> <span class="string">'\t'</span></div><div class="line">	<span class="keyword">stored</span> <span class="keyword">as</span> textfile;</div><div class="line"></div><div class="line"><span class="keyword">load</span> <span class="keyword">data</span> inpath <span class="string">'/user/admin/googlebooks-eng-all-1gram-20120701-b'</span> overwrite <span class="keyword">into</span> <span class="keyword">table</span> table2;</div></pre></td></tr></table></figure>
-</li>
-<li><h5 id="Union-two-tables-and-save-into-combined-4"><a href="#Union-two-tables-and-save-into-combined-4" class="headerlink" title="Union two tables and save into  combined [4]"></a>Union two tables and save into  <code>combined</code> [4]</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">create</span> <span class="keyword">table</span> combined <span class="keyword">as</span></div><div class="line">	<span class="keyword">select</span> unioned.bigram,unioned.year,unioned.match_count</div><div class="line">	<span class="keyword">from</span>(</div><div class="line">	<span class="keyword">select</span> a.bigram,a.year,a.match_count</div><div class="line">	<span class="keyword">from</span> table1 a</div><div class="line">	<span class="keyword">union</span> all</div><div class="line">	<span class="keyword">select</span> b.bigram,b.year,b.match_count</div><div class="line">	<span class="keyword">from</span> table2 b</div><div class="line">	) unioned;</div></pre></td></tr></table></figure>
-</li>
-<li><h5 id="Sum-and-save-the-number-of-occurrences-per-year-and-save-into-groups-5"><a href="#Sum-and-save-the-number-of-occurrences-per-year-and-save-into-groups-5" class="headerlink" title="Sum and save the number of occurrences per year and save into groups [5]"></a>Sum and save the number of occurrences per year and save into <code>groups</code> [5]</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">create</span> <span class="keyword">table</span> <span class="keyword">groups</span> <span class="keyword">as</span></div><div class="line">	<span class="keyword">select</span> bigram,<span class="keyword">year</span>,<span class="keyword">sum</span>(match_count) <span class="keyword">as</span> match_count</div><div class="line">	<span class="keyword">from</span> combined</div><div class="line">	<span class="keyword">group</span> <span class="keyword">by</span> bigram, <span class="keyword">year</span>;</div></pre></td></tr></table></figure>
-</li>
-<li><h5 id="compute-average-number-of-occurrences-per-year-and-save-into-averages"><a href="#compute-average-number-of-occurrences-per-year-and-save-into-averages" class="headerlink" title="compute average number of occurrences per year and save into averages"></a>compute average number of occurrences per year and save into <code>averages</code></h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">create</span> <span class="keyword">table</span> averages <span class="keyword">as</span></div><div class="line">	<span class="keyword">select</span> bigram,<span class="keyword">avg</span>(match_count) <span class="keyword">as</span> avg_count</div><div class="line">	<span class="keyword">from</span> <span class="keyword">groups</span></div><div class="line">	<span class="keyword">group</span> <span class="keyword">by</span> bigram;</div></pre></td></tr></table></figure>
-</li>
-<li><h5 id="Create-a-table-tops-to-store-top-20-bigrams-6"><a href="#Create-a-table-tops-to-store-top-20-bigrams-6" class="headerlink" title="Create a table tops to store top 20 bigrams [6]"></a>Create a table <code>tops</code> to store top 20 bigrams [6]</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">create</span> <span class="keyword">table</span> tops <span class="keyword">as</span></div><div class="line">	<span class="keyword">select</span> * <span class="keyword">from</span> averages <span class="keyword">order</span> <span class="keyword">by</span> avg_count <span class="keyword">desc</span> <span class="keyword">limit</span> <span class="number">20</span>;</div></pre></td></tr></table></figure>
-<p>Defaul database in the end</p>
-<p><img src="/Users/marvae/Desktop/hw3/database.png" style="zoom:40%"></p>
-</li>
-<li><h5 id="Output-1"><a href="#Output-1" class="headerlink" title="Output"></a>Output</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> * <span class="keyword">from</span> tops;</div></pre></td></tr></table></figure>
-<p><img src="/Users/marvae/Desktop/hw3/result.png" style="zoom:35%"></p>
-</li>
-</ol>
-<h4 id="c-Compare-the-performance-with-Pig"><a href="#c-Compare-the-performance-with-Pig" class="headerlink" title="(c) Compare the performance with Pig"></a>(c) Compare the performance with Pig</h4><p>​    <strong>Pig overall run-time: 30min, 3sec</strong> </p>
-<p><img src="/Users/marvae/Desktop/hw3/pigtime.png" style="zoom:50%">            </p>
-<p>​    <strong>hive overall run-time: 11min, 59sec</strong>            </p>
-<p><img src="/Users/marvae/Desktop/hw3/hivetime.png" style="zoom:50%"><br>From the time, we can see the time spent on hive is much less than that of pig. But I find a problem when check the applications on Hadoop. PigLatin run as Mapreduce jobs while Hive as TEZ jobs. That might be the reason why Hive is so faster than Pig</p>
-<p><img src="/Users/marvae/Desktop/hw3/tez.png" style="zoom:50%"></p>
-<p> So I execute pig script with TEZ and re-run the script.</p>
+          Pig and Hive basic useQ1: Basic Pig Operations(a) Install Pig in hortonworks cluster.
+Login in Ambari and stop service
 
-          
+Click Add Service  in Actions
+
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/12/01/PigHive/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -905,10 +837,17 @@
       
         
           
-            <h1 id="Wellcome"><a href="#Wellcome" class="headerlink" title="Wellcome"></a>Wellcome</h1><p><em>This is my first try.</em></p>
-<p>I’m a postgraduate student in CUHK. I will post some notes of my course.</p>
+          WellcomeThis is my first try.
+I’m a postgraduate student in CUHK. I will post some notes of my course.
 
           
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/11/07/Hello-world/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1005,7 +944,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>
