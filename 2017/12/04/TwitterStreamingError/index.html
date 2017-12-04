@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="hello," />
+  <meta name="keywords" content="Spark Streaming,databricks," />
 
 
 
@@ -79,18 +79,20 @@
 
 
 
-<meta name="description" content="WellcomeThis is my first try. I’m a postgraduate student in CUHK. I will post some notes of my course.">
-<meta name="keywords" content="hello">
+<meta name="description" content="Databricks依赖的包在databrikcs上跑代码，最大的好处就是不用麻烦的编译。但是就存在一个问题，就是要自己上传libraries，这个时候版本的选择就成了很大的问题。 一开始我随便的上传了相关的包，然后就是编译不成功，缺三少四的。推荐一个网站，根据下面的compile dependencies来下载你需要的包。注意scala的版本也要选择。 比如说这里，选择了Twitter4j St">
+<meta name="keywords" content="Spark Streaming,databricks">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World!">
-<meta property="og:url" content="http://yoursite.com/2017/11/07/HelloWorld/index.html">
+<meta property="og:title" content="TwitterStreaming踩到的那些坑">
+<meta property="og:url" content="http://yoursite.com/2017/12/04/TwitterStreamingError/index.html">
 <meta property="og:site_name" content="Marvae&#39;s blog">
-<meta property="og:description" content="WellcomeThis is my first try. I’m a postgraduate student in CUHK. I will post some notes of my course.">
+<meta property="og:description" content="Databricks依赖的包在databrikcs上跑代码，最大的好处就是不用麻烦的编译。但是就存在一个问题，就是要自己上传libraries，这个时候版本的选择就成了很大的问题。 一开始我随便的上传了相关的包，然后就是编译不成功，缺三少四的。推荐一个网站，根据下面的compile dependencies来下载你需要的包。注意scala的版本也要选择。 比如说这里，选择了Twitter4j St">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2017-12-02T14:23:22.203Z">
+<meta property="og:image" content="http://p0a3iqhpa.bkt.clouddn.com/static/images/someerror/depen.png">
+<meta property="og:updated_time" content="2017-12-04T05:28:38.610Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World!">
-<meta name="twitter:description" content="WellcomeThis is my first try. I’m a postgraduate student in CUHK. I will post some notes of my course.">
+<meta name="twitter:title" content="TwitterStreaming踩到的那些坑">
+<meta name="twitter:description" content="Databricks依赖的包在databrikcs上跑代码，最大的好处就是不用麻烦的编译。但是就存在一个问题，就是要自己上传libraries，这个时候版本的选择就成了很大的问题。 一开始我随便的上传了相关的包，然后就是编译不成功，缺三少四的。推荐一个网站，根据下面的compile dependencies来下载你需要的包。注意scala的版本也要选择。 比如说这里，选择了Twitter4j St">
+<meta name="twitter:image" content="http://p0a3iqhpa.bkt.clouddn.com/static/images/someerror/depen.png">
 
 
 
@@ -120,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/11/07/HelloWorld/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/12/04/TwitterStreamingError/"/>
 
 
 
 
 
-  <title>Hello World! | Marvae's blog</title>
+  <title>TwitterStreaming踩到的那些坑 | Marvae's blog</title>
   
 
 
@@ -253,7 +255,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/07/HelloWorld/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/12/04/TwitterStreamingError/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="MA Hongwei">
@@ -270,7 +272,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Hello World!</h1>
+          <h1 class="post-title" itemprop="name headline">TwitterStreaming踩到的那些坑</h1>
         
 
         <div class="post-meta">
@@ -282,8 +284,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-07T02:42:30+08:00">
-                2017-11-07
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-04T13:10:00+08:00">
+                2017-12-04
               </time>
             
 
@@ -314,7 +316,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  21
+                  636
                 </span>
               
 
@@ -330,7 +332,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  1
+                  3
                 </span>
               
             </div>
@@ -351,8 +353,21 @@
       
 
       
-        <h1 id="Wellcome"><a href="#Wellcome" class="headerlink" title="Wellcome"></a>Wellcome</h1><p><em>This is my first try.</em></p>
-<p>I’m a postgraduate student in CUHK. I will post some notes of my course.</p>
+        <h1 id="Databricks依赖的包"><a href="#Databricks依赖的包" class="headerlink" title="Databricks依赖的包"></a>Databricks依赖的包</h1><p>在databrikcs上跑代码，最大的好处就是不用麻烦的编译。但是就存在一个问题，就是要自己上传libraries，这个时候版本的选择就成了很大的问题。</p>
+<p>一开始我随便的上传了相关的包，然后就是编译不成功，缺三少四的。推荐一个<a href="https://mvnrepository.com" target="_blank" rel="external">网站</a>，根据下面的compile dependencies来下载你需要的包。<strong>注意scala的版本也要选择。</strong></p>
+<p>比如说这里，选择了<a href="https://mvnrepository.com/artifact/org.twitter4j/twitter4j-stream" target="_blank" rel="external">Twitter4j Stream</a> » <a href="https://mvnrepository.com/artifact/org.twitter4j/twitter4j-stream/4.0.4" target="_blank" rel="external">4.0.4</a>，下面就会显示，就同时下载所依赖的包，下载同样的版本。</p>
+<p><img src="http://p0a3iqhpa.bkt.clouddn.com/static/images/someerror/depen.png" alt="shoufei"></p>
+<h1 id="时区不同步的问题"><a href="#时区不同步的问题" class="headerlink" title="时区不同步的问题"></a>时区不同步的问题</h1><p>在我折腾了n久终于把包弄对了以后，新的问题出现了。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">401:Authentication credentials (https://dev.twitter.com/pages/auth) were missing or incorrect. Ensure that you have set valid consumer key/secret, access token/secret, and the system clock is in sync.</div><div class="line">&lt;html&gt;\n&lt;head&gt;\n&lt;meta http-equiv="Content-Type" content="text/html; charset=utf-8"/&gt;\n&lt;title&gt;Error 401 Unauthorized&lt;/title&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">&lt;h2&gt;HTTP ERROR: 401&lt;/h2&gt;</div><div class="line">&lt;p&gt;Problem accessing '/1.1/statuses/filter.json'. Reason:</div><div class="line">&lt;pre&gt;    Unauthorized&lt;/pre&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div><div class="line"></div><div class="line">Relevant discussions can be found on the Internet at:</div><div class="line">        http://www.google.co.jp/search?q=1169356e or</div><div class="line">        http://www.google.co.jp/search?q=c04b39e1</div><div class="line">TwitterException&#123;exceptionCode=[1169356e-c04b39e1], statusCode=401, message=null, code=-1, retryAfter=-1, rateLimitStatus=null, version=4.0.4&#125;</div><div class="line">        at twitter4j.HttpClientImpl.handleRequest(HttpClientImpl.java:164)</div><div class="line">        at twitter4j.HttpClientBase.request(HttpClientBase.java:57)</div><div class="line">        at twitter4j.HttpClientBase.post(HttpClientBase.java:86)</div><div class="line">        at twitter4j.TwitterStreamImpl.getFilterStream(TwitterStreamImpl.java:346)</div><div class="line">        at twitter4j.TwitterStreamImpl$8.getStream(TwitterStreamImpl.java:322)</div><div class="line">        at twitter4j.TwitterStreamImpl$TwitterStreamConsumer.run(TwitterStreamImpl.java:552)</div></pre></td></tr></table></figure>
+<p>说是授权有问题，但是我已经设置好了各种钥匙了啊。所以应该是<code>the system clock is in sync</code>，时钟不同步的原因吧。</p>
+<p>看了一下我现在时间是中午12点，但是databricks上的时间确实上午4点，然后Twitter上我的时区又是US。这差别也太大了吧。</p>
+<p>算了一下databricks上的时区应该是london的时间，所以在twitter上把时区改成了london时间。</p>
+<p>问题解决！！</p>
+<h1 id="java-lang-NoClassDefFoundError-org-apache-spark-Logging"><a href="#java-lang-NoClassDefFoundError-org-apache-spark-Logging" class="headerlink" title="java.lang.NoClassDefFoundError: org/apache/spark/Logging"></a>java.lang.NoClassDefFoundError: org/apache/spark/Logging</h1><p>这个问题也是坑了好久，我去搜到了这个logging的包把它也弄上去了，但是还是跑不出结果。</p>
+<p>然后看到了这个<a href="http://blog.csdn.net/SunnyYoona/article/details/72922155" target="_blank" rel="external">网页</a>，发现可能是同一个问题。</p>
+<p>databricks上默认的Spark版本为2.1.0版本，然而在spark 1.5.2版本之后 org/apache/spark/Logging 已经被移除了。而且在前面下载依赖的那些包还都是1.6.3版本的。好吧还是版本问题</p>
+<p>所以在databricks里把版本改成了Spark 1.6.3-db2 (Hadoop 2, Scala 2.10)，然后问题就解决了。</p>
+<p><strong>总结一下，就是databricks很方便，包的选择要谨慎啊！</strong></p>
 
       
     </div>
@@ -370,9 +385,13 @@
       
         <div class="post-tags">
           
-            <a href="/tags/hello/" rel="tag"><i class="fa fa-tag"></i>
+            <a href="/tags/Spark-Streaming/" rel="tag"><i class="fa fa-tag"></i>
 
- hello</a>
+ Spark Streaming</a>
+          
+            <a href="/tags/databricks/" rel="tag"><i class="fa fa-tag"></i>
+
+ databricks</a>
           
         </div>
       
@@ -385,15 +404,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2017/12/03/SparkStreaming/" rel="next" title="用SparkStreaming和Twitter API实现一个小功能">
+                <i class="fa fa-chevron-left"></i> 用SparkStreaming和Twitter API实现一个小功能
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/12/01/PigHive/" rel="prev" title="Pig和Hive简单操作">
-                Pig和Hive简单操作 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -536,7 +555,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Wellcome"><span class="nav-number">1.</span> <span class="nav-text">Wellcome</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Databricks依赖的包"><span class="nav-number">1.</span> <span class="nav-text">Databricks依赖的包</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#时区不同步的问题"><span class="nav-number">2.</span> <span class="nav-text">时区不同步的问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#java-lang-NoClassDefFoundError-org-apache-spark-Logging"><span class="nav-number">3.</span> <span class="nav-text">java.lang.NoClassDefFoundError: org/apache/spark/Logging</span></a></li></ol></div>
             
 
           </div>
