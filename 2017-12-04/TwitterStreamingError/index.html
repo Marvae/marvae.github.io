@@ -7,9 +7,9 @@
 
 <html class="theme-next mist use-motion" lang="en">
 <head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="theme-color" content="#222">
 
 
@@ -20,8 +20,8 @@
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -40,7 +40,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -48,9 +48,9 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Spark Streaming,databricks," />
+  <meta name="keywords" content="Spark Streaming,databricks,">
 
 
 
@@ -83,7 +83,7 @@
 <meta name="keywords" content="Spark Streaming,databricks">
 <meta property="og:type" content="article">
 <meta property="og:title" content="TwitterStreaming踩到的那些坑">
-<meta property="og:url" content="http://marvae.github.io/2017/12/04/TwitterStreamingError/index.html">
+<meta property="og:url" content="http://marvae.github.io/2017-12-04/TwitterStreamingError/index.html">
 <meta property="og:site_name" content="Marvae&#39;s blog">
 <meta property="og:description" content="Databricks依赖的包在databrikcs上跑代码，最大的好处就是不用麻烦的编译。但是就存在一个问题，就是要自己上传libraries，这个时候版本的选择就成了很大的问题。 一开始我随便的上传了相关的包，然后就是编译不成功，缺三少四的。推荐一个网站，根据下面的compile dependencies来下载你需要的包。注意scala的版本也要选择。 比如说这里，选择了Twitter4j St">
 <meta property="og:locale" content="en">
@@ -122,7 +122,7 @@
 
 
 
-  <link rel="canonical" href="http://marvae.github.io/2017/12/04/TwitterStreamingError/"/>
+  <link rel="canonical" href="http://marvae.github.io/2017-12-04/TwitterStreamingError/">
 
 
 
@@ -140,7 +140,7 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="en">
 
   
   
@@ -150,13 +150,13 @@
   <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta ">
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">Marvae's blog</span>
         <span class="logo-line-after"><i></i></span>
@@ -186,7 +186,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
             Home
           </a>
@@ -196,7 +196,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             Archives
           </a>
@@ -206,7 +206,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             Tags
           </a>
@@ -216,7 +216,7 @@
         <li class="menu-item menu-item-about">
           <a href="/about/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
             
             About
           </a>
@@ -226,7 +226,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
             
             Categories
           </a>
@@ -260,20 +260,20 @@
   
   
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
   
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://marvae.github.io/2017/12/04/TwitterStreamingError/">
+    <link itemprop="mainEntityOfPage" href="http://marvae.github.io/2017-12-04/TwitterStreamingError/">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="MA Hongwei">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.png">
     </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="Marvae's blog">
     </span>
 
@@ -364,8 +364,8 @@
 
       
         <h1 id="Databricks依赖的包"><a href="#Databricks依赖的包" class="headerlink" title="Databricks依赖的包"></a>Databricks依赖的包</h1><p>在databrikcs上跑代码，最大的好处就是不用麻烦的编译。但是就存在一个问题，就是要自己上传libraries，这个时候版本的选择就成了很大的问题。</p>
-<p>一开始我随便的上传了相关的包，然后就是编译不成功，缺三少四的。推荐一个<a href="https://mvnrepository.com" target="_blank" rel="external">网站</a>，根据下面的compile dependencies来下载你需要的包。<strong>注意scala的版本也要选择。</strong></p>
-<p>比如说这里，选择了<a href="https://mvnrepository.com/artifact/org.twitter4j/twitter4j-stream" target="_blank" rel="external">Twitter4j Stream</a> » <a href="https://mvnrepository.com/artifact/org.twitter4j/twitter4j-stream/4.0.4" target="_blank" rel="external">4.0.4</a>，下面就会显示，就同时下载所依赖的包，下载同样的版本。</p>
+<p>一开始我随便的上传了相关的包，然后就是编译不成功，缺三少四的。推荐一个<a href="https://mvnrepository.com" rel="external nofollow noopener noreferrer" target="_blank">网站</a>，根据下面的compile dependencies来下载你需要的包。<strong>注意scala的版本也要选择。</strong></p>
+<p>比如说这里，选择了<a href="https://mvnrepository.com/artifact/org.twitter4j/twitter4j-stream" rel="external nofollow noopener noreferrer" target="_blank">Twitter4j Stream</a> » <a href="https://mvnrepository.com/artifact/org.twitter4j/twitter4j-stream/4.0.4" rel="external nofollow noopener noreferrer" target="_blank">4.0.4</a>，下面就会显示，就同时下载所依赖的包，下载同样的版本。</p>
 <p><img src="http://p0a3iqhpa.bkt.clouddn.com/static/images/someerror/depen.png" alt="shoufei"></p>
 <h1 id="时区不同步的问题"><a href="#时区不同步的问题" class="headerlink" title="时区不同步的问题"></a>时区不同步的问题</h1><p>在我折腾了n久终于把包弄对了以后，新的问题出现了。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">401:Authentication credentials (https://dev.twitter.com/pages/auth) were missing or incorrect. Ensure that you have set valid consumer key/secret, access token/secret, and the system clock is in sync.</div><div class="line">&lt;html&gt;\n&lt;head&gt;\n&lt;meta http-equiv="Content-Type" content="text/html; charset=utf-8"/&gt;\n&lt;title&gt;Error 401 Unauthorized&lt;/title&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">&lt;h2&gt;HTTP ERROR: 401&lt;/h2&gt;</div><div class="line">&lt;p&gt;Problem accessing '/1.1/statuses/filter.json'. Reason:</div><div class="line">&lt;pre&gt;    Unauthorized&lt;/pre&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div><div class="line"></div><div class="line">Relevant discussions can be found on the Internet at:</div><div class="line">        http://www.google.co.jp/search?q=1169356e or</div><div class="line">        http://www.google.co.jp/search?q=c04b39e1</div><div class="line">TwitterException&#123;exceptionCode=[1169356e-c04b39e1], statusCode=401, message=null, code=-1, retryAfter=-1, rateLimitStatus=null, version=4.0.4&#125;</div><div class="line">        at twitter4j.HttpClientImpl.handleRequest(HttpClientImpl.java:164)</div><div class="line">        at twitter4j.HttpClientBase.request(HttpClientBase.java:57)</div><div class="line">        at twitter4j.HttpClientBase.post(HttpClientBase.java:86)</div><div class="line">        at twitter4j.TwitterStreamImpl.getFilterStream(TwitterStreamImpl.java:346)</div><div class="line">        at twitter4j.TwitterStreamImpl$8.getStream(TwitterStreamImpl.java:322)</div><div class="line">        at twitter4j.TwitterStreamImpl$TwitterStreamConsumer.run(TwitterStreamImpl.java:552)</div></pre></td></tr></table></figure>
@@ -374,7 +374,7 @@
 <p>算了一下databricks上的时区应该是london的时间，所以在twitter上把时区改成了london时间。</p>
 <p>问题解决！！</p>
 <h1 id="java-lang-NoClassDefFoundError-org-apache-spark-Logging"><a href="#java-lang-NoClassDefFoundError-org-apache-spark-Logging" class="headerlink" title="java.lang.NoClassDefFoundError: org/apache/spark/Logging"></a>java.lang.NoClassDefFoundError: org/apache/spark/Logging</h1><p>这个问题也是坑了好久，我去搜到了这个logging的包把它也弄上去了，但是还是跑不出结果。</p>
-<p>然后看到了这个<a href="http://blog.csdn.net/SunnyYoona/article/details/72922155" target="_blank" rel="external">网页</a>，发现可能是同一个问题。</p>
+<p>然后看到了这个<a href="http://blog.csdn.net/SunnyYoona/article/details/72922155" rel="external nofollow noopener noreferrer" target="_blank">网页</a>，发现可能是同一个问题。</p>
 <p>databricks上默认的Spark版本为2.1.0版本，然而在spark 1.5.2版本之后 org/apache/spark/Logging 已经被移除了。而且在前面下载依赖的那些包还都是1.6.3版本的。好吧还是版本问题</p>
 <p>所以在databricks里把版本改成了Spark 1.6.3-db2 (Hadoop 2, Scala 2.10)，然后问题就解决了。</p>
 <p><strong>总结一下，就是databricks很方便，包的选择要谨慎啊！</strong></p>
@@ -414,7 +414,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/12/03/SparkStreaming/" rel="next" title="用SparkStreaming和Twitter API实现一个小功能">
+              <a href="/2017-12-03/SparkStreaming/" rel="next" title="用SparkStreaming和Twitter API实现一个小功能">
                 <i class="fa fa-chevron-left"></i> 用SparkStreaming和Twitter API实现一个小功能
               </a>
             
@@ -486,11 +486,9 @@
 
       <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image"
-                src="/images/avatar.png"
-                alt="MA Hongwei" />
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="MA Hongwei">
             
               <p class="site-author-name" itemprop="name">MA Hongwei</p>
               <p class="site-description motion-element" itemprop="description">start form zero</p>
@@ -530,7 +528,7 @@
             
               
                 <span class="links-of-author-item">
-                  <a href="https://github.com/marvae" target="_blank" title="GitHub">
+                  <a href="https://github.com/marvae" target="_blank" title="GitHub" rel="external nofollow noopener noreferrer">
                     
                       <i class="fa fa-fw fa-github"></i>GitHub</a>
                 </span>
@@ -604,7 +602,7 @@
 </div>
 
 <div class="powered-by">
-Powered by <a class="theme-link" href="http://hexo.io" rel="external nofollow">Hexo</a>
+Powered by <a class="theme-link" href="http://hexo.io" rel="external nofollow noopener noreferrer" target="_blank">Hexo</a>
 
 
 
@@ -612,7 +610,7 @@ Powered by <a class="theme-link" href="http://hexo.io" rel="external nofollow">H
 
 
 
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.3</div>
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next" rel="external nofollow noopener noreferrer">NexT.Mist</a> v5.1.3</div>
 
 
 
@@ -627,7 +625,7 @@ Powered by <a class="theme-link" href="http://hexo.io" rel="external nofollow">H
 
         
       </div>
-    </footer>
+    </div></footer>
 
     
       <div class="back-to-top">
