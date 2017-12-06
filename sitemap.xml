@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://marvae.github.io/categories/index.html</loc>
+    
+    <lastmod>2017-12-06T09:29:49.302Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://marvae.github.io/tags/index.html</loc>
+    
+    <lastmod>2017-12-06T09:28:22.381Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://marvae.github.io/2017/12/04/TwitterStreamingError/</loc>
     
     <lastmod>2017-12-04T05:28:38.610Z</lastmod>
@@ -44,23 +58,9 @@
   </url>
   
   <url>
-    <loc>http://marvae.github.io/tags/index.html</loc>
-    
-    <lastmod>2017-11-15T12:05:27.339Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://marvae.github.io/about/index.html</loc>
     
     <lastmod>2017-11-15T11:39:48.959Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://marvae.github.io/categories/index.html</loc>
-    
-    <lastmod>2017-11-06T19:02:00.000Z</lastmod>
     
   </url>
   

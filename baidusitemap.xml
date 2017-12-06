@@ -3,6 +3,8 @@
 
 
     
+    
+    
   <url>
     <loc>http://marvae.github.io/2017/12/04/TwitterStreamingError/</loc>
     <lastmod>2017-12-04T05:28:38.610Z</lastmod>
@@ -68,9 +70,9 @@
         <title>注册databricks账号并进行基本的spark操作</title>
         <pubTime>2017-12-01T10:28:14.000Z</pubTime>
         
-        <tag>spark</tag>
-         
         <tag>databricks</tag>
+         
+        <tag>spark</tag>
          
          
            
@@ -116,7 +118,5 @@
     </data>
     </url>
 
-    
-    
     
 </urlset>
