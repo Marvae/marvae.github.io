@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Python,Numpy,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="这个教程是翻译自Justin Johnson,在斯坦福的课程cs231n中的Tutorial。Ipython Notebook版本来自cs228的Volodymyr Kuleshov和Isaac  Caswell。 在cs231n中会有多Python来做所有的作业。Python是一个比较通用且简单的语言，但是由于有很多流行的框架（numpy，scipy，matplotlib）使它成为了一个很强大的">
+<meta name="keywords" content="Python,Numpy">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python和Numpy教程---来自cs231n">
+<meta property="og:url" content="http://marvae.github.io/2017-12-08/PythonNumpyTutorial/index.html">
+<meta property="og:site_name" content="Marvae&#39;s blog">
+<meta property="og:description" content="这个教程是翻译自Justin Johnson,在斯坦福的课程cs231n中的Tutorial。Ipython Notebook版本来自cs228的Volodymyr Kuleshov和Isaac  Caswell。 在cs231n中会有多Python来做所有的作业。Python是一个比较通用且简单的语言，但是由于有很多流行的框架（numpy，scipy，matplotlib）使它成为了一个很强大的">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2017-12-08T12:46:49.880Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python和Numpy教程---来自cs231n">
+<meta name="twitter:description" content="这个教程是翻译自Justin Johnson,在斯坦福的课程cs231n中的Tutorial。Ipython Notebook版本来自cs228的Volodymyr Kuleshov和Isaac  Caswell。 在cs231n中会有多Python来做所有的作业。Python是一个比较通用且简单的语言，但是由于有很多流行的框架（numpy，scipy，matplotlib）使它成为了一个很强大的">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://marvae.github.io/2017-12-08/PythonNumpyTutorial/">
+
+
+
+
+
+  <title>Python和Numpy教程---来自cs231n | Marvae's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Marvae's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Some notes</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://marvae.github.io/2017-12-08/PythonNumpyTutorial/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="MA Hongwei">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Marvae's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Python和Numpy教程---来自cs231n</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-08T20:46:27+08:00">
+                2017-12-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  800
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  4
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>这个教程是翻译自<a href="http://cs.stanford.edu/people/jcjohns/" rel="external nofollow noopener noreferrer" target="_blank">Justin Johnson</a>,在斯坦福的课程cs231n中的<a href="http://cs231n.github.io/python-numpy-tutorial/" rel="external nofollow noopener noreferrer" target="_blank">Tutorial</a>。<a href="https://github.com/kuleshov/cs228-material/blob/master/tutorials/python/cs228-python-tutorial.ipynb" rel="external nofollow noopener noreferrer" target="_blank">Ipython Notebook</a>版本来自cs228的<a href="http://web.stanford.edu/~kuleshov/" rel="external nofollow noopener noreferrer" target="_blank">Volodymyr Kuleshov</a>和<a href="https://symsys.stanford.edu/viewing/symsysaffiliate/21335" rel="external nofollow noopener noreferrer" target="_blank">Isaac  Caswell</a>。</p>
+<p>在cs231n中会有多Python来做所有的作业。Python是一个比较通用且简单的语言，但是由于有很多流行的框架（numpy，scipy，matplotlib）使它成为了一个很强大的科学计算工具。</p>
+<p>接下来我们会有一个关于python语言和科学计算的快速介绍。如果你之前有matlab的基础，这里有<a href="http://scipy.github.io/old-wiki/pages/NumPy_for_Matlab_Users" rel="external nofollow noopener noreferrer" target="_blank">numpy for Matlab users</a>可以参考。</p>
+<h1 id="An-example-of-classic-quicksort"><a href="#An-example-of-classic-quicksort" class="headerlink" title="An example of classic quicksort"></a>An example of classic quicksort</h1><p>Python是高级语言，代码看起来更像是伪代码，因为它可以用很短的几行易读的代码来实现一些非常有力的观点。这里是一个用Python实现快排的简单例子。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">quicksort</span><span class="params">(arr)</span>:</span></div><div class="line">    <span class="keyword">if</span> len(arr) &lt;= <span class="number">1</span>:</div><div class="line">        <span class="keyword">return</span> arr</div><div class="line">    pivot = arr[len(arr) // <span class="number">2</span>]</div><div class="line">    left = [x <span class="keyword">for</span> x <span class="keyword">in</span> arr <span class="keyword">if</span> x &lt; pivot]</div><div class="line">    middle = [x <span class="keyword">for</span> x <span class="keyword">in</span> arr <span class="keyword">if</span> x == pivot]</div><div class="line">    right = [x <span class="keyword">for</span> x <span class="keyword">in</span> arr <span class="keyword">if</span> x &gt; pivot]</div><div class="line">    <span class="keyword">return</span> quicksort(left) + middle + quicksort(right)</div><div class="line"></div><div class="line">print(quicksort([<span class="number">1</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">6</span>,<span class="number">8</span>,<span class="number">10</span>]))</div><div class="line">print(quicksort([<span class="number">3</span>,<span class="number">6</span>,<span class="number">8</span>,<span class="number">10</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>]))</div></pre></td></tr></table></figure>
+<pre><code>[1, 1, 2, 3, 6, 8, 10]
+[1, 1, 2, 3, 6, 8, 10]
+</code></pre><h1 id="Python-versions"><a href="#Python-versions" class="headerlink" title="Python versions"></a>Python versions</h1><p>现在Python主要有两个版本，2.7和3.5(3.6)。因为3.0以后有很多改变，所以2.7版本的代码是不能在3以上版本上运行的。这个教程用的3.6版本。这里也有一个2.7版本的英文<a href="http://nbviewer.jupyter.org/gist/Cysu/b45242c1e22311118d01dba4d8bf2c3a" rel="external nofollow noopener noreferrer" target="_blank">教程</a>。</p>
+<p>你可以在命令行输入<code>python --version</code>来查看自己的Python版本。</p>
+<h1 id="Basic-data-types"><a href="#Basic-data-types" class="headerlink" title="Basic data types"></a>Basic data types</h1><p>更绝大多数编程语言一样，Python有基本的数据类型，包括整型，浮点型，布尔型和字符串。这些数据类型在表现上和其他编程语言相似。</p>
+<h2 id="数字"><a href="#数字" class="headerlink" title="数字"></a>数字</h2><p>整型和浮点型 </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">x = <span class="number">3</span></div><div class="line">print(type(x))</div><div class="line">print(x) </div><div class="line">print(x + <span class="number">1</span>) </div><div class="line">print(x - <span class="number">1</span>) </div><div class="line">print(x * <span class="number">2</span>)</div><div class="line">print(x ** <span class="number">2</span>) </div><div class="line">x += <span class="number">1</span></div><div class="line">print(x) </div><div class="line">x *= <span class="number">2</span></div><div class="line">print(x) </div><div class="line">y = <span class="number">2.5</span></div><div class="line">print(type(y)) </div><div class="line">print(y, y + <span class="number">1</span>, y * <span class="number">2</span>, y ** <span class="number">2</span>)</div></pre></td></tr></table></figure>
+<pre><code>&lt;class &apos;int&apos;&gt;
+3
+4
+2
+6
+9
+4
+8
+&lt;class &apos;float&apos;&gt;
+2.5 3.5 5.0 6.25
+</code></pre><p>注意：跟其他的很多语言不一样，Python没有<code>x++</code>和<code>x--</code>。<br>还有其他一些复杂的数字类型，可以看<a href="https://docs.python.org/3.5/library/stdtypes.html#numeric-types-int-float-complex" rel="external nofollow noopener noreferrer" target="_blank">官方文档</a></p>
+<h2 id="布尔"><a href="#布尔" class="headerlink" title="布尔"></a>布尔</h2><p>Python有很多基础的布尔逻辑运算符，都是用英文表示而不是像其他语言一样用符号<code>$$</code>,<code>||</code>等等</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">t = <span class="keyword">True</span></div><div class="line">f = <span class="keyword">False</span></div><div class="line">print(type(t)) </div><div class="line">print(t <span class="keyword">and</span> f)</div><div class="line">print(t <span class="keyword">or</span> f)</div><div class="line">print(<span class="keyword">not</span> t)</div><div class="line">print(t != f)</div></pre></td></tr></table></figure>
+<pre><code>&lt;class &apos;bool&apos;&gt;
+False
+True
+False
+True
+</code></pre><h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><p>Python对于字符串有着很好的支持</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">hello = <span class="string">'hello'</span></div><div class="line">world = <span class="string">'world'</span></div><div class="line">print(hello)</div><div class="line">print(len(hello))</div><div class="line">hw = hello + <span class="string">' '</span> + world</div><div class="line">print(hw)</div><div class="line">hw12 = <span class="string">'%s %s %d'</span> % (hello, world, <span class="number">12</span>)</div><div class="line">print(hw12)</div></pre></td></tr></table></figure>
+<pre><code>hello
+5
+hello world
+hello world 12
+</code></pre><p>字符串有很多有用的方法，比如：<br>还有一些可以参见<a href="https://docs.python.org/3.5/library/stdtypes.html#string-methods" rel="external nofollow noopener noreferrer" target="_blank">官方文档</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">s = <span class="string">"hello"</span></div><div class="line">print(s.capitalize())</div><div class="line">print(s.upper())</div><div class="line">print(s.rjust(<span class="number">7</span>))</div><div class="line">print(s.center(<span class="number">7</span>))</div><div class="line">print(s.replace(<span class="string">'l'</span>, <span class="string">'(ell)'</span>))</div><div class="line">print(<span class="string">'  world'</span>.strip())</div></pre></td></tr></table></figure>
+<pre><code>Hello
+HELLO
+  hello
+ hello 
+he(ell)(ell)o
+world
+</code></pre><h1 id="Containers"><a href="#Containers" class="headerlink" title="Containers"></a>Containers</h1><p>Python有很多内建的容器类型：lists，dictionaries，sets和tuples</p>
+<h2 id="列表-lists"><a href="#列表-lists" class="headerlink" title="列表(lists)"></a>列表(lists)</h2><p>Python的一个列表相当于是数组，但是可以改变大小且能存储不同的数据类型。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">xs = [<span class="number">3</span>, <span class="number">1</span>, <span class="number">2</span>]</div><div class="line">print(xs, xs[<span class="number">2</span>])</div><div class="line">print(xs[<span class="number">-1</span>])</div><div class="line">xs[<span class="number">2</span>] = <span class="string">'foo'</span></div><div class="line">print(xs)</div><div class="line">xs.append(<span class="string">'bar'</span>)</div><div class="line">print(xs)</div><div class="line">x = xs.pop()</div><div class="line">print(x, xs)</div></pre></td></tr></table></figure>
+<pre><code>[3, 1, 2] 2
+2
+[3, 1, &apos;foo&apos;]
+[3, 1, &apos;foo&apos;, &apos;bar&apos;]
+bar [3, 1, &apos;foo&apos;]
+</code></pre><p>未完待续。。。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag"><i class="fa fa-tag"></i>
+
+ Python</a>
+          
+            <a href="/tags/Numpy/" rel="tag"><i class="fa fa-tag"></i>
+
+ Numpy</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017-12-04/TwitterStreamingError/" rel="next" title="TwitterStreaming踩到的那些坑">
+                <i class="fa fa-chevron-left"></i> TwitterStreaming踩到的那些坑
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="MA Hongwei">
+            
+              <p class="site-author-name" itemprop="name">MA Hongwei</p>
+              <p class="site-description motion-element" itemprop="description">start form zero</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/marvae" target="_blank" title="GitHub" rel="external nofollow noopener noreferrer">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.weibo.com/titanail" target="_blank" title="weibo" rel="external nofollow noopener noreferrer">
+                    
+                      <i class="fa fa-fw fa-weibo"></i>weibo</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#An-example-of-classic-quicksort"><span class="nav-number">1.</span> <span class="nav-text">An example of classic quicksort</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Python-versions"><span class="nav-number">2.</span> <span class="nav-text">Python versions</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Basic-data-types"><span class="nav-number">3.</span> <span class="nav-text">Basic data types</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数字"><span class="nav-number">3.1.</span> <span class="nav-text">数字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#布尔"><span class="nav-number">3.2.</span> <span class="nav-text">布尔</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串"><span class="nav-number">3.3.</span> <span class="nav-text">字符串</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Containers"><span class="nav-number">4.</span> <span class="nav-text">Containers</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#列表-lists"><span class="nav-number">4.1.</span> <span class="nav-text">列表(lists)</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">MA Hongwei</span>
+
+  
+</div>
+
+
+<div class="powered-by">
+  <i class="fa fa-user-md"></i>
+  <span id="busuanzi_container_site_uv">
+      访问量:<span id="busuanzi_value_site_uv"></span>
+  </span>
+</div>
+
+<div class="powered-by">
+Powered by <a class="theme-link" href="http://hexo.io" rel="external nofollow noopener noreferrer" target="_blank">Hexo</a>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next" rel="external nofollow noopener noreferrer">NexT.Mist</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </div></footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
