@@ -4,6 +4,29 @@
 
     
   <url>
+    <loc>http://marvae.github.io/2018-02-13/sklearn-md/</loc>
+    <lastmod>2018-02-13T14:07:16.390Z</lastmod>
+    <data>
+        <display>
+        <title>Some Notes about Sickt-learn from Coursera</title>
+        <pubTime>2018-02-13T13:46:26.000Z</pubTime>
+        
+        <tag>Python</tag>
+         
+        <tag>Machine Learning</tag>
+         
+        <tag>Coursera</tag>
+         
+        <tag>scikit-learn</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://marvae.github.io/2017-12-03/SparkStreaming/</loc>
     <lastmod>2018-02-05T12:01:18.674Z</lastmod>
     <data>
@@ -129,9 +152,9 @@
         <title>注册databricks账号并进行基本的spark操作</title>
         <pubTime>2017-12-01T10:28:14.000Z</pubTime>
         
-        <tag>spark</tag>
-         
         <tag>databricks</tag>
+         
+        <tag>spark</tag>
          
          
            
