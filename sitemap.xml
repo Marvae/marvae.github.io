@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://marvae.github.io/about/index.html</loc>
+    
+    <lastmod>2018-02-15T10:46:28.268Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://marvae.github.io/categories/index.html</loc>
     
     <lastmod>2018-02-15T10:42:10.492Z</lastmod>
@@ -68,13 +75,6 @@
     <loc>http://marvae.github.io/2017-12-01/PigHive/</loc>
     
     <lastmod>2018-02-15T10:36:48.850Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://marvae.github.io/about/index.html</loc>
-    
-    <lastmod>2018-02-15T10:31:33.500Z</lastmod>
     
   </url>
   
