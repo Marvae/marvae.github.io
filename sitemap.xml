@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://marvae.github.io/about/index.html</loc>
+    
+    <lastmod>2018-02-15T10:31:33.500Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://marvae.github.io/tags/index.html</loc>
+    
+    <lastmod>2018-02-15T10:31:10.143Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://marvae.github.io/categories/index.html</loc>
+    
+    <lastmod>2018-02-15T10:30:39.371Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://marvae.github.io/2018-02-15/cs231n-notes1/</loc>
     
     <lastmod>2018-02-15T09:42:48.754Z</lastmod>
@@ -44,20 +65,6 @@
   </url>
   
   <url>
-    <loc>http://marvae.github.io/categories/index.html</loc>
-    
-    <lastmod>2017-12-06T09:29:49.302Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://marvae.github.io/tags/index.html</loc>
-    
-    <lastmod>2017-12-06T09:28:22.381Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://marvae.github.io/2017-12-04/TwitterStreamingError/</loc>
     
     <lastmod>2017-12-04T05:28:38.610Z</lastmod>
@@ -82,13 +89,6 @@
     <loc>http://marvae.github.io/2017-11-07/HelloWorld/</loc>
     
     <lastmod>2017-12-02T14:23:22.203Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://marvae.github.io/about/index.html</loc>
-    
-    <lastmod>2017-11-15T11:39:48.959Z</lastmod>
     
   </url>
   
