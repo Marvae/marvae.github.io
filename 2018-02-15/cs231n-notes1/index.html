@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Python,Machine Learning,Coursera,scikit-learn,">
+  <meta name="keywords" content="deep learning,cs231n,">
 
 
 
@@ -79,22 +79,21 @@
 
 
 
-<meta name="description" content="IntroductionWhat is Applied Machine Learning This course focused more on how to properly apply and interpret the results from machine learning algorithms at a high level and less on the technical deta">
-<meta name="keywords" content="Python,Machine Learning,Coursera,scikit-learn">
+<meta name="description" content="INTRODUCTION什么是计算机视觉(computer vision)?   计算机视觉是研究visual data的学科 计算机视觉涉及很多不同的领域，比如生物、物理、数学、工程以及计算机科学等等。  A BRIEF HISTORYBiological Vision​    物种大爆炸：大概5.4亿年前，生物进化出了眼睛。 Mechanical vision​    Camera Obscu">
+<meta name="keywords" content="deep learning,cs231n">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Some Notes about Sickt-learn from Coursera">
-<meta property="og:url" content="http://marvae.github.io/2018-02-13/sklearn-md/index.html">
+<meta property="og:title" content="cs231n笔记lecture1">
+<meta property="og:url" content="http://marvae.github.io/2018-02-15/cs231n-notes1/index.html">
 <meta property="og:site_name" content="Marvae&#39;s blog">
-<meta property="og:description" content="IntroductionWhat is Applied Machine Learning This course focused more on how to properly apply and interpret the results from machine learning algorithms at a high level and less on the technical deta">
+<meta property="og:description" content="INTRODUCTION什么是计算机视觉(computer vision)?   计算机视觉是研究visual data的学科 计算机视觉涉及很多不同的领域，比如生物、物理、数学、工程以及计算机科学等等。  A BRIEF HISTORYBiological Vision​    物种大爆炸：大概5.4亿年前，生物进化出了眼睛。 Mechanical vision​    Camera Obscu">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://p0a3iqhpa.bkt.clouddn.com/static/images/sklearn/1.png">
-<meta property="og:image" content="http://p0a3iqhpa.bkt.clouddn.com/static/images/sklearn/2.png">
-<meta property="og:image" content="http://p0a3iqhpa.bkt.clouddn.com/static/images/sklearn/3.png">
-<meta property="og:updated_time" content="2018-02-13T14:32:41.390Z">
+<meta property="og:image" content="http://p0a3iqhpa.bkt.clouddn.com/static/images/cs231n/lecture1/pic1.png">
+<meta property="og:image" content="http://p0a3iqhpa.bkt.clouddn.com/static/images/cs231n/lecture1/pic2.png">
+<meta property="og:updated_time" content="2018-02-15T09:40:44.694Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Some Notes about Sickt-learn from Coursera">
-<meta name="twitter:description" content="IntroductionWhat is Applied Machine Learning This course focused more on how to properly apply and interpret the results from machine learning algorithms at a high level and less on the technical deta">
-<meta name="twitter:image" content="http://p0a3iqhpa.bkt.clouddn.com/static/images/sklearn/1.png">
+<meta name="twitter:title" content="cs231n笔记lecture1">
+<meta name="twitter:description" content="INTRODUCTION什么是计算机视觉(computer vision)?   计算机视觉是研究visual data的学科 计算机视觉涉及很多不同的领域，比如生物、物理、数学、工程以及计算机科学等等。  A BRIEF HISTORYBiological Vision​    物种大爆炸：大概5.4亿年前，生物进化出了眼睛。 Mechanical vision​    Camera Obscu">
+<meta name="twitter:image" content="http://p0a3iqhpa.bkt.clouddn.com/static/images/cs231n/lecture1/pic1.png">
 
 
 
@@ -124,13 +123,13 @@
 
 
 
-  <link rel="canonical" href="http://marvae.github.io/2018-02-13/sklearn-md/">
+  <link rel="canonical" href="http://marvae.github.io/2018-02-15/cs231n-notes1/">
 
 
 
 
 
-  <title>Some Notes about Sickt-learn from Coursera | Marvae's blog</title>
+  <title>cs231n笔记lecture1 | Marvae's blog</title>
   
 
 
@@ -267,7 +266,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://marvae.github.io/2018-02-13/sklearn-md/">
+    <link itemprop="mainEntityOfPage" href="http://marvae.github.io/2018-02-15/cs231n-notes1/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="MA Hongwei">
@@ -284,7 +283,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Some Notes about Sickt-learn from Coursera</h1>
+          <h1 class="post-title" itemprop="name headline">cs231n笔记lecture1</h1>
         
 
         <div class="post-meta">
@@ -296,8 +295,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-13T21:46:26+08:00">
-                2018-02-13
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-15T16:45:32+08:00">
+                2018-02-15
               </time>
             
 
@@ -328,7 +327,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  231
+                  955
                 </span>
               
 
@@ -344,7 +343,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  1
+                  4
                 </span>
               
             </div>
@@ -365,25 +364,69 @@
       
 
       
-        <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><h2 id="What-is-Applied-Machine-Learning"><a href="#What-is-Applied-Machine-Learning" class="headerlink" title="What is Applied Machine Learning"></a>What is Applied Machine Learning</h2><p><img src="http://p0a3iqhpa.bkt.clouddn.com/static/images/sklearn/1.png" alt="1"></p>
-<p>This course focused more on how to properly apply and interpret the results from machine learning algorithms at a high level and less on the technical details of exactly how these algorithms work internally. </p>
-<h2 id="Key-Concepts-in-Machine-Learning"><a href="#Key-Concepts-in-Machine-Learning" class="headerlink" title="Key Concepts in Machine Learning"></a>Key Concepts in Machine Learning</h2><p>Machine learning tasks can be categorized into two main types. </p>
-<p><strong>1. Supervised machine learning: Learn to predict target values from labelled data. </strong></p>
+        <h1 id="INTRODUCTION"><a href="#INTRODUCTION" class="headerlink" title="INTRODUCTION"></a>INTRODUCTION</h1><p>什么是计算机视觉(computer vision)? </p>
 <ul>
-<li>Classification: target values are discrete classes</li>
-<li>Regression: target values are continuous values</li>
+<li>计算机视觉是研究visual data的学科</li>
+<li>计算机视觉涉及很多不同的领域，比如生物、物理、数学、工程以及计算机科学等等。<img src="http://p0a3iqhpa.bkt.clouddn.com/static/images/cs231n/lecture1/pic1.png" alt="pic1"></li>
 </ul>
-<p>Here is an example about classification problem about image recognition. Our goal is to learn some function that maps data item in X to a label in Y. <img src="http://p0a3iqhpa.bkt.clouddn.com/static/images/sklearn/2.png" alt="2"></p>
-<p>Supervised learning needs to have this training set with labeled objects in order to make its predictions. </p>
-<p>But a key point is where does this initial set of label items come from? The answer is that the training labels are typically provided by human judges. That could be difficult, depending on how much labeled data is needed. </p>
-<p><strong>2. Unsupervised machine learning: Find useful structure or knowledge in unlabeled data</strong></p>
-<ul>
-<li>Find groups of similar instances in the data (clustering)</li>
-<li>Finding unusual patterns (outlier detection)</li>
+<h1 id="A-BRIEF-HISTORY"><a href="#A-BRIEF-HISTORY" class="headerlink" title="A BRIEF HISTORY"></a>A BRIEF HISTORY</h1><h2 id="Biological-Vision"><a href="#Biological-Vision" class="headerlink" title="Biological Vision"></a>Biological Vision</h2><p>​    物种大爆炸：大概5.4亿年前，生物进化出了眼睛。</p>
+<h2 id="Mechanical-vision"><a href="#Mechanical-vision" class="headerlink" title="Mechanical vision"></a>Mechanical vision</h2><p>​    Camera Obscura：六十年代文艺复兴时期开始有一些利用pinhole camera theory的相机诞生</p>
+<h2 id="动物视觉研究"><a href="#动物视觉研究" class="headerlink" title="动物视觉研究"></a>动物视觉研究</h2><p>​    Hubel &amp; Wiesel在1959年通过电极测试发现哺乳动物的视觉处理是从简单结构开始的，比如<strong>edge</strong>和<strong>shapes</strong></p>
+<h2 id="计算机视觉历史"><a href="#计算机视觉历史" class="headerlink" title="计算机视觉历史"></a>计算机视觉历史</h2><ol>
+<li><p>Black World 是第一篇关于计算机视觉的博士论文，</p>
+</li>
+<li><p>1996, MIT成立人工智能实验室，组织famous Summer Vision Project。</p>
+</li>
+<li><p>David Marr写了VISION这本书，在书中他讨论了计算机视觉的含义和发展。</p>
+<p>同时他提出了分层的概念：edge-&gt;sketch-&gt;3D model</p>
+</li>
+<li><p>70年代Brooks &amp; Binford提出了Generalized Cylinder，Fischler &amp; Erschlagenr提出了Pictorial Structure。他们指出每一个物体都是有简单的几何形状构成的。</p>
+</li>
+<li><p>80年的David Lowe识别了一组剃刀的图片，指出物体可以由线和线的组合来表示</p>
+</li>
+<li><p>1997年Shi &amp; Malik提出Normalized Cut，告诉我们如果直接识别物体太困难就先做图片的分割，分割成有意义的部分。</p>
+</li>
+<li><p>2001年Viola &amp; Jone在计算机的计算能力还不够强大的时候通过AdaBoost实现了脸部识别，而后2006年fuji的相机成为第一个可以实时识别人脸的相机。</p>
+</li>
+<li><p>David Lowe在1999年提出”SIFT” &amp; Object Recognition。在之前因为拍摄角度、光线、遮挡等复杂的情况，对物体的识别是困难的。但是物体有些重要的部分、特征是不变的，所以可以通过识别这些关键的特征来进行匹配。</p>
+</li>
+<li><p>2006年Lazebnik et al.提出了Spatial Pyramid Matching来识别整个图片的场景。他们发现实际图片中，无论是什么场景，都可以通过features，然后用SVM来进行分类。</p>
+</li>
+<li><p>人体识别：Histogram of Gradients/Deformable Part Model</p>
+</li>
+</ol>
+<h2 id="Benchmark-Dataset-and-Challenge"><a href="#Benchmark-Dataset-and-Challenge" class="headerlink" title="Benchmark Dataset and Challenge"></a>Benchmark Dataset and Challenge</h2><ol>
+<li><p>PASCAL Visual Object Challenge：20种物体图片</p>
+</li>
+<li><p>IMAGENET：1400万张图片，2.2万种类</p>
+</li>
+<li><p>ImageNet图片识别大赛：</p>
+<p><img src="http://p0a3iqhpa.bkt.clouddn.com/static/images/cs231n/lecture1/pic2.png" alt="pic1"></p>
+<p>从2010年到2015年图识别的错误率逐渐降低，但是在2010和2011年错误率还在25%上下徘徊。</p>
+<p>在2012年显著的下降了接近10%。获得冠军的就是Hinton提出的7层CNN，这也是这门课的重点。</p>
+</li>
+</ol>
+<h1 id="CS231n-OVERVIEW"><a href="#CS231n-OVERVIEW" class="headerlink" title="CS231n OVERVIEW"></a>CS231n OVERVIEW</h1><h2 id="课程重点"><a href="#课程重点" class="headerlink" title="课程重点"></a>课程重点</h2><ol>
+<li><p>cs231n focuses on one of the most important problems of visual recognition –  image classification</p>
+</li>
+<li><p>There is a number of visual recognition problemsthat are related to image classification：</p>
+<p>object detection：利用画框标记物体在图片中的位置，并识别画框内的物体</p>
+<p>image captioning：用自然语言来描述图片</p>
+<p>Action classification</p>
+</li>
+<li><p>Convolutional Neural Networks (CNN) have become an important tool for object recognition</p>
+</li>
+</ol>
+<h2 id="CNN的历史"><a href="#CNN的历史" class="headerlink" title="CNN的历史"></a>CNN的历史</h2><p>刚才提到的ImageNetd大赛，从2012年之后，获胜的算法都是深度神经网络，在此之前，都是识别特征然后用SVM进行分类的。在2015年微软的团队MSRA甚至用到了152层的nn。</p>
+<p>但是CNN并非2012才被发明的，早在1998年LeCun在贝尔实验室就使用了这种神经网络来识别手写钞票中的数字。</p>
+<p>为什么直到现在CNN和深度神经网络才流行起来呢？主要是有两方面的原因：</p>
+<p>一是CPU和GPU的计算能力不断加强，尤其是GPU的并行能力对于神经网络中的计算很有帮助。</p>
+<p>二是大数据，无论是什么样的机器学习算法，没有足够的数据量都容易overfitting，而现在有了足够大的有标记的数据库</p>
+<h2 id="其他的问题"><a href="#其他的问题" class="headerlink" title="其他的问题"></a>其他的问题</h2><ul>
+<li>3D重建</li>
+<li>Activity Recognition</li>
+<li>机器人视觉等</li>
 </ul>
-<p><img src="http://p0a3iqhpa.bkt.clouddn.com/static/images/sklearn/3.png" alt="2"></p>
-<p>Once we can discover this structure in the form of clusters, groups or other interesting subsets. The structure can be used for tasks like producing a useful summary of the input data maybe visualizing the structure. </p>
-<h2 id="Python-Tools-for-Machine-Learning"><a href="#Python-Tools-for-Machine-Learning" class="headerlink" title="Python Tools for Machine Learning"></a>Python Tools for Machine Learning</h2><p>​<br>​<br>​<br>​    </p>
 
       
     </div>
@@ -401,21 +444,13 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Python/" rel="tag"><i class="fa fa-tag"></i>
+            <a href="/tags/deep-learning/" rel="tag"><i class="fa fa-tag"></i>
 
- Python</a>
+ deep learning</a>
           
-            <a href="/tags/Machine-Learning/" rel="tag"><i class="fa fa-tag"></i>
+            <a href="/tags/cs231n/" rel="tag"><i class="fa fa-tag"></i>
 
- Machine Learning</a>
-          
-            <a href="/tags/Coursera/" rel="tag"><i class="fa fa-tag"></i>
-
- Coursera</a>
-          
-            <a href="/tags/scikit-learn/" rel="tag"><i class="fa fa-tag"></i>
-
- scikit-learn</a>
+ cs231n</a>
           
         </div>
       
@@ -428,8 +463,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018-02-05/sort/" rel="next" title="排序算法及Python实现">
-                <i class="fa fa-chevron-left"></i> 排序算法及Python实现
+              <a href="/2018-02-13/sklearn-md/" rel="next" title="Some Notes about Sickt-learn from Coursera">
+                <i class="fa fa-chevron-left"></i> Some Notes about Sickt-learn from Coursera
               </a>
             
           </div>
@@ -437,10 +472,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018-02-15/cs231n-notes1/" rel="prev" title="cs231n笔记lecture1">
-                cs231n笔记lecture1 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -581,7 +612,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Introduction"><span class="nav-number">1.</span> <span class="nav-text">Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#What-is-Applied-Machine-Learning"><span class="nav-number">1.1.</span> <span class="nav-text">What is Applied Machine Learning</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Key-Concepts-in-Machine-Learning"><span class="nav-number">1.2.</span> <span class="nav-text">Key Concepts in Machine Learning</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Python-Tools-for-Machine-Learning"><span class="nav-number">1.3.</span> <span class="nav-text">Python Tools for Machine Learning</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#INTRODUCTION"><span class="nav-number">1.</span> <span class="nav-text">INTRODUCTION</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#A-BRIEF-HISTORY"><span class="nav-number">2.</span> <span class="nav-text">A BRIEF HISTORY</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Biological-Vision"><span class="nav-number">2.1.</span> <span class="nav-text">Biological Vision</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mechanical-vision"><span class="nav-number">2.2.</span> <span class="nav-text">Mechanical vision</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#动物视觉研究"><span class="nav-number">2.3.</span> <span class="nav-text">动物视觉研究</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#计算机视觉历史"><span class="nav-number">2.4.</span> <span class="nav-text">计算机视觉历史</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Benchmark-Dataset-and-Challenge"><span class="nav-number">2.5.</span> <span class="nav-text">Benchmark Dataset and Challenge</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CS231n-OVERVIEW"><span class="nav-number">3.</span> <span class="nav-text">CS231n OVERVIEW</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#课程重点"><span class="nav-number">3.1.</span> <span class="nav-text">课程重点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CNN的历史"><span class="nav-number">3.2.</span> <span class="nav-text">CNN的历史</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他的问题"><span class="nav-number">3.3.</span> <span class="nav-text">其他的问题</span></a></li></ol></li></ol></div>
             
 
           </div>
