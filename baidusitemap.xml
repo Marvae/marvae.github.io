@@ -4,6 +4,28 @@
 
     
   <url>
+    <loc>http://marvae.github.io/2017-12-08/PythonNumpyTutorial/</loc>
+    <lastmod>2018-02-16T11:23:53.581Z</lastmod>
+    <data>
+        <display>
+        <title>Python和Numpy教程---来自cs231n</title>
+        <pubTime>2017-12-08T12:46:27.000Z</pubTime>
+        
+        <tag>Python</tag>
+         
+        <tag>Numpy</tag>
+         
+         
+           
+             
+              <breadCrumb title="cs231n" url="http://marvae.github.io/categories/cs231n/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://marvae.github.io/2018-02-16/cs231n-notes2/</loc>
     <lastmod>2018-02-16T10:39:28.859Z</lastmod>
     <data>
@@ -81,28 +103,6 @@
            
              
               <breadCrumb title="Coursera" url="http://marvae.github.io/categories/Coursera/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://marvae.github.io/2017-12-08/PythonNumpyTutorial/</loc>
-    <lastmod>2018-02-15T10:38:28.808Z</lastmod>
-    <data>
-        <display>
-        <title>Python和Numpy教程---来自cs231n</title>
-        <pubTime>2017-12-08T12:46:27.000Z</pubTime>
-        
-        <tag>Python</tag>
-         
-        <tag>Numpy</tag>
-         
-         
-           
-             
-              <breadCrumb title="cs231n" url="http://marvae.github.io/categories/cs231n/"/>
           
         </display>
     </data>
