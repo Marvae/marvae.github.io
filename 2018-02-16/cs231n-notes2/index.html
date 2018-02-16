@@ -99,7 +99,12 @@
 <meta property="og:image" content="http://p0a3iqhpa.bkt.clouddn.com/static/images/cs231n/lecture2/pic10.png">
 <meta property="og:image" content="http://p0a3iqhpa.bkt.clouddn.com/static/images/cs231n/lecture2/pic11.png">
 <meta property="og:image" content="http://p0a3iqhpa.bkt.clouddn.com/static/images/cs231n/lecture2/pic12.png">
-<meta property="og:updated_time" content="2018-02-16T13:56:10.066Z">
+<meta property="og:image" content="http://p0a3iqhpa.bkt.clouddn.com/static/images/cs231n/lecture2/pic13.png">
+<meta property="og:image" content="http://p0a3iqhpa.bkt.clouddn.com/static/images/cs231n/lecture2/pic14.png">
+<meta property="og:image" content="http://p0a3iqhpa.bkt.clouddn.com/static/images/cs231n/lecture2/pic15.png">
+<meta property="og:image" content="http://p0a3iqhpa.bkt.clouddn.com/static/images/cs231n/lecture2/pic16.png">
+<meta property="og:image" content="http://p0a3iqhpa.bkt.clouddn.com/static/images/cs231n/lecture2/pic17.png">
+<meta property="og:updated_time" content="2018-02-16T15:17:10.671Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="cs231n笔记 - lecture2">
 <meta name="twitter:description" content="Image ClassificationMotivation输入一些图片，并且算法实现知道一组预定的类别或标签，算法的任务是区分图片的种类并为它分配这些固定类别的标签之一。 图像分类可以说是计算机视觉中的核心任务之一，物体检测和分割等任务都可以通过在此图像分类的基础上进行细节上的改动来实现，所以学习图像分类可以说是很有用的。 Challenges对于计算机来说，图片是以3维数组来表示的。例如下面的">
@@ -359,7 +364,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  1,718
+                  2,874
                 </span>
               
 
@@ -375,7 +380,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  6
+                  10
                 </span>
               
             </div>
@@ -456,7 +461,26 @@
 <li>距离类型和K是<strong>超参数(Hyperparameters)</strong>。</li>
 <li>使用<strong>交叉验证集(Cross-validation set)</strong>来选择超参数，或者只是通过测试集找到最好的参数。</li>
 </ul>
-<h1 id="Linear-Classification"><a href="#Linear-Classification" class="headerlink" title="Linear Classification"></a>Linear Classification</h1><h2 id="Motivation-1"><a href="#Motivation-1" class="headerlink" title="Motivation"></a>Motivation</h2>
+<h1 id="Linear-Classification"><a href="#Linear-Classification" class="headerlink" title="Linear Classification"></a>Linear Classification</h1><h2 id="Motivation-1"><a href="#Motivation-1" class="headerlink" title="Motivation"></a>Motivation</h2><p>线性分类器是一种很简单的算法，但是它很重要并会帮助我们建立对整个神经网络和CNN的理解。神经网络很像是乐高玩具，有很多不同类型的组件然后把这些组件拼在一起组成一个大的神经网络，而其中一个重要的组件就是线性分类器，它在不同的deep learning应用中都发挥了很大的作用。</p>
+<p>instructor的实验室有一个项目，他们要输入一张图片，然后输出一句描述性的语句来描述这幅图像。原理就是有一个更适用于CV的CNN来观察图像，一个更适用于sequences的RNN来生成描述，然后把两块像乐高一样拼在一起来实现的。</p>
+<h2 id="Parametric-Approach"><a href="#Parametric-Approach" class="headerlink" title="Parametric Approach"></a>Parametric Approach</h2><p>回到CIRAR-10上，我们的训练集有50000个32 <em> 32 </em> 3的图像，1000个种类，测试集有10000个图像。线性分类器就是构造一个有W参数函数，输入是一个图像，输出对应每一个种类的数值/分数，正确的种类数值/分数较大。如下图所示（假设有十个分类）：</p>
+<p><img src="http://p0a3iqhpa.bkt.clouddn.com/static/images/cs231n/lecture2/pic13.png" alt="pic1"></p>
+<p>在这里，我们的函数中有两个组件，我们要做的就是让函数<strong>输出对应10个种类的分数</strong>。其中x是不可变的输入值（图中所示猫的图片，即为3072个数字），W就是参数或者权重，是可变的，这就是parametric approach。线性分类是最简单的parametric approach，KNN就是non-parametric approach。在这里我们的测试步骤中，与KNN不同的是，我们就不需要记住所有的数据，只需要知道参数W，这样的模型更有效率。</p>
+<p>最简单的我们可以让W与x相乘，所以我们要<strong>把x展开成一个3072元素的列向量</strong>，而<strong>W(weights)</strong>就是一个10 <em> 3072的矩阵，它们相乘输出就是一个10元素向量，向量的每一个数对应一个种类。通常情况下我们还需要有一个10个元素的<em>*偏移向量(bias vector)</em></em>，来平衡不平衡的数据集的情况。比如数据集中猫的数量比其他的多，则猫的偏移量更大，代表默认情况下分类器会更多的预测出猫。</p>
+<p>总结的说，线性分类器是从图片空间映射到标签空间的函数，我们要找的最佳的W和b。</p>
+<h2 id="Interpreting"><a href="#Interpreting" class="headerlink" title="Interpreting"></a>Interpreting</h2><p>下图是一个简单的计算例子：</p>
+<p><img src="http://p0a3iqhpa.bkt.clouddn.com/static/images/cs231n/lecture2/pic14.png" alt="pic1"></p>
+<p>从这个图中可以理解线性分类器类似于一种模板匹配的方法，W每一行相当于图像的一些模板，与图片的每一个像素计算内积再加上偏移量得到一个分数。下图是每一类解出来的模板图像：</p>
+<p><img src="http://p0a3iqhpa.bkt.clouddn.com/static/images/cs231n/lecture2/pic15.png" alt="pic1"></p>
+<p>我们可以看到第一个模板图像是飞机，所以比较偏重于蓝色，因为飞机大部分在天上被蓝色所包围，所以这个模板在蓝色通道上有很多正权重。后面那个马的种类，可以隐约看到马是双头的，因为数据集中的马可能朝不同的方向，所以模板平均了这些变化。这也是线性分类器的一种局限性，因为图片是变化的，但它通过一个单独的模板来识别每个类别。神经网络没有这个问题，因为它不再限制每一个类别只有一个模板。</p>
+<p>下图是对线性分类器的另一种理解：</p>
+<p><img src="http://p0a3iqhpa.bkt.clouddn.com/static/images/cs231n/lecture2/pic16.png" alt="pic1"></p>
+<p>想象每一个图片是3072维空间上的一个点，分类器就是再为这些点画decision boundary，而得到的分数就是取样空间中箭头指向正方向的梯度。训练就是直线（在高维空间里是超平面）的移动，直到把所有的类分开。</p>
+<h2 id="Hard-cases"><a href="#Hard-cases" class="headerlink" title="Hard cases"></a>Hard cases</h2><p>但是对于线性分类器来说，有几种情况是难以区分开的，如下图：</p>
+<p><img src="http://p0a3iqhpa.bkt.clouddn.com/static/images/cs231n/lecture2/pic17.png" alt="pic1"></p>
+<p>线性分类器还有一个问题就是如果数据集中图片尺寸不同就不容易处理。这个是分类器的通病，实际操作中会将不同尺寸的图片进行压缩，压缩成相同形状，目前最前沿的水平图片都是正方形的。所以对于全景图片的分类是很糟糕的。</p>
+<p>最后为了能定量的测量每一个W在数据集上的表现并选择更好的W，我们需要引入loss function以及optimizaition，这是下一节的内容。</p>
+
       
     </div>
     
@@ -650,7 +674,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Image-Classification"><span class="nav-number">1.</span> <span class="nav-text">Image Classification</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Motivation"><span class="nav-number">1.1.</span> <span class="nav-text">Motivation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Challenges"><span class="nav-number">1.2.</span> <span class="nav-text">Challenges</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Data-driven-Approach"><span class="nav-number">1.3.</span> <span class="nav-text">Data-driven Approach</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pipline"><span class="nav-number">1.4.</span> <span class="nav-text">Pipline</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Nearnest-Neighbor-Classifier"><span class="nav-number">2.</span> <span class="nav-text">Nearnest Neighbor Classifier</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Example"><span class="nav-number">2.1.</span> <span class="nav-text">Example</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Distance-Metric"><span class="nav-number">2.2.</span> <span class="nav-text">Distance Metric</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#KNN-Classifier"><span class="nav-number">2.3.</span> <span class="nav-text">KNN Classifier</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hyperparamenter"><span class="nav-number">2.4.</span> <span class="nav-text">Hyperparamenter</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cross-validation"><span class="nav-number">2.5.</span> <span class="nav-text">Cross-validation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Drawbacks"><span class="nav-number">2.6.</span> <span class="nav-text">Drawbacks</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Summary"><span class="nav-number">2.7.</span> <span class="nav-text">Summary</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Linear-Classification"><span class="nav-number">3.</span> <span class="nav-text">Linear Classification</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Motivation-1"><span class="nav-number">3.1.</span> <span class="nav-text">Motivation</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Image-Classification"><span class="nav-number">1.</span> <span class="nav-text">Image Classification</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Motivation"><span class="nav-number">1.1.</span> <span class="nav-text">Motivation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Challenges"><span class="nav-number">1.2.</span> <span class="nav-text">Challenges</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Data-driven-Approach"><span class="nav-number">1.3.</span> <span class="nav-text">Data-driven Approach</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pipline"><span class="nav-number">1.4.</span> <span class="nav-text">Pipline</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Nearnest-Neighbor-Classifier"><span class="nav-number">2.</span> <span class="nav-text">Nearnest Neighbor Classifier</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Example"><span class="nav-number">2.1.</span> <span class="nav-text">Example</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Distance-Metric"><span class="nav-number">2.2.</span> <span class="nav-text">Distance Metric</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#KNN-Classifier"><span class="nav-number">2.3.</span> <span class="nav-text">KNN Classifier</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hyperparamenter"><span class="nav-number">2.4.</span> <span class="nav-text">Hyperparamenter</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cross-validation"><span class="nav-number">2.5.</span> <span class="nav-text">Cross-validation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Drawbacks"><span class="nav-number">2.6.</span> <span class="nav-text">Drawbacks</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Summary"><span class="nav-number">2.7.</span> <span class="nav-text">Summary</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Linear-Classification"><span class="nav-number">3.</span> <span class="nav-text">Linear Classification</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Motivation-1"><span class="nav-number">3.1.</span> <span class="nav-text">Motivation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Parametric-Approach"><span class="nav-number">3.2.</span> <span class="nav-text">Parametric Approach</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Interpreting"><span class="nav-number">3.3.</span> <span class="nav-text">Interpreting</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hard-cases"><span class="nav-number">3.4.</span> <span class="nav-text">Hard cases</span></a></li></ol></li></ol></div>
             
 
           </div>
