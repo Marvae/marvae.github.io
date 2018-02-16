@@ -4,16 +4,14 @@
 
     
   <url>
-    <loc>http://marvae.github.io/2017-12-08/PythonNumpyTutorial/</loc>
-    <lastmod>2018-02-16T11:23:53.581Z</lastmod>
+    <loc>http://marvae.github.io/2018-02-16/cs231n-notes3/</loc>
+    <lastmod>2018-02-16T13:39:02.794Z</lastmod>
     <data>
         <display>
-        <title>Python和Numpy教程---来自cs231n</title>
-        <pubTime>2017-12-08T12:46:27.000Z</pubTime>
+        <title>cs231n-notes3</title>
+        <pubTime>2018-02-16T13:37:56.000Z</pubTime>
         
-        <tag>Python</tag>
-         
-        <tag>Numpy</tag>
+        <tag>deep learning</tag>
          
          
            
@@ -27,13 +25,35 @@
     
   <url>
     <loc>http://marvae.github.io/2018-02-16/cs231n-notes2/</loc>
-    <lastmod>2018-02-16T10:39:28.859Z</lastmod>
+    <lastmod>2018-02-16T13:38:44.987Z</lastmod>
     <data>
         <display>
-        <title>cs231n笔记Lecture2上</title>
+        <title>cs231n笔记Lecture2</title>
         <pubTime>2018-02-16T08:23:09.000Z</pubTime>
         
         <tag>deep learning</tag>
+         
+         
+           
+             
+              <breadCrumb title="cs231n" url="http://marvae.github.io/categories/cs231n/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://marvae.github.io/2017-12-08/PythonNumpyTutorial/</loc>
+    <lastmod>2018-02-16T11:23:53.581Z</lastmod>
+    <data>
+        <display>
+        <title>Python和Numpy教程---来自cs231n</title>
+        <pubTime>2017-12-08T12:46:27.000Z</pubTime>
+        
+        <tag>Python</tag>
+         
+        <tag>Numpy</tag>
          
          
            

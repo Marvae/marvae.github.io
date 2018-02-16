@@ -2,16 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://marvae.github.io/2017-12-08/PythonNumpyTutorial/</loc>
+    <loc>http://marvae.github.io/2018-02-16/cs231n-notes3/</loc>
     
-    <lastmod>2018-02-16T11:23:53.581Z</lastmod>
+    <lastmod>2018-02-16T13:39:02.794Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://marvae.github.io/2018-02-16/cs231n-notes2/</loc>
     
-    <lastmod>2018-02-16T10:39:28.859Z</lastmod>
+    <lastmod>2018-02-16T13:38:44.987Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://marvae.github.io/2017-12-08/PythonNumpyTutorial/</loc>
+    
+    <lastmod>2018-02-16T11:23:53.581Z</lastmod>
     
   </url>
   
