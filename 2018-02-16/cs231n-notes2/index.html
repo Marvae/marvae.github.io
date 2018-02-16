@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="deep learning,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Image ClassificaiionMotivation输入一些图片，并且算法实现知道一组预定的类别或标签，算法的任务是区分图片的种类并为它分配这些固定类别的标签之一。 图像分类可以说是计算机视觉中的核心任务之一，物体检测和分割等任务都可以通过在此图像分类的基础上进行细节上的改动来实现，所以学习图像分类可以说是很有用的。 Challenges对于计算机来说，图片是以3维数组来表示的。例如下面的">
+<meta name="keywords" content="deep learning">
+<meta property="og:type" content="article">
+<meta property="og:title" content="cs231n笔记Lecture2上">
+<meta property="og:url" content="http://marvae.github.io/2018-02-16/cs231n-notes2/index.html">
+<meta property="og:site_name" content="Marvae&#39;s blog">
+<meta property="og:description" content="Image ClassificaiionMotivation输入一些图片，并且算法实现知道一组预定的类别或标签，算法的任务是区分图片的种类并为它分配这些固定类别的标签之一。 图像分类可以说是计算机视觉中的核心任务之一，物体检测和分割等任务都可以通过在此图像分类的基础上进行细节上的改动来实现，所以学习图像分类可以说是很有用的。 Challenges对于计算机来说，图片是以3维数组来表示的。例如下面的">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://p0a3iqhpa.bkt.clouddn.com/static/images/cs231n/lecture2/pic1.png">
+<meta property="og:image" content="http://p0a3iqhpa.bkt.clouddn.com/static/images/cs231n/lecture2/pic2.png">
+<meta property="og:image" content="http://p0a3iqhpa.bkt.clouddn.com/static/images/cs231n/lecture2/pic3.png">
+<meta property="og:image" content="http://p0a3iqhpa.bkt.clouddn.com/static/images/cs231n/lecture2/pic4.png">
+<meta property="og:image" content="http://p0a3iqhpa.bkt.clouddn.com/static/images/cs231n/lecture2/pic5.png">
+<meta property="og:image" content="http://p0a3iqhpa.bkt.clouddn.com/static/images/cs231n/lecture2/pic6.png">
+<meta property="og:image" content="http://p0a3iqhpa.bkt.clouddn.com/static/images/cs231n/lecture2/pic7.png">
+<meta property="og:image" content="http://p0a3iqhpa.bkt.clouddn.com/static/images/cs231n/lecture2/pic8.png">
+<meta property="og:image" content="http://p0a3iqhpa.bkt.clouddn.com/static/images/cs231n/lecture2/pic9.png">
+<meta property="og:image" content="http://p0a3iqhpa.bkt.clouddn.com/static/images/cs231n/lecture2/pic10.png">
+<meta property="og:image" content="http://p0a3iqhpa.bkt.clouddn.com/static/images/cs231n/lecture2/pic11.png">
+<meta property="og:image" content="http://p0a3iqhpa.bkt.clouddn.com/static/images/cs231n/lecture2/pic12.png">
+<meta property="og:updated_time" content="2018-02-16T10:39:28.859Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="cs231n笔记Lecture2上">
+<meta name="twitter:description" content="Image ClassificaiionMotivation输入一些图片，并且算法实现知道一组预定的类别或标签，算法的任务是区分图片的种类并为它分配这些固定类别的标签之一。 图像分类可以说是计算机视觉中的核心任务之一，物体检测和分割等任务都可以通过在此图像分类的基础上进行细节上的改动来实现，所以学习图像分类可以说是很有用的。 Challenges对于计算机来说，图片是以3维数组来表示的。例如下面的">
+<meta name="twitter:image" content="http://p0a3iqhpa.bkt.clouddn.com/static/images/cs231n/lecture2/pic1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://marvae.github.io/2018-02-16/cs231n-notes2/">
+
+
+
+
+
+  <title>cs231n笔记Lecture2上 | Marvae's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Marvae's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Some notes</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://marvae.github.io/2018-02-16/cs231n-notes2/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="MA Hongwei">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Marvae's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">cs231n笔记Lecture2上</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-16T16:23:09+08:00">
+                2018-02-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/cs231n/" itemprop="url" rel="index">
+                    <span itemprop="name">cs231n</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  1,715
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">
+                  6
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Image-Classificaiion"><a href="#Image-Classificaiion" class="headerlink" title="Image Classificaiion"></a>Image Classificaiion</h1><h2 id="Motivation"><a href="#Motivation" class="headerlink" title="Motivation"></a>Motivation</h2><p>输入一些图片，并且算法实现知道一组预定的类别或标签，算法的任务是区分图片的种类并为它分配这些固定类别的标签之一。</p>
+<p>图像分类可以说是计算机视觉中的核心任务之一，物体检测和分割等任务都可以通过在此图像分类的基础上进行细节上的改动来实现，所以学习图像分类可以说是很有用的。</p>
+<h2 id="Challenges"><a href="#Challenges" class="headerlink" title="Challenges"></a>Challenges</h2><p>对于计算机来说，图片是以3维数组来表示的。例如下面的例子中，图片是由800*600个像素组成，而每个像素由三个数字(RGB)组成。因此对于计算机很难从这些数中为图片分类。这个问题被称为语义鸿沟(Semantic Gap)。</p>
+<p><img src="http://p0a3iqhpa.bkt.clouddn.com/static/images/cs231n/lecture2/pic1.png" alt="pic1"></p>
+<p>所以存在以下一些问题：</p>
+<ul>
+<li><strong>视角变化（Viewpoint variation）</strong>：同一个物体，拍摄的角度距离不同，每一个像素都会不同。</li>
+<li><strong>光照条件（Illumination conditions）</strong>：拍摄时光照条件不同，或者物体本身的深浅，对图片影响非常大。</li>
+<li><strong>形变（Deformation）</strong>：相同物体的形状并非完全一样，会有不同的形态。</li>
+<li><strong>遮挡（Occlusion）</strong>：目标物体可能被遮挡，有时候物体只可见一部分。</li>
+<li><strong>背景干扰（Background clutter）</strong>：检测物体融入背景，难以辨识。</li>
+<li><strong>类内差异（Intra-class variation）</strong>：同一类物体的个体差异大，比如椅子。这一类物体有许多不同的对象，每个都有自己的外形。</li>
+</ul>
+<p><img src="http://p0a3iqhpa.bkt.clouddn.com/static/images/cs231n/lecture2/pic2.png" alt="pic1"></p>
+<p>所以对于图像分类来说是没有像排序算法一样的显示算法存在的。但是对于好的分类器来说，需要能够处理以上的变化，正确的识别出物体来。</p>
+<p>对于这个问题来说已经有过很多尝试，比如说检测物体的边缘，按照edges形状来进行分类，比如猫耳朵。但是这个方法不容易扩展，对于新的物体需要新的特征。而我们需要更scalable的方法。</p>
+<p><img src="http://p0a3iqhpa.bkt.clouddn.com/static/images/cs231n/lecture2/pic3.png" alt="pic1"></p>
+<h2 id="Data-driven-Approach"><a href="#Data-driven-Approach" class="headerlink" title="Data-driven Approach"></a>Data-driven Approach</h2><ol>
+<li>收集大量的图片及标记，比如说google图片搜索</li>
+<li>用机器学习方法训练一个分类器</li>
+<li>应用分类器到新的图片上进行预测</li>
+</ol>
+<h2 id="Pipline"><a href="#Pipline" class="headerlink" title="Pipline"></a>Pipline</h2><p><img src="http://p0a3iqhpa.bkt.clouddn.com/static/images/cs231n/lecture2/pic4.png" alt="pic1"></p>
+<h1 id="Nearnest-Neighbor-Classifier"><a href="#Nearnest-Neighbor-Classifier" class="headerlink" title="Nearnest Neighbor Classifier"></a>Nearnest Neighbor Classifier</h1><p><img src="http://p0a3iqhpa.bkt.clouddn.com/static/images/cs231n/lecture2/pic5.png" alt="pic1"></p>
+<ul>
+<li>训练：只是记住所有的训练数据</li>
+<li>预测：输入新的图像，尝试在训练数据中找出最相似的图像，然后根据最相似的图像的标签来预测新图片的标签。</li>
+</ul>
+<h2 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h2><p>CIFAR-10数据集：训练集为50000张，测试集10000张，10种分类标签，每张图像为32X32的小图像。下图是使用Nearest Neighbor算法，根据像素差异，从训练集中选出的10张最类似的图片，可见其中有不少错误。</p>
+<p><img src="http://p0a3iqhpa.bkt.clouddn.com/static/images/cs231n/lecture2/pic6.png" alt="pic1"></p>
+<h2 id="Distance-Metric"><a href="#Distance-Metric" class="headerlink" title="Distance Metric"></a>Distance Metric</h2><p>因为需要找出最相似的图像，我们就需要对图片的距离进行计算。所谓距离就是图片的每一个像素之间的差异，相当于将图片的3维数组转化向量计算向量之间的距离。距离的计算有很多方法。</p>
+<p>L1距离，也叫曼哈顿距离，计算每个像素的差值并求和，如下图如果旋转了坐标轴，L1距离会变化，但是L2距离不会。</p>
+<p>L2距离，也叫欧式距离。</p>
+<p><img src="http://p0a3iqhpa.bkt.clouddn.com/static/images/cs231n/lecture2/pic7.png" alt="pic1"></p>
+<p>向量有很多距离函数，怎么选择就成了一个问题。</p>
+<h2 id="KNN-Classifier"><a href="#KNN-Classifier" class="headerlink" title="KNN Classifier"></a>KNN Classifier</h2><p>找最相似的k个图片的标签，然后让针对测试图片进行投票，最后把票数最高的标签作为对测试图片的预测。当k=1的时候，就是Nearest Neighbor分类器。从下图中我们可以看出，k=3时绿色部分中间的一些零散的黄色就不会被单独区分出来，同时边界也变得很平滑，泛化能力更好。</p>
+<p><img src="http://p0a3iqhpa.bkt.clouddn.com/static/images/cs231n/lecture2/pic8.png" alt="pic1"></p>
+<p>如何确定最佳k值就是另外一个问题。</p>
+<h2 id="Hyperparamenter"><a href="#Hyperparamenter" class="headerlink" title="Hyperparamenter"></a>Hyperparamenter</h2><p>由前面所讲，需要选择不同的距离函数以及K的大小，这些被称为超参数。</p>
+<p>对于机器学习来说，超参数很常见，具体怎么设置和取值则是根据具体的问题来分析。需要不停的尝试不同的数值并在测试集上进行测试来找出最合适的参数。但这这也不是一个好的方法，因为这个测试集只是算法泛化能力的一个代表，不能确定在其他新数据上的表现。</p>
+<p>使用验证集是一种更普遍的方法，我们将数据集分为三份。在训练集上训练算法，用不同的超参数在验证集上验证，再用最优的超参数在测设集上预测。通常测试集将会在最后时刻才会用到。</p>
+<p><img src="http://p0a3iqhpa.bkt.clouddn.com/static/images/cs231n/lecture2/pic9.png" alt="pic1"></p>
+<h2 id="Cross-validation"><a href="#Cross-validation" class="headerlink" title="Cross-validation"></a>Cross-validation</h2><p><img src="http://p0a3iqhpa.bkt.clouddn.com/static/images/cs231n/lecture2/pic10.png" alt="pic1"></p>
+<p>交叉验证是另外一种策略，将除了测试集以外的数据分成多个fold，循环选择其中一个作为测试集，另外几个作为训练集来评估性能。但是对于deep learning来说，数据集非常大，计算量很大，比较少采取这个方法。下图是一个5-fold的对于k的交叉验证结果，每一个点是不同的输出，纵坐标是准确率，图中的竖线代表标准差。</p>
+<p><img src="http://p0a3iqhpa.bkt.clouddn.com/static/images/cs231n/lecture2/pic11.png" alt="pic1"></p>
+<h2 id="Drawbacks"><a href="#Drawbacks" class="headerlink" title="Drawbacks"></a>Drawbacks</h2><p>实际上knn方法基本上不会用于图像分类问题</p>
+<ol>
+<li><strong>预测效率低</strong>：训练步骤过于简单，只是记住所有图片，时间复杂度为O(1)，但是预测时对每一个图片都要遍历所有训练集中的图片并且计算，这个复杂度会根据训练集的大小线性增长。但对于我们来说测试时间应该要更重要，训练的时间可以很长，但测试的时间需要很快，所以这个方法比较backward。</li>
+<li><strong>距离函数不太有效</strong>：比如下图中右边3个图与第一个图的L2距离是相同的</li>
+</ol>
+<p><img src="http://p0a3iqhpa.bkt.clouddn.com/static/images/cs231n/lecture2/pic12.png" alt="pic1"></p>
+<ol>
+<li><strong>维数灾难</strong>：维数增多主要会带来的高维空间数据稀疏化问题，所以需要数据密度更高，但是这就意味着时间复杂度的指数增长，这是非常糟糕的。这里有一个<a href="http://www.cnblogs.com/datahunter/p/3808252.html" rel="external nofollow noopener noreferrer" target="_blank">链接</a>很形象的讲述了这个问题。</li>
+</ol>
+<h1 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h1><ul>
+<li><strong>图像分类</strong>问题。由被标注了分类标签的图像组成的<strong>训练集</strong>，训练算法，并在<strong>测试集</strong>上预测标签，并根据准确率进行评价。</li>
+<li><strong>最近邻分类器(K-Nearest Neighbor classifier)</strong>通过最相近的训练样本预测标签。</li>
+<li>距离类型和K是<strong>超参数(Hyperparameters)</strong>。</li>
+<li>使用<strong>交叉验证集(Cross-validation set)</strong>来选择超参数，或者只是通过测试集找到最好的参数。</li>
+</ul>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/deep-learning/" rel="tag"><i class="fa fa-tag"></i>
+
+ deep learning</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018-02-15/cs231n-notes1/" rel="next" title="cs231n笔记lecture1">
+                <i class="fa fa-chevron-left"></i> cs231n笔记lecture1
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="MA Hongwei">
+            
+              <p class="site-author-name" itemprop="name">MA Hongwei</p>
+              <p class="site-description motion-element" itemprop="description">start form zero</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/marvae" target="_blank" title="GitHub" rel="external nofollow noopener noreferrer">
+                    
+                      <i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.weibo.com/titanail" target="_blank" title="weibo" rel="external nofollow noopener noreferrer">
+                    
+                      <i class="fa fa-fw fa-weibo"></i>weibo</a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Image-Classificaiion"><span class="nav-number">1.</span> <span class="nav-text">Image Classificaiion</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Motivation"><span class="nav-number">1.1.</span> <span class="nav-text">Motivation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Challenges"><span class="nav-number">1.2.</span> <span class="nav-text">Challenges</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Data-driven-Approach"><span class="nav-number">1.3.</span> <span class="nav-text">Data-driven Approach</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pipline"><span class="nav-number">1.4.</span> <span class="nav-text">Pipline</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Nearnest-Neighbor-Classifier"><span class="nav-number">2.</span> <span class="nav-text">Nearnest Neighbor Classifier</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Example"><span class="nav-number">2.1.</span> <span class="nav-text">Example</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Distance-Metric"><span class="nav-number">2.2.</span> <span class="nav-text">Distance Metric</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#KNN-Classifier"><span class="nav-number">2.3.</span> <span class="nav-text">KNN Classifier</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Hyperparamenter"><span class="nav-number">2.4.</span> <span class="nav-text">Hyperparamenter</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cross-validation"><span class="nav-number">2.5.</span> <span class="nav-text">Cross-validation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Drawbacks"><span class="nav-number">2.6.</span> <span class="nav-text">Drawbacks</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Summary"><span class="nav-number">3.</span> <span class="nav-text">Summary</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">MA Hongwei</span>
+
+  
+</div>
+
+
+<div class="powered-by">
+  <i class="fa fa-user-md"></i>
+  <span id="busuanzi_container_site_uv">
+      访问量:<span id="busuanzi_value_site_uv"></span>
+  </span>
+</div>
+
+<div class="powered-by">
+Powered by <a class="theme-link" href="http://hexo.io" rel="external nofollow noopener noreferrer" target="_blank">Hexo</a>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next" rel="external nofollow noopener noreferrer">NexT.Mist</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </div></footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
