@@ -79,18 +79,28 @@
 
 
 
-<meta name="description" content="start form zero">
+<meta name="description" content="Recall from last lecture上一节课介绍了几个重要的问题：  图片识别的困难与挑战 数据驱动的方法：kNN 线性分类器：评分函数(score function)和权重矩阵W。  但是从上节课例子中还有两个问题需要解决：  不同的权重在不同图片上的作用效果差别很大，可能理想可能糟糕，需要找到一个清晰的概念来定义这个好坏。 需要尽量中道找到一些权重W对所有识别的类别相一致  这节课">
 <meta name="keywords" content="deep learning">
 <meta property="og:type" content="article">
 <meta property="og:title" content="cs231n笔记 - lecture3">
 <meta property="og:url" content="http://marvae.github.io/2018-02-16/cs231n-notes3/index.html">
 <meta property="og:site_name" content="Marvae&#39;s blog">
-<meta property="og:description" content="start form zero">
+<meta property="og:description" content="Recall from last lecture上一节课介绍了几个重要的问题：  图片识别的困难与挑战 数据驱动的方法：kNN 线性分类器：评分函数(score function)和权重矩阵W。  但是从上节课例子中还有两个问题需要解决：  不同的权重在不同图片上的作用效果差别很大，可能理想可能糟糕，需要找到一个清晰的概念来定义这个好坏。 需要尽量中道找到一些权重W对所有识别的类别相一致  这节课">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-02-16T13:52:23.526Z">
+<meta property="og:image" content="http://p0a3iqhpa.bkt.clouddn.com/static/images/cs231n/lecture3/pic1.png">
+<meta property="og:image" content="http://p0a3iqhpa.bkt.clouddn.com/static/images/cs231n/lecture3/pic2.png">
+<meta property="og:image" content="http://p0a3iqhpa.bkt.clouddn.com/static/images/cs231n/lecture3/pic3.png">
+<meta property="og:image" content="http://p0a3iqhpa.bkt.clouddn.com/static/images/cs231n/lecture3/pic4.png">
+<meta property="og:image" content="http://p0a3iqhpa.bkt.clouddn.com/static/images/cs231n/lecture3/pic5.png">
+<meta property="og:image" content="http://p0a3iqhpa.bkt.clouddn.com/static/images/cs231n/lecture3/pic6.png">
+<meta property="og:image" content="http://p0a3iqhpa.bkt.clouddn.com/static/images/cs231n/lecture3/pic7.png">
+<meta property="og:image" content="http://p0a3iqhpa.bkt.clouddn.com/static/images/cs231n/lecture3/pic8.png">
+<meta property="og:image" content="http://p0a3iqhpa.bkt.clouddn.com/static/images/cs231n/lecture3/pic9.png">
+<meta property="og:updated_time" content="2018-02-18T13:49:13.529Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="cs231n笔记 - lecture3">
-<meta name="twitter:description" content="start form zero">
+<meta name="twitter:description" content="Recall from last lecture上一节课介绍了几个重要的问题：  图片识别的困难与挑战 数据驱动的方法：kNN 线性分类器：评分函数(score function)和权重矩阵W。  但是从上节课例子中还有两个问题需要解决：  不同的权重在不同图片上的作用效果差别很大，可能理想可能糟糕，需要找到一个清晰的概念来定义这个好坏。 需要尽量中道找到一些权重W对所有识别的类别相一致  这节课">
+<meta name="twitter:image" content="http://p0a3iqhpa.bkt.clouddn.com/static/images/cs231n/lecture3/pic1.png">
 
 
 
@@ -351,7 +361,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  0
+                  1,732
                 </span>
               
 
@@ -367,7 +377,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  1
+                  7
                 </span>
               
             </div>
@@ -388,7 +398,69 @@
       
 
       
-        
+        <h1 id="Recall-from-last-lecture"><a href="#Recall-from-last-lecture" class="headerlink" title="Recall from last lecture"></a>Recall from last lecture</h1><p>上一节课介绍了几个重要的问题：</p>
+<ol>
+<li>图片识别的困难与挑战</li>
+<li>数据驱动的方法：kNN</li>
+<li>线性分类器：评分函数(score function)和权重矩阵W。</li>
+</ol>
+<p>但是从上节课例子中还有两个问题需要解决：</p>
+<ol>
+<li>不同的权重在不同图片上的作用效果差别很大，可能理想可能糟糕，需要找到一个清晰的概念来定义这个好坏。</li>
+<li>需要尽量中道找到一些权重W对所有识别的类别相一致</li>
+</ol>
+<p>这节课两个重要任务：</p>
+<ol>
+<li>定义Loss Function来衡量我们对结果的不满意程度</li>
+<li>最小化Loss Fuction找到合适的参数</li>
+</ol>
+<h1 id="Loss-Function"><a href="#Loss-Function" class="headerlink" title="Loss Function"></a>Loss Function</h1><p><strong>损失函数（Loss Function）</strong>（有时也叫<strong>代价函数Cost Function</strong>或<strong>目标函数Objective</strong>）当评分函数输出结果与真实结果之间差异越大，损失函数输出越大，反之越小。</p>
+<h2 id="Multiclass-Support-Vector-Machine-Loss"><a href="#Multiclass-Support-Vector-Machine-Loss" class="headerlink" title="Multiclass Support Vector Machine Loss"></a>Multiclass Support Vector Machine Loss</h2><p>简单来说，SVM的损失函数计算了每个图片的所有不正确的类别。其中x_i是图片，y_i是图片的标签。将所有不正确的类别的评分与正确类别的评分之差加上1，讲得到的值与0做比较，取两者中的最大值，然后将所有的取值进行求和。</p>
+<p><img src="http://p0a3iqhpa.bkt.clouddn.com/static/images/cs231n/lecture3/pic1.png" style="zoom:30%"></p>
+<p>这样计算loss的公式也叫Hinge loss，如下图所示：</p>
+<p><img src="http://p0a3iqhpa.bkt.clouddn.com/static/images/cs231n/lecture3/pic2.png" style="zoom:30%"></p>
+<p>对此的理解就是，不仅要使正确类别的评分高于错误类别的评分，还要加上一个安全系数，这里系数值为 1。对于1这个数字某种程度上可以认为是一个随意的选择，因为score是可以随意成比例放大缩小的，大小与量度的选择相关。</p>
+<p>在完成对数据集中每一个图片的计算之后，再对它们求均值，就得到了整个数据集上的Loss function。下图是一个简单例子，可以更好的理解计算过程。</p>
+<p><img src="http://p0a3iqhpa.bkt.clouddn.com/static/images/cs231n/lecture3/pic3.png" style="zoom:50%"></p>
+<p>对于第一个图片来说，正确cat的分数是3.2，则其他两个分数最大值不能超过2.2，所以对于car来说5.1-2.9=2.2，而frog的-1.7远低于2.2，则为0，求和后结果为2.9；而对于第二个4.9-1=3.9远高于另外两个，所以loss为0；对第三个图片，可以看出正确的frog类分数很低，其他类都比他要高，这个结果就是很糟糕的。</p>
+<p><strong>loss function的numpy向量化实现</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">L_i_vectorized</span><span class="params">(x, y, W)</span>:</span></div><div class="line">    <span class="comment"># x是一维行向量，y是整数表示标签，W权重矩阵</span></div><div class="line">    scores = W.dot(x)</div><div class="line">    margins = np.maximum(<span class="number">0</span>, scores - scores[y] + <span class="number">1</span>)</div><div class="line">    margins[y] = <span class="number">0</span> <span class="comment"># 清除j=y_i的情况</span></div><div class="line">    loss_i = np.sum(margins)</div><div class="line">    <span class="keyword">return</span> loss_i</div></pre></td></tr></table></figure>
+<p>下面是几个小的问题及回答</p>
+<p><strong>Q1: What if the sum was over all classes?(including j = y_i)</strong></p>
+<p>如果对于所有类别计算而不只是不正确的类别，对于 j = y_i时，loss恒等于1，求和后再求均值，相当于在最终结果上多加了一个1，不影响最终判断的。</p>
+<p><strong>Q2: What if we used mean instead of sum?</strong></p>
+<p>如果用的是均值，最终结果的绝对值会变小，相当于缩小了种类数的倍数，也不影响最终判断。</p>
+<p><strong>Q3: What if we used square loss?</strong></p>
+<p>上述两个问题相当于对L进行了平移和缩放的线性运算，而这个问题就是非线性的变化，对结果还是会有影响的。平方的loss被称为<strong>square hinge loss</strong>，有一些时候会用到，而且表现比hinge loss要好，但是hinge loss还是最常用的。</p>
+<p><strong>Q4: what is the min/max possible loss?</strong></p>
+<p>min: 0, max: ∞</p>
+<p><strong>Q5: At initialization W is small so all s ≈ 0. What is the loss?</strong></p>
+<p>种类数-1，因为 s ≈ 0 所有的分数都是零，所以loss都为1，求和后求均值就等于种类数-1。这个特性在具体实现时可以用来验证loss function的正确性。</p>
+<p><strong>Q6:    Suppose that we found a W such that L = 0. Is this W unique?</strong></p>
+<p>对于L=0的情况来说，W并非唯一，以一个系数来缩放W，比如2W，也可以满足L=0。这也是一个bug。</p>
+<h2 id="Regularization"><a href="#Regularization" class="headerlink" title="Regularization"></a>Regularization</h2><p>对于损失函数来说，我们希望它尽量满足训练集，这时候就会出现过拟合的情况。如下图所示，蓝色的线是满足原本数据集时的最佳拟合，但是对新的数据（绿色）并不适用，所以绿的线泛化能力更好。</p>
+<p><img src="http://p0a3iqhpa.bkt.clouddn.com/static/images/cs231n/lecture3/pic4.png" style="zoom:50%"></p>
+<p>所以我们加入了λR(W)这一项，让模型更简单，R(W)衡量了W的好坏，我们不仅想要数据拟合的好，也希望优化W，所以λ加入让他们fight，来获得更好的结果。</p>
+<p>λR(W)就是我们的<strong>正则化(Regularization)</strong>，用于权衡训练损失和用于测试集后的泛化损失。</p>
+<p>对于R(W)的选择有以下几种：</p>
+<p><img src="http://p0a3iqhpa.bkt.clouddn.com/static/images/cs231n/lecture3/pic5.png" style="zoom:30%">其中L2最常见，在L2 regularization下，W全是0时结果最好，但是当然是不可能的，因为W全为0就不能分类了，所以就需要与前面进行均衡。</p>
+<p>假设下图中w1,w2的loss function一致，w2要比w1好，因为w2考虑到了x中的大部分元素，分散了计算而w1完全忽略的后三个元素输入。这时L2 regularization的优点就体现出来了。</p>
+<p><img src="http://p0a3iqhpa.bkt.clouddn.com/static/images/cs231n/lecture3/pic6.png" style="zoom:30%"></p>
+<p>另外L1后面可能会用到，它对于稀疏的W矩阵效果很好。</p>
+<h2 id="Softmax-Classifier"><a href="#Softmax-Classifier" class="headerlink" title="Softmax Classifier"></a>Softmax Classifier</h2><p>Softmax classifier即为<strong>多元逻辑回归(Multinomial Logistic Regression)</strong>，是逻辑回归的多维推广。</p>
+<p><img src="http://p0a3iqhpa.bkt.clouddn.com/static/images/cs231n/lecture3/pic7.png" alt="pic1"></p>
+<p>在Softmax classifier中，我们不把分数理解为某种边界，而是对应不同类未经标准化的对数概率。正确分类概率的对数更高，错误的、负的结果就会很低。下图是一个计算过程</p>
+<p><img src="http://p0a3iqhpa.bkt.clouddn.com/static/images/cs231n/lecture3/pic8.png" alt="pic1"></p>
+<p><strong>Q1: What is the min/max possible loss L_i?</strong></p>
+<p>min:0 如果完全正确，概率为1，取对数为0；</p>
+<p>max:-∞ 如果不正确，概率为0，取对数为∞            </p>
+<p><strong>Q2: Usually at initialization W is small so all s ≈ 0. What is the loss?</strong></p>
+<p>0 —&gt;exp(0) = 1 —&gt; 1/n —&gt;对数取负值。</p>
+<p>同样的它也可以起到一个验证的作用，经过优化后的损失值应该在整个初始值到0之前，如果不在就有可能出错了。</p>
+<h2 id="Comparison"><a href="#Comparison" class="headerlink" title="Comparison"></a>Comparison</h2><p><img src="http://p0a3iqhpa.bkt.clouddn.com/static/images/cs231n/lecture3/pic9.png" alt="pic1"></p>
+<p><strong>相同点：</strong>除了计算稍有不同外，函数的定义几乎一样，目的也是一样的。两种形式的计算花费时间也是几乎相同的，softmax可能计算会稍多，但如果用同样的网络，这些计算对于卷积来说不值一提。</p>
+<p><strong>不同点：</strong> SVM的稳定性更高，因为margin的存在，所以损失值更为稳定。但是对于softmax，任何一个测试例都能提升分类的性能，因为softmax对于每一个样本都有关注，只要有一点变动，就会改变损失值</p>
+<h1 id="Optimization"><a href="#Optimization" class="headerlink" title="Optimization"></a>Optimization</h1><h2 id="Gradient"><a href="#Gradient" class="headerlink" title="Gradient"></a>Gradient</h2><h2 id="Gradient-Descent"><a href="#Gradient-Descent" class="headerlink" title="Gradient Descent"></a>Gradient Descent</h2><h1 id="Image-Features"><a href="#Image-Features" class="headerlink" title="Image Features"></a>Image Features</h1>
       
     </div>
     
@@ -480,8 +552,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -559,6 +640,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Recall-from-last-lecture"><span class="nav-number">1.</span> <span class="nav-text">Recall from last lecture</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Loss-Function"><span class="nav-number">2.</span> <span class="nav-text">Loss Function</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Multiclass-Support-Vector-Machine-Loss"><span class="nav-number">2.1.</span> <span class="nav-text">Multiclass Support Vector Machine Loss</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Regularization"><span class="nav-number">2.2.</span> <span class="nav-text">Regularization</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Softmax-Classifier"><span class="nav-number">2.3.</span> <span class="nav-text">Softmax Classifier</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Comparison"><span class="nav-number">2.4.</span> <span class="nav-text">Comparison</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Optimization"><span class="nav-number">3.</span> <span class="nav-text">Optimization</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Gradient"><span class="nav-number">3.1.</span> <span class="nav-text">Gradient</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Gradient-Descent"><span class="nav-number">3.2.</span> <span class="nav-text">Gradient Descent</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Image-Features"><span class="nav-number">4.</span> <span class="nav-text">Image Features</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
