@@ -96,7 +96,16 @@
 <meta property="og:image" content="http://p0a3iqhpa.bkt.clouddn.com/static/images/cs231n/lecture3/pic7.png">
 <meta property="og:image" content="http://p0a3iqhpa.bkt.clouddn.com/static/images/cs231n/lecture3/pic8.png">
 <meta property="og:image" content="http://p0a3iqhpa.bkt.clouddn.com/static/images/cs231n/lecture3/pic9.png">
-<meta property="og:updated_time" content="2018-02-18T13:49:13.529Z">
+<meta property="og:image" content="http://p0a3iqhpa.bkt.clouddn.com/static/images/cs231n/lecture3/pic10.png">
+<meta property="og:image" content="http://p0a3iqhpa.bkt.clouddn.com/static/images/cs231n/lecture3/pic11.png">
+<meta property="og:image" content="http://p0a3iqhpa.bkt.clouddn.com/static/images/cs231n/lecture3/pic12.png">
+<meta property="og:image" content="http://p0a3iqhpa.bkt.clouddn.com/static/images/cs231n/lecture3/pic13.png">
+<meta property="og:image" content="http://p0a3iqhpa.bkt.clouddn.com/static/images/cs231n/lecture3/pic14.png">
+<meta property="og:image" content="http://p0a3iqhpa.bkt.clouddn.com/static/images/cs231n/lecture3/pic15.png">
+<meta property="og:image" content="http://p0a3iqhpa.bkt.clouddn.com/static/images/cs231n/lecture3/pic16.png">
+<meta property="og:image" content="http://p0a3iqhpa.bkt.clouddn.com/static/images/cs231n/lecture3/pic17.png">
+<meta property="og:image" content="http://p0a3iqhpa.bkt.clouddn.com/static/images/cs231n/lecture3/pic18.png">
+<meta property="og:updated_time" content="2018-02-19T09:45:01.669Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="cs231n笔记 - lecture3">
 <meta name="twitter:description" content="Recall from last lecture上一节课介绍了几个重要的问题：  图片识别的困难与挑战 数据驱动的方法：kNN 线性分类器：评分函数(score function)和权重矩阵W。  但是从上节课例子中还有两个问题需要解决：  不同的权重在不同图片上的作用效果差别很大，可能理想可能糟糕，需要找到一个清晰的概念来定义这个好坏。 需要尽量中道找到一些权重W对所有识别的类别相一致  这节课">
@@ -361,7 +370,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  1,732
+                  3,253
                 </span>
               
 
@@ -377,7 +386,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  7
+                  12
                 </span>
               
             </div>
@@ -460,7 +469,34 @@
 <h2 id="Comparison"><a href="#Comparison" class="headerlink" title="Comparison"></a>Comparison</h2><p><img src="http://p0a3iqhpa.bkt.clouddn.com/static/images/cs231n/lecture3/pic9.png" alt="pic1"></p>
 <p><strong>相同点：</strong>除了计算稍有不同外，函数的定义几乎一样，目的也是一样的。两种形式的计算花费时间也是几乎相同的，softmax可能计算会稍多，但如果用同样的网络，这些计算对于卷积来说不值一提。</p>
 <p><strong>不同点：</strong> SVM的稳定性更高，因为margin的存在，所以损失值更为稳定。但是对于softmax，任何一个测试例都能提升分类的性能，因为softmax对于每一个样本都有关注，只要有一点变动，就会改变损失值</p>
-<h1 id="Optimization"><a href="#Optimization" class="headerlink" title="Optimization"></a>Optimization</h1><h2 id="Gradient"><a href="#Gradient" class="headerlink" title="Gradient"></a>Gradient</h2><h2 id="Gradient-Descent"><a href="#Gradient-Descent" class="headerlink" title="Gradient Descent"></a>Gradient Descent</h2><h1 id="Image-Features"><a href="#Image-Features" class="headerlink" title="Image Features"></a>Image Features</h1>
+<h1 id="Optimization"><a href="#Optimization" class="headerlink" title="Optimization"></a>Optimization</h1><p><img src="http://p0a3iqhpa.bkt.clouddn.com/static/images/cs231n/lecture3/pic10.png" style="zoom:30%"></p>
+<p>我们已经定义了loss function现在要做的就是寻找最佳的W。</p>
+<p>第一种策略就是随机测试。随机取一些W的采样，计算他们的损失值，然后重复这些步骤直到找到一个W的值使得损失值最小。这显然不是一个很好的方法。</p>
+<p>第二种策略是把损失值看作是在一个高维度的W空间中。形象的讲，找到最小的损失值相当于下山，你看不到山谷，但是知道每一点的高度，可以试图找到找到一个更低的损失值，然后一步一步到达山谷。这种方法我们叫做<strong>梯度下降(Gradient Descent)</strong>。</p>
+<h2 id="Gradient-Descent"><a href="#Gradient-Descent" class="headerlink" title="Gradient Descent"></a>Gradient Descent</h2><p><strong>梯度(Gradient)</strong>就是计算当前点的每个方向上的<strong>斜率(slope)</strong>。如果斜率为负，就沿着这个方向往下走。</p>
+<p>对于一维的斜率计算可以用下面的公式来求导数，而对于多维就是对每一个维度的偏导数组成的向量。这种计算叫做<strong>数值梯度(Numerical gradient)</strong>，这种方法容易用代码实现，但是比较慢和粗略。这样对每一个单独的维度计算的方法是比较蠢的，如果有成百上千个参数时，每迈出一步就要花费很多时间。</p>
+<p><img src="http://p0a3iqhpa.bkt.clouddn.com/static/images/cs231n/lecture3/pic11.png" style="zoom:30%"></p>
+<p>实际上L是关于W的一个函数，我可以用微积分计算它的梯度，这叫做<strong>统计梯度(Analytic gradient)</strong>，这种方法更精确也更迅速，但是容错性不好。实践时，我们会用微积分来计算梯度值，同时写一段代码来计算数值梯度来进行验证，这叫做<strong>梯度验证(gradient check)</strong>。</p>
+<p>在实际操作中，虽然我们拥有完整的数据集，但是只是从训练集中取样一批，如下面的代码，这种方法叫做<strong>批量梯度下降法(Mini-batch Gradient Descent)</strong>，样本的个数通常为32/64/128个样本。这里有一个<a href="http://www.cnblogs.com/maybe2030/p/5089753.html" rel="external nofollow noopener noreferrer" target="_blank">链接</a>详细了介绍了这种方法与BGD/SGD的区别。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">  data_batch = sample_training_data(data, <span class="number">256</span>)<span class="comment"># sample 256 examples</span></div><div class="line">  weights_grad = evaluate_gradient(loss_func, data, weights)</div><div class="line">  weights += step_size * weights_grad <span class="comment"># perform parameter update</span></div></pre></td></tr></table></figure>
+<p>这样做的优点是提高了运算速度，可以迭代更多次；缺点是因为只取了一小部分样本计算梯度所以比较多噪声存在。下图是实现中的loss曲线，可以看出噪声很多，但是总体上是一个明显的下降趋势。如果是用整个数据集的话，就不会有这些噪声而是一个平滑的下降曲线。</p>
+<p>这里<strong>步长(step_size)</strong>也叫<strong>学习速率(learning rate)</strong>，是梯度下降中十分重要的超参数，如果过小下降速率太慢，过大时则会来回震荡。</p>
+<p><img src="http://p0a3iqhpa.bkt.clouddn.com/static/images/cs231n/lecture3/pic12.png" style="zoom:50%"></p>
+<p>下图是不同学习速率在损失函数上的影响</p>
+<p><img src="http://p0a3iqhpa.bkt.clouddn.com/static/images/cs231n/lecture3/pic13.png" style="zoom:50%"></p>
+<p>学习速率是指每一个循环中移动的大小。总的来说，如果学习速率太高或者每一步走的太远，那么一开始损失函数值会在空间内来回乱窜，之后损失函数不会收敛甚至会越来越大。如果用一个很低的速率的话，那么更新的速率会很慢，最终收敛会需要很长时间。而如果用一个比较高的学习速率，最终也很收敛，但是会卡在一个较高的位置，也就是没有达到最低，有可能进入局部最小值。所以实践中一般会选一个高的然后一点点降低这个学习速率。</p>
+<p>此外，对于W的初始值选择也是比较重要的。如果非常注意选取初始值的话，那么损失函数的下降速度就会很小，因为初始损失值会比较小。但是如果使用了一个明显不正确的初始值的话，那么优化的过程中，损失函数就会在开始的时候有一个很明显的下降趋势。</p>
+<h1 id="Image-Features"><a href="#Image-Features" class="headerlink" title="Image Features"></a>Image Features</h1><p><img src="http://p0a3iqhpa.bkt.clouddn.com/static/images/cs231n/lecture3/pic14.png" style="zoom:40%"></p>
+<p>很明显我们不能把线性分类器直接应用到一张没有经过任何处理的图片上去，因为线性分类器没办法解决像素问题。所以常见的做法是计算图片的不同特征，然后计算不同特征的描述，最终通过统计来理解图片是什么。对于机器来说，我们相当于把图片转换成一个巨大的向量，然后把向量放入线性分类器。</p>
+<p><img src="http://p0a3iqhpa.bkt.clouddn.com/static/images/cs231n/lecture3/pic15.png" style="zoom:50%"></p>
+<p>简单的例子把图片的颜色特征看成一个颜色分布的直方图，把整个图片的pixels颜色数据放到这个直方图中，然后通过直方图中某个颜色的数值就能得到这张图中相应颜色的数量，图片颜色的统计 一个feature。</p>
+<p><img src="http://p0a3iqhpa.bkt.clouddn.com/static/images/cs231n/lecture3/pic16.png" style="zoom:50%"></p>
+<p>HOG/SIFT 不同物体之间的边缘方向来做分类，把不同方向的边缘用直方图做一个总结，统计一下这张图片上不同方向的边缘有多少，最后通过这个边缘数量的统计来得出图中有什么东西。</p>
+<p><img src="http://p0a3iqhpa.bkt.clouddn.com/static/images/cs231n/lecture3/pic17.png" style="zoom:50%"></p>
+<p>pipline：首先我们的程序要看到图片上不同的点，描述出在一个个小块上我们看到了什么，比如某个元素的频率，颜色等特征，然后我们用这些数据形成一种“字典”，最终我们得到的结果是一个在图上各种东西出现次数的k均值。接下来就是计算这个特征向量，把计算结果放到线性分类器中去。</p>
+<p><img src="http://p0a3iqhpa.bkt.clouddn.com/static/images/cs231n/lecture3/pic18.png" style="zoom:50%"></p>
+<p>因此实际上我们拿到图片需要进行一步特征提取，在这一步我们决定了对于不同内容的图片什么东西比较重要，也决定了什么是分类器比较感兴趣的特征。而cnn就是把每种特征做成一个函数，然后无需人工提取特征，机器直接从像素开始训练，这样更高。</p>
+
       
     </div>
     
@@ -650,7 +686,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Recall-from-last-lecture"><span class="nav-number">1.</span> <span class="nav-text">Recall from last lecture</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Loss-Function"><span class="nav-number">2.</span> <span class="nav-text">Loss Function</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Multiclass-Support-Vector-Machine-Loss"><span class="nav-number">2.1.</span> <span class="nav-text">Multiclass Support Vector Machine Loss</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Regularization"><span class="nav-number">2.2.</span> <span class="nav-text">Regularization</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Softmax-Classifier"><span class="nav-number">2.3.</span> <span class="nav-text">Softmax Classifier</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Comparison"><span class="nav-number">2.4.</span> <span class="nav-text">Comparison</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Optimization"><span class="nav-number">3.</span> <span class="nav-text">Optimization</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Gradient"><span class="nav-number">3.1.</span> <span class="nav-text">Gradient</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Gradient-Descent"><span class="nav-number">3.2.</span> <span class="nav-text">Gradient Descent</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Image-Features"><span class="nav-number">4.</span> <span class="nav-text">Image Features</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Recall-from-last-lecture"><span class="nav-number">1.</span> <span class="nav-text">Recall from last lecture</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Loss-Function"><span class="nav-number">2.</span> <span class="nav-text">Loss Function</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Multiclass-Support-Vector-Machine-Loss"><span class="nav-number">2.1.</span> <span class="nav-text">Multiclass Support Vector Machine Loss</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Regularization"><span class="nav-number">2.2.</span> <span class="nav-text">Regularization</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Softmax-Classifier"><span class="nav-number">2.3.</span> <span class="nav-text">Softmax Classifier</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Comparison"><span class="nav-number">2.4.</span> <span class="nav-text">Comparison</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Optimization"><span class="nav-number">3.</span> <span class="nav-text">Optimization</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Gradient-Descent"><span class="nav-number">3.1.</span> <span class="nav-text">Gradient Descent</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Image-Features"><span class="nav-number">4.</span> <span class="nav-text">Image Features</span></a></li></ol></div>
             
 
           </div>
