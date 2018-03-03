@@ -2,9 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://marvae.github.io/2018-02-16/cs231n-notes3/</loc>
+    <loc>http://marvae.github.io/2018-02-20/cs231n-notes4/</loc>
     
-    <lastmod>2018-02-19T09:45:01.669Z</lastmod>
+    <lastmod>2018-03-03T09:34:32.519Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://marvae.github.io/2018-02-18/cs231n-notes3/</loc>
+    
+    <lastmod>2018-03-03T09:23:06.724Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://marvae.github.io/2018-03-03/cs231n-notes5/</loc>
+    
+    <lastmod>2018-03-03T09:21:47.015Z</lastmod>
     
   </url>
   
