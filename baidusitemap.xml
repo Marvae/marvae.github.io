@@ -4,11 +4,71 @@
 
     
   <url>
-    <loc>http://marvae.github.io/2018-02-20/cs231n-notes4/</loc>
-    <lastmod>2018-03-03T09:34:32.519Z</lastmod>
+    <loc>http://marvae.github.io/2018-03-05/cs231n-notes7/</loc>
+    <lastmod>2018-03-05T12:16:51.902Z</lastmod>
     <data>
         <display>
-        <title>cs231n笔记 - lecture4</title>
+        <title>cs231n笔记 - lecture7 (手写笔记有时间再整理系列)</title>
+        <pubTime>2018-03-05T12:08:49.000Z</pubTime>
+        
+        <tag>deep learning</tag>
+         
+         
+           
+             
+              <breadCrumb title="cs231n" url="http://marvae.github.io/categories/cs231n/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://marvae.github.io/2018-02-25/cs231n-notes5/</loc>
+    <lastmod>2018-03-05T12:16:23.125Z</lastmod>
+    <data>
+        <display>
+        <title>cs231n笔记 - lecture5</title>
+        <pubTime>2018-02-25T09:20:48.000Z</pubTime>
+        
+        <tag>deep learning</tag>
+         
+         
+           
+             
+              <breadCrumb title="cs231n" url="http://marvae.github.io/categories/cs231n/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://marvae.github.io/2018-03-03/cs231n-notes6/</loc>
+    <lastmod>2018-03-05T12:13:47.778Z</lastmod>
+    <data>
+        <display>
+        <title>cs231n笔记 - lecture6 (手写笔记有时间再整理系列)</title>
+        <pubTime>2018-03-03T08:08:43.000Z</pubTime>
+        
+        <tag>deep learning</tag>
+         
+         
+           
+             
+              <breadCrumb title="cs231n" url="http://marvae.github.io/categories/cs231n/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://marvae.github.io/2018-02-20/cs231n-notes4/</loc>
+    <lastmod>2018-03-05T12:10:07.503Z</lastmod>
+    <data>
+        <display>
+        <title>cs231n笔记 - lecture4 (手写笔记有时间再整理系列)</title>
         <pubTime>2018-02-20T09:20:38.000Z</pubTime>
         
         <tag>deep learning</tag>
@@ -30,26 +90,6 @@
         <display>
         <title>cs231n笔记 - lecture3</title>
         <pubTime>2018-02-18T13:37:56.000Z</pubTime>
-        
-        <tag>deep learning</tag>
-         
-         
-           
-             
-              <breadCrumb title="cs231n" url="http://marvae.github.io/categories/cs231n/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://marvae.github.io/2018-03-03/cs231n-notes5/</loc>
-    <lastmod>2018-03-03T09:21:47.015Z</lastmod>
-    <data>
-        <display>
-        <title>cs231n笔记 - lecture5</title>
-        <pubTime>2018-03-03T09:20:48.000Z</pubTime>
         
         <tag>deep learning</tag>
          
