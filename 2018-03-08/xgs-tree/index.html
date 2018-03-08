@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Spark Streaming,">
+  <meta name="keywords" content="decision tree,machine learning,">
 
 
 
@@ -79,23 +79,23 @@
 
 
 
-<meta name="description" content="获取keys 注册账号，如果已经有推特账号的可以略过  登记TwitterApps，点击Create new app   填写表格内容，并点击Create your Twitter app提交。注意这里的Name需要唯一。   成功以后的界面如下。点击Keys and Access Tokens，就可以看到自己的ConsumerKey和Consumer Secret了，但还是缺少tokens。">
-<meta name="keywords" content="Spark Streaming">
+<meta name="description" content="决策树基本流程决策树是基于树结构来进行决策的，类似于人类面临决策问题时的处理机制，决策过程的最终结论对应了我们所希望的判定结果。 决策过程中提出的每一个判定问题就是对某个属性的测试，测试结果是导出最终结论或是进一步的判定问题，且考虑范围是在上次决策结果的限定范围之内。 训练一棵决策树大致需要这么几个步骤：  根节点包含所有的样本，对于根节点： 为这个节点选取最优划分属性。 根据节点属性取值将节点中">
+<meta name="keywords" content="decision tree,machine learning">
 <meta property="og:type" content="article">
-<meta property="og:title" content="用SparkStreaming和Twitter API实现一个小功能">
-<meta property="og:url" content="http://marvae.github.io/2017-12-03/SparkStreaming/index.html">
+<meta property="og:title" content="吃瓜吃瓜 - 决策树">
+<meta property="og:url" content="http://marvae.github.io/2018-03-08/xgs-tree/index.html">
 <meta property="og:site_name" content="Marvae&#39;s blog">
-<meta property="og:description" content="获取keys 注册账号，如果已经有推特账号的可以略过  登记TwitterApps，点击Create new app   填写表格内容，并点击Create your Twitter app提交。注意这里的Name需要唯一。   成功以后的界面如下。点击Keys and Access Tokens，就可以看到自己的ConsumerKey和Consumer Secret了，但还是缺少tokens。">
+<meta property="og:description" content="决策树基本流程决策树是基于树结构来进行决策的，类似于人类面临决策问题时的处理机制，决策过程的最终结论对应了我们所希望的判定结果。 决策过程中提出的每一个判定问题就是对某个属性的测试，测试结果是导出最终结论或是进一步的判定问题，且考虑范围是在上次决策结果的限定范围之内。 训练一棵决策树大致需要这么几个步骤：  根节点包含所有的样本，对于根节点： 为这个节点选取最优划分属性。 根据节点属性取值将节点中">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://p0a3iqhpa.bkt.clouddn.com/static/images/pighive/newapp.png">
-<meta property="og:image" content="http://p0a3iqhpa.bkt.clouddn.com/static/images/pighive/fill.png">
-<meta property="og:image" content="http://p0a3iqhpa.bkt.clouddn.com/static/images/pighive/succ.png">
-<meta property="og:image" content="http://p0a3iqhpa.bkt.clouddn.com/static/images/pighive/tokens.png">
-<meta property="og:updated_time" content="2018-02-15T10:37:35.081Z">
+<meta property="og:image" content="http://p0a3iqhpa.bkt.clouddn.com/static/images/xgs/4/2.png">
+<meta property="og:image" content="http://p0a3iqhpa.bkt.clouddn.com/static/images/xgs/4/3.png">
+<meta property="og:image" content="http://p0a3iqhpa.bkt.clouddn.com/static/images/xgs/4/4.png">
+<meta property="og:image" content="http://p0a3iqhpa.bkt.clouddn.com/static/images/xgs/4/5.png">
+<meta property="og:updated_time" content="2018-03-08T11:08:13.559Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="用SparkStreaming和Twitter API实现一个小功能">
-<meta name="twitter:description" content="获取keys 注册账号，如果已经有推特账号的可以略过  登记TwitterApps，点击Create new app   填写表格内容，并点击Create your Twitter app提交。注意这里的Name需要唯一。   成功以后的界面如下。点击Keys and Access Tokens，就可以看到自己的ConsumerKey和Consumer Secret了，但还是缺少tokens。">
-<meta name="twitter:image" content="http://p0a3iqhpa.bkt.clouddn.com/static/images/pighive/newapp.png">
+<meta name="twitter:title" content="吃瓜吃瓜 - 决策树">
+<meta name="twitter:description" content="决策树基本流程决策树是基于树结构来进行决策的，类似于人类面临决策问题时的处理机制，决策过程的最终结论对应了我们所希望的判定结果。 决策过程中提出的每一个判定问题就是对某个属性的测试，测试结果是导出最终结论或是进一步的判定问题，且考虑范围是在上次决策结果的限定范围之内。 训练一棵决策树大致需要这么几个步骤：  根节点包含所有的样本，对于根节点： 为这个节点选取最优划分属性。 根据节点属性取值将节点中">
+<meta name="twitter:image" content="http://p0a3iqhpa.bkt.clouddn.com/static/images/xgs/4/2.png">
 
 
 
@@ -125,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="http://marvae.github.io/2017-12-03/SparkStreaming/">
+  <link rel="canonical" href="http://marvae.github.io/2018-03-08/xgs-tree/">
 
 
 
 
 
-  <title>用SparkStreaming和Twitter API实现一个小功能 | Marvae's blog</title>
+  <title>吃瓜吃瓜 - 决策树 | Marvae's blog</title>
   
 
 
@@ -268,7 +268,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://marvae.github.io/2017-12-03/SparkStreaming/">
+    <link itemprop="mainEntityOfPage" href="http://marvae.github.io/2018-03-08/xgs-tree/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Marvae">
@@ -285,7 +285,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">用SparkStreaming和Twitter API实现一个小功能</h1>
+          <h1 class="post-title" itemprop="name headline">吃瓜吃瓜 - 决策树</h1>
         
 
         <div class="post-meta">
@@ -297,8 +297,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-03T04:42:56+08:00">
-                2017-12-03
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-08T18:39:42+08:00">
+                2018-03-08
               </time>
             
 
@@ -320,8 +320,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/BigData/" itemprop="url" rel="index">
-                    <span itemprop="name">BigData</span>
+                  <a href="/categories/西瓜书/" itemprop="url" rel="index">
+                    <span itemprop="name">西瓜书</span>
                   </a>
                 </span>
 
@@ -356,7 +356,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  157
+                  1,094
                 </span>
               
 
@@ -372,7 +372,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  1
+                  4
                 </span>
               
             </div>
@@ -393,25 +393,38 @@
       
 
       
-        <h1 id="获取keys"><a href="#获取keys" class="headerlink" title="获取keys"></a>获取keys</h1><ol>
-<li><p>注册账号，如果已经有推特账号的可以略过</p>
-</li>
-<li><p>登记<a href="https://apps.twitter.com/" rel="external nofollow noopener noreferrer" target="_blank">TwitterApps</a>，点击<code>Create new app</code></p>
-<p><img src="http://p0a3iqhpa.bkt.clouddn.com/static/images/pighive/newapp.png" alt="newapp"></p>
-</li>
-<li><p>填写表格内容，并点击<code>Create your Twitter app</code>提交。注意这里的Name需要唯一。</p>
-<p><img src="http://p0a3iqhpa.bkt.clouddn.com/static/images/pighive/fill.png" alt="fill"></p>
-</li>
-<li><p>成功以后的界面如下。点击<code>Keys and Access Tokens</code>，就可以看到自己的<code>ConsumerKey</code>和<code>Consumer Secret</code>了，但还是缺少tokens。</p>
-<p><img src="http://p0a3iqhpa.bkt.clouddn.com/static/images/pighive/succ.png" alt="succ"></p>
-</li>
-<li><p>往下翻一翻，点击<code>Create my access token</code>，就可以得到<code>Access Token</code>和<code>Access Token Secret</code>了。</p>
-<p><img src="http://p0a3iqhpa.bkt.clouddn.com/static/images/pighive/tokens.png" alt="tokens"></p>
-</li>
-<li><p>完成以后就可以进行下一步了。建议方便自己用，可以建一个txt，直接存下这四个信息。</p>
+        <h1 id="决策树"><a href="#决策树" class="headerlink" title="决策树"></a>决策树</h1><h2 id="基本流程"><a href="#基本流程" class="headerlink" title="基本流程"></a>基本流程</h2><p>决策树是基于树结构来进行决策的，类似于人类面临决策问题时的处理机制，决策过程的最终结论对应了我们所希望的判定结果。</p>
+<p>决策过程中提出的每一个判定问题就是对某个属性的测试，测试结果是导出最终结论或是进一步的判定问题，且考虑范围是在上次决策结果的限定范围之内。</p>
+<p>训练一棵决策树大致需要这么几个步骤：</p>
+<ol>
+<li>根节点包含所有的样本，对于根节点：</li>
+<li>为这个节点选取<strong>最优划分属性</strong>。</li>
+<li>根据节点属性取值将节点中样本分流到若干个子节点。</li>
+<li>对所有子节点重复步骤2，直至：<ul>
+<li>当前节点所有样本都属于同一类别。取这一类别作为叶子节点类别。</li>
+<li>当前节点样本为空。去多数样本所属类别作为叶节点类别。</li>
+<li>不再有可以使用的划分属性。取其父节点多树样本所属类别作为节点类别。</li>
+</ul>
 </li>
 </ol>
-<h1 id="第一个Spark-Streaming程序"><a href="#第一个Spark-Streaming程序" class="headerlink" title="第一个Spark Streaming程序"></a>第一个Spark Streaming程序</h1>
+<p>在得到一棵决策树后，最终叶节点对应决策结果，其他节点对应属性测试。对于新来样本按照属性取值从根节点流过决策树，到叶子节点后获取其分类。这是一个分而治之的策略。</p>
+<h2 id="划分选择"><a href="#划分选择" class="headerlink" title="划分选择"></a>划分选择</h2><p>决策树生成的算法的关键是如何选择最优化分属性。我们认为：如果一个属性将节点样本划分得“纯度”（purity）越高，则性能越好。如何衡量划分纯度，有这么几种方法：</p>
+<h3 id="信息增益"><a href="#信息增益" class="headerlink" title="信息增益"></a>信息增益</h3><p><img src="http://p0a3iqhpa.bkt.clouddn.com/static/images/xgs/4/2.png" style="zoom:80%"></p>
+<p>我们需要的就是选择有最优的信息增益的属性来划分。</p>
+<h3 id="增益率"><a href="#增益率" class="headerlink" title="增益率"></a>增益率</h3><p><img src="http://p0a3iqhpa.bkt.clouddn.com/static/images/xgs/4/3.png" style="zoom:80%"></p>
+<h3 id="基尼系数"><a href="#基尼系数" class="headerlink" title="基尼系数"></a>基尼系数</h3><p><img src="http://p0a3iqhpa.bkt.clouddn.com/static/images/xgs/4/4.png" style="zoom:80%"></p>
+<h2 id="剪枝处理"><a href="#剪枝处理" class="headerlink" title="剪枝处理"></a>剪枝处理</h2><p>剪枝是决策树学习算法对付过拟合的主要手段，通过主动去掉一些分支来降低过拟合的风险。基本策略有预剪枝和后剪枝：</p>
+<ul>
+<li><strong>预剪枝 (prepruning)</strong>：在使用训练集训练决策树时不断在测试集上进行验证，将当前节点使用最优属性进行划分，划分得到若干个节点作为叶节点分类，得到的分类正确率若不高于使用原本的节点作为叶节点分类正确率，那么这个节点将不再被扩展划分：预剪枝使得决策树十分精简，训练时间开销也很小，不过可能造成欠拟合的现象。</li>
+<li><strong>后剪枝 (postpruning)</strong>：在训练完整棵决策树后自底向上进行验证，若某个节点的划分在训练集上没有对分类正确率有正向促进，就进行剪枝。后剪枝效果更好，不过时间开销必然要远高于预剪枝——它在训练完整棵树后再进行更多的操作！</li>
+</ul>
+<h2 id="连续与缺失枝"><a href="#连续与缺失枝" class="headerlink" title="连续与缺失枝"></a>连续与缺失枝</h2><h3 id="连续值处理"><a href="#连续值处理" class="headerlink" title="连续值处理"></a>连续值处理</h3><p>简单的想法是对取值连续的属性进行二分处理：对训练集中该属性上的取值从小到大排个序，然后取任意两个相邻值的中位数作为一个分割点，样本就可以在这个属性上被分为两个分支。取分割点同样可以使用信息增益最大的一个。</p>
+<h3 id="缺失值处理"><a href="#缺失值处理" class="headerlink" title="缺失值处理"></a>缺失值处理</h3><p><img src="http://p0a3iqhpa.bkt.clouddn.com/static/images/xgs/4/5.png" style="zoom:80%"></p>
+<h2 id="多变量决策树"><a href="#多变量决策树" class="headerlink" title="多变量决策树"></a>多变量决策树</h2><p>分类问题都是在空间中寻找分类边界，决策树所形成的分类边界有一个明显的特点：轴平行，即它的分类边界由若干个与坐标轴平行的分段组成。但是真实的分类任务中属性过多时，必须使用很多划分才能获得较好的近似，而且很难解释。</p>
+<p>一个看起来更简单的决策树对每个节点使用多个属性的线性组合来作为划分依据，称作“多变量决策树” (multivariate decision tree)。相较于传统决策树的分类边界平行于坐标轴，多变量决策树可以实现斜向的分类边界，或许更符合样本的分布。</p>
+<p>主要算法有OC1，或者嵌入神经网络。</p>
+<h2 id="REFERENCE"><a href="#REFERENCE" class="headerlink" title="REFERENCE"></a>REFERENCE</h2><p>[1] <a href="http://hotlinkqiu.github.io/2016/06/13/啃西瓜书（4）－这是-一棵树！/" rel="external nofollow noopener noreferrer" target="_blank">http://hotlinkqiu.github.io/2016/06/13/啃西瓜书（4）－这是-一棵树！/</a></p>
+
       
     </div>
     
@@ -428,9 +441,13 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Spark-Streaming/" rel="tag"><i class="fa fa-tag"></i>
+            <a href="/tags/decision-tree/" rel="tag"><i class="fa fa-tag"></i>
 
- Spark Streaming</a>
+ decision tree</a>
+          
+            <a href="/tags/machine-learning/" rel="tag"><i class="fa fa-tag"></i>
+
+ machine learning</a>
           
         </div>
       
@@ -443,8 +460,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017-12-01/qiqiu/" rel="next" title="使用七牛云储存博客图片">
-                <i class="fa fa-chevron-left"></i> 使用七牛云储存博客图片
+              <a href="/2018-03-05/cs231n-notes7/" rel="next" title="cs231n笔记 - lecture7 (手写笔记有时间再整理系列)">
+                <i class="fa fa-chevron-left"></i> cs231n笔记 - lecture7 (手写笔记有时间再整理系列)
               </a>
             
           </div>
@@ -452,10 +469,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017-12-04/TwitterStreamingError/" rel="prev" title="TwitterStreaming踩到的那些坑">
-                TwitterStreaming踩到的那些坑 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -605,7 +618,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#获取keys"><span class="nav-number">1.</span> <span class="nav-text">获取keys</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第一个Spark-Streaming程序"><span class="nav-number">2.</span> <span class="nav-text">第一个Spark Streaming程序</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#决策树"><span class="nav-number">1.</span> <span class="nav-text">决策树</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本流程"><span class="nav-number">1.1.</span> <span class="nav-text">基本流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#划分选择"><span class="nav-number">1.2.</span> <span class="nav-text">划分选择</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#信息增益"><span class="nav-number">1.2.1.</span> <span class="nav-text">信息增益</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#增益率"><span class="nav-number">1.2.2.</span> <span class="nav-text">增益率</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基尼系数"><span class="nav-number">1.2.3.</span> <span class="nav-text">基尼系数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#剪枝处理"><span class="nav-number">1.3.</span> <span class="nav-text">剪枝处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#连续与缺失枝"><span class="nav-number">1.4.</span> <span class="nav-text">连续与缺失枝</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#连续值处理"><span class="nav-number">1.4.1.</span> <span class="nav-text">连续值处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缺失值处理"><span class="nav-number">1.4.2.</span> <span class="nav-text">缺失值处理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多变量决策树"><span class="nav-number">1.5.</span> <span class="nav-text">多变量决策树</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#REFERENCE"><span class="nav-number">1.6.</span> <span class="nav-text">REFERENCE</span></a></li></ol></li></ol></div>
             
 
           </div>
