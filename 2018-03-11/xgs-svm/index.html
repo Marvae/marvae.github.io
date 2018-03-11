@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Spark Streaming,">
+  <meta name="keywords" content="SVM,machine learning,">
 
 
 
@@ -79,20 +79,25 @@
 
 
 
-<meta name="description" content="Databricks依赖的包在databrikcs上跑代码，最大的好处就是不用麻烦的编译。但是就存在一个问题，就是要自己上传libraries，这个时候版本的选择就成了很大的问题。 一开始我随便的上传了相关的包，然后就是编译不成功，缺三少四的。推荐一个网站，根据下面的compile dependencies来下载你需要的包。注意scala的版本也要选择。 比如说这里，选择了Twitter4j St">
-<meta name="keywords" content="Spark Streaming">
+<meta name="description" content="间隔与支持向量对于给定训练样本集$D = {( \boldsymbol{x}_1,y_1),(\boldsymbol{x}_2,y_2),…,(\boldsymbol{x}_m,y_m)}$，分类学习最基本的想法就是基于训练集$D$在样本空间中找到一个划分超平面将不同类别的样本分开。 但是实际上存在多种划分方式，如图所示，理论上来说正中间红色的划分超平面是最好的，因为对训练样本的局部扰动容忍性最好">
+<meta name="keywords" content="SVM,machine learning">
 <meta property="og:type" content="article">
-<meta property="og:title" content="TwitterStreaming踩到的那些坑">
-<meta property="og:url" content="http://marvae.github.io/2017-12-04/TwitterStreamingError/index.html">
+<meta property="og:title" content="吃瓜 - 支持向量机">
+<meta property="og:url" content="http://marvae.github.io/2018-03-11/xgs-svm/index.html">
 <meta property="og:site_name" content="Marvae&#39;s blog">
-<meta property="og:description" content="Databricks依赖的包在databrikcs上跑代码，最大的好处就是不用麻烦的编译。但是就存在一个问题，就是要自己上传libraries，这个时候版本的选择就成了很大的问题。 一开始我随便的上传了相关的包，然后就是编译不成功，缺三少四的。推荐一个网站，根据下面的compile dependencies来下载你需要的包。注意scala的版本也要选择。 比如说这里，选择了Twitter4j St">
+<meta property="og:description" content="间隔与支持向量对于给定训练样本集$D = {( \boldsymbol{x}_1,y_1),(\boldsymbol{x}_2,y_2),…,(\boldsymbol{x}_m,y_m)}$，分类学习最基本的想法就是基于训练集$D$在样本空间中找到一个划分超平面将不同类别的样本分开。 但是实际上存在多种划分方式，如图所示，理论上来说正中间红色的划分超平面是最好的，因为对训练样本的局部扰动容忍性最好">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://p0a3iqhpa.bkt.clouddn.com/static/images/someerror/depen.png">
-<meta property="og:updated_time" content="2018-02-15T10:38:01.864Z">
+<meta property="og:image" content="http://p0a3iqhpa.bkt.clouddn.com/static/images/xgs/6/1.jpeg">
+<meta property="og:image" content="http://p0a3iqhpa.bkt.clouddn.com/static/images/xgs/6/2.jpeg">
+<meta property="og:image" content="http://p0a3iqhpa.bkt.clouddn.com/static/images/xgs/6/3.png">
+<meta property="og:image" content="http://p0a3iqhpa.bkt.clouddn.com/static/images/xgs/6/4.png">
+<meta property="og:image" content="http://p0a3iqhpa.bkt.clouddn.com/static/images/xgs/6/5.png">
+<meta property="og:image" content="http://p0a3iqhpa.bkt.clouddn.com/static/images/xgs/6/6.png">
+<meta property="og:updated_time" content="2018-03-11T11:12:19.832Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="TwitterStreaming踩到的那些坑">
-<meta name="twitter:description" content="Databricks依赖的包在databrikcs上跑代码，最大的好处就是不用麻烦的编译。但是就存在一个问题，就是要自己上传libraries，这个时候版本的选择就成了很大的问题。 一开始我随便的上传了相关的包，然后就是编译不成功，缺三少四的。推荐一个网站，根据下面的compile dependencies来下载你需要的包。注意scala的版本也要选择。 比如说这里，选择了Twitter4j St">
-<meta name="twitter:image" content="http://p0a3iqhpa.bkt.clouddn.com/static/images/someerror/depen.png">
+<meta name="twitter:title" content="吃瓜 - 支持向量机">
+<meta name="twitter:description" content="间隔与支持向量对于给定训练样本集$D = {( \boldsymbol{x}_1,y_1),(\boldsymbol{x}_2,y_2),…,(\boldsymbol{x}_m,y_m)}$，分类学习最基本的想法就是基于训练集$D$在样本空间中找到一个划分超平面将不同类别的样本分开。 但是实际上存在多种划分方式，如图所示，理论上来说正中间红色的划分超平面是最好的，因为对训练样本的局部扰动容忍性最好">
+<meta name="twitter:image" content="http://p0a3iqhpa.bkt.clouddn.com/static/images/xgs/6/1.jpeg">
 
 
 
@@ -122,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="http://marvae.github.io/2017-12-04/TwitterStreamingError/">
+  <link rel="canonical" href="http://marvae.github.io/2018-03-11/xgs-svm/">
 
 
 
 
 
-  <title>TwitterStreaming踩到的那些坑 | Marvae's blog</title>
+  <title>吃瓜 - 支持向量机 | Marvae's blog</title>
   
 
 
@@ -265,7 +270,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://marvae.github.io/2017-12-04/TwitterStreamingError/">
+    <link itemprop="mainEntityOfPage" href="http://marvae.github.io/2018-03-11/xgs-svm/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Marvae">
@@ -282,7 +287,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">TwitterStreaming踩到的那些坑</h1>
+          <h1 class="post-title" itemprop="name headline">吃瓜 - 支持向量机</h1>
         
 
         <div class="post-meta">
@@ -294,8 +299,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-04T13:10:00+08:00">
-                2017-12-04
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-11T18:27:15+08:00">
+                2018-03-11
               </time>
             
 
@@ -317,8 +322,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/BigData/" itemprop="url" rel="index">
-                    <span itemprop="name">BigData</span>
+                  <a href="/categories/西瓜书/" itemprop="url" rel="index">
+                    <span itemprop="name">西瓜书</span>
                   </a>
                 </span>
 
@@ -353,7 +358,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  636
+                  917
                 </span>
               
 
@@ -390,21 +395,40 @@
       
 
       
-        <h1 id="Databricks依赖的包"><a href="#Databricks依赖的包" class="headerlink" title="Databricks依赖的包"></a>Databricks依赖的包</h1><p>在databrikcs上跑代码，最大的好处就是不用麻烦的编译。但是就存在一个问题，就是要自己上传libraries，这个时候版本的选择就成了很大的问题。</p>
-<p>一开始我随便的上传了相关的包，然后就是编译不成功，缺三少四的。推荐一个<a href="https://mvnrepository.com" rel="external nofollow noopener noreferrer" target="_blank">网站</a>，根据下面的compile dependencies来下载你需要的包。<strong>注意scala的版本也要选择。</strong></p>
-<p>比如说这里，选择了<a href="https://mvnrepository.com/artifact/org.twitter4j/twitter4j-stream" rel="external nofollow noopener noreferrer" target="_blank">Twitter4j Stream</a> » <a href="https://mvnrepository.com/artifact/org.twitter4j/twitter4j-stream/4.0.4" rel="external nofollow noopener noreferrer" target="_blank">4.0.4</a>，下面就会显示，就同时下载所依赖的包，下载同样的版本。</p>
-<p><img src="http://p0a3iqhpa.bkt.clouddn.com/static/images/someerror/depen.png" alt="shoufei"></p>
-<h1 id="时区不同步的问题"><a href="#时区不同步的问题" class="headerlink" title="时区不同步的问题"></a>时区不同步的问题</h1><p>在我折腾了n久终于把包弄对了以后，新的问题出现了。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">401:Authentication credentials (https://dev.twitter.com/pages/auth) were missing or incorrect. Ensure that you have set valid consumer key/secret, access token/secret, and the system clock is in sync.</div><div class="line">&lt;html&gt;\n&lt;head&gt;\n&lt;meta http-equiv="Content-Type" content="text/html; charset=utf-8"/&gt;\n&lt;title&gt;Error 401 Unauthorized&lt;/title&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">&lt;h2&gt;HTTP ERROR: 401&lt;/h2&gt;</div><div class="line">&lt;p&gt;Problem accessing '/1.1/statuses/filter.json'. Reason:</div><div class="line">&lt;pre&gt;    Unauthorized&lt;/pre&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div><div class="line"></div><div class="line">Relevant discussions can be found on the Internet at:</div><div class="line">        http://www.google.co.jp/search?q=1169356e or</div><div class="line">        http://www.google.co.jp/search?q=c04b39e1</div><div class="line">TwitterException&#123;exceptionCode=[1169356e-c04b39e1], statusCode=401, message=null, code=-1, retryAfter=-1, rateLimitStatus=null, version=4.0.4&#125;</div><div class="line">        at twitter4j.HttpClientImpl.handleRequest(HttpClientImpl.java:164)</div><div class="line">        at twitter4j.HttpClientBase.request(HttpClientBase.java:57)</div><div class="line">        at twitter4j.HttpClientBase.post(HttpClientBase.java:86)</div><div class="line">        at twitter4j.TwitterStreamImpl.getFilterStream(TwitterStreamImpl.java:346)</div><div class="line">        at twitter4j.TwitterStreamImpl$8.getStream(TwitterStreamImpl.java:322)</div><div class="line">        at twitter4j.TwitterStreamImpl$TwitterStreamConsumer.run(TwitterStreamImpl.java:552)</div></pre></td></tr></table></figure>
-<p>说是授权有问题，但是我已经设置好了各种钥匙了啊。所以应该是<code>the system clock is in sync</code>，时钟不同步的原因吧。</p>
-<p>看了一下我现在时间是中午12点，但是databricks上的时间确实上午4点，然后Twitter上我的时区又是US。这差别也太大了吧。</p>
-<p>算了一下databricks上的时区应该是london的时间，所以在twitter上把时区改成了london时间。</p>
-<p>问题解决！！</p>
-<h1 id="java-lang-NoClassDefFoundError-org-apache-spark-Logging"><a href="#java-lang-NoClassDefFoundError-org-apache-spark-Logging" class="headerlink" title="java.lang.NoClassDefFoundError: org/apache/spark/Logging"></a>java.lang.NoClassDefFoundError: org/apache/spark/Logging</h1><p>这个问题也是坑了好久，我去搜到了这个logging的包把它也弄上去了，但是还是跑不出结果。</p>
-<p>然后看到了这个<a href="http://blog.csdn.net/SunnyYoona/article/details/72922155" rel="external nofollow noopener noreferrer" target="_blank">网页</a>，发现可能是同一个问题。</p>
-<p>databricks上默认的Spark版本为2.1.0版本，然而在spark 1.5.2版本之后 org/apache/spark/Logging 已经被移除了。而且在前面下载依赖的那些包还都是1.6.3版本的。好吧还是版本问题</p>
-<p>所以在databricks里把版本改成了Spark 1.6.3-db2 (Hadoop 2, Scala 2.10)，然后问题就解决了。</p>
-<p><strong>总结一下，就是databricks很方便，包的选择要谨慎啊！</strong></p>
+        <h1 id="间隔与支持向量"><a href="#间隔与支持向量" class="headerlink" title="间隔与支持向量"></a>间隔与支持向量</h1><p>对于给定训练样本集$D = {( \boldsymbol{x}_1,y_1),(\boldsymbol{x}_2,y_2),…,(\boldsymbol{x}_m,y_m)}$，分类学习最基本的想法就是基于训练集$D$在样本空间中找到一个划分超平面将不同类别的样本分开。</p>
+<p>但是实际上存在多种划分方式，如图所示，理论上来说正中间红色的划分超平面是最好的，因为对训练样本的局部扰动容忍性最好，对未见示例的泛化能力最强。</p>
+<p><img src="http://p0a3iqhpa.bkt.clouddn.com/static/images/xgs/6/1.jpeg" style="zoom:20%"></p>
+<p>一个超平面可以表示为：</p>
+<p>$$\boldsymbol{w}^T\boldsymbol{x}+b=0$$</p>
+<p>其中$\boldsymbol{w}$决定了平面的方向，而$b$决定了平面与原点之间的距离。空间中任意点$\boldsymbol{x}$实际上是一个向量，其到超平面的距离(<a href="https://www.cnblogs.com/graphics/archive/2010/07/10/1774809.html" rel="external nofollow noopener noreferrer" target="_blank">这里</a>还去补了一下点到面的距离公式)为：</p>
+<p>$$r=\frac{\boldsymbol{w}^T\boldsymbol{x}+b}{\left | \left |w \right | \right |} $$</p>
+<p>那么，如果这个超平面分类成功，我们令</p>
+<p>$$\boldsymbol{w}^T\boldsymbol{x}+b≥+1, yi=+1$$</p>
+<p>$$\boldsymbol{w}^T\boldsymbol{x}+b≤−1, yi=−1$$</p>
+<p>这样，那些使等号成立的点，也即距离超平面最近的点称作支持向量 (support vector)，两个类到超平面距离之和也即两类之间的间隔 (margin) 是</p>
+<p>$$\gamma=\frac{2}{\left | \left |w \right | \right |}$$</p>
+<p>如图所示</p>
+<p><img src="http://p0a3iqhpa.bkt.clouddn.com/static/images/xgs/6/2.jpeg" style="zoom:20%"></p>
+<p><img src="http://p0a3iqhpa.bkt.clouddn.com/static/images/xgs/6/3.png" style="zoom:100%"></p>
+<h1 id="对偶问题"><a href="#对偶问题" class="headerlink" title="对偶问题"></a>对偶问题</h1><p>基本SVM的优化目标本身是一个凸二次规划问题，可以利用优化计算包求解，但是据说拉格朗日有更高效的解法：</p>
+<p>对上一节最后式子使用拉格朗日乘子法就可以得到它的对偶问题 （dual problem），对偶问题出现在线性规划中，每一个求极小的线性规划问题都有一个求极大的线性规划问题互称对偶问题，解决了一个就对应解决了其对偶问题。具体到这里，对式子的每条约束添加非负拉格朗日乘子$\alpha_i$，拉格朗日函数是</p>
+<p><img src="http://p0a3iqhpa.bkt.clouddn.com/static/images/xgs/6/4.png" style="zoom:100%"></p>
+<p>其中涉及的详细推导过程，可见该<a href="http://blog.csdn.net/shennongzhaizhu/article/details/51956796" rel="external nofollow noopener noreferrer" target="_blank">链接</a></p>
+<p>这又是一个二次规划问题，但通用解法规模正比于样本数，在大规模数据上开销很大，可以考虑其它高效算法如SMO (Sequential Minimal Optimization)。SMO的简单描述是其不断重复以下两个步骤直至收敛：</p>
+<ul>
+<li>选取一对需更新的变量$\alpha_i$和$\alpha_j$</li>
+<li>固定$\alpha_i$和$\alpha_j$以外的参数，求解对偶问题更新后的$\alpha_i$和$\alpha_j$。</li>
+</ul>
+<p>SMO算法在一时间也不能得到完整的理解，希望能作为学习二次规划问题的一个复杂例子在之后研究。</p>
+<h1 id="核函数"><a href="#核函数" class="headerlink" title="核函数"></a>核函数</h1><p>为了保证我们寻找的划分超平面存在，我们要求样本在空间中是线性可分的。如果非线性可分，那么就需要将问题映射到一个更高维的特征空间去。理论证明，若原始空间是有限维的，那么一定存在一个高维特征空间使样本线性可分。</p>
+<p>取映射函数$\phi$，特征空间划分超平面模型表示为：</p>
+<p><img src="http://p0a3iqhpa.bkt.clouddn.com/static/images/xgs/6/5.png" style="zoom:100%"></p>
+<p>称作核函数 (kernal function)。有定理表明：只要一个对称函数对应的核矩阵半正定，它就能作为核函数使用。几种常用的核函数有：</p>
+<p><img src="http://p0a3iqhpa.bkt.clouddn.com/static/images/xgs/6/6.png" style="zoom:100%"></p>
+<p>如何选择核函数将样本映射到真正显示其分布规律的高维空间非常重要。</p>
+<h1 id="软间隔与正则化"><a href="#软间隔与正则化" class="headerlink" title="软间隔与正则化"></a>软间隔与正则化</h1><h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p>[1]<a href="http://hotlinkqiu.github.io/2016/06/26/啃西瓜书（6）－支持向量机/" rel="external nofollow noopener noreferrer" target="_blank">http://hotlinkqiu.github.io/2016/06/26/啃西瓜书（6）－支持向量机/</a></p>
+<p>[2]<a href="http://blog.csdn.net/shennongzhaizhu/article/details/51956796" rel="external nofollow noopener noreferrer" target="_blank">http://blog.csdn.net/shennongzhaizhu/article/details/51956796</a></p>
+<p>[3]<a href="https://www.cnblogs.com/graphics/archive/2010/07/10/1774809.html" rel="external nofollow noopener noreferrer" target="_blank">https://www.cnblogs.com/graphics/archive/2010/07/10/1774809.html</a></p>
 
       
     </div>
@@ -422,9 +446,13 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Spark-Streaming/" rel="tag"><i class="fa fa-tag"></i>
+            <a href="/tags/SVM/" rel="tag"><i class="fa fa-tag"></i>
 
- Spark Streaming</a>
+ SVM</a>
+          
+            <a href="/tags/machine-learning/" rel="tag"><i class="fa fa-tag"></i>
+
+ machine learning</a>
           
         </div>
       
@@ -437,8 +465,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017-12-03/SparkStreaming/" rel="next" title="用SparkStreaming和Twitter API实现一个小功能">
-                <i class="fa fa-chevron-left"></i> 用SparkStreaming和Twitter API实现一个小功能
+              <a href="/2018-03-08/xgs-tree/" rel="next" title="吃瓜吃瓜 - 决策树">
+                <i class="fa fa-chevron-left"></i> 吃瓜吃瓜 - 决策树
               </a>
             
           </div>
@@ -446,10 +474,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017-12-08/PythonNumpyTutorial/" rel="prev" title="Python和Numpy教程---来自cs231n">
-                Python和Numpy教程---来自cs231n <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -599,7 +623,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Databricks依赖的包"><span class="nav-number">1.</span> <span class="nav-text">Databricks依赖的包</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#时区不同步的问题"><span class="nav-number">2.</span> <span class="nav-text">时区不同步的问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#java-lang-NoClassDefFoundError-org-apache-spark-Logging"><span class="nav-number">3.</span> <span class="nav-text">java.lang.NoClassDefFoundError: org/apache/spark/Logging</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#间隔与支持向量"><span class="nav-number">1.</span> <span class="nav-text">间隔与支持向量</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#对偶问题"><span class="nav-number">2.</span> <span class="nav-text">对偶问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#核函数"><span class="nav-number">3.</span> <span class="nav-text">核函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#软间隔与正则化"><span class="nav-number">4.</span> <span class="nav-text">软间隔与正则化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-number">5.</span> <span class="nav-text">Reference</span></a></li></ol></div>
             
 
           </div>
@@ -845,6 +869,26 @@ Powered by <a class="theme-link" href="http://hexo.io" rel="external nofollow no
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 

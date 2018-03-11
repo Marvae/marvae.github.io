@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="start form zero">
+<meta name="description" content="Convolution Neural Network卷积神经网络和上一章讲的常规神经网络非常相似：它们都是由神经元组成，神经元中有具有学习能力的权重和偏差。每个神经元都得到一些输入数据，进行内积运算后再进行激活函数运算。整个网络依旧是一个可导的评分函数：该函数的输入是原始的图像像素，输出是不同类别的评分。在最后一层（往往是全连接层），网络依旧有一个损失函数（比如SVM或Softmax），并且在神经">
 <meta name="keywords" content="deep learning">
 <meta property="og:type" content="article">
 <meta property="og:title" content="cs231n笔记 - lecture5">
 <meta property="og:url" content="http://marvae.github.io/2018-02-25/cs231n-notes5/index.html">
 <meta property="og:site_name" content="Marvae&#39;s blog">
-<meta property="og:description" content="start form zero">
+<meta property="og:description" content="Convolution Neural Network卷积神经网络和上一章讲的常规神经网络非常相似：它们都是由神经元组成，神经元中有具有学习能力的权重和偏差。每个神经元都得到一些输入数据，进行内积运算后再进行激活函数运算。整个网络依旧是一个可导的评分函数：该函数的输入是原始的图像像素，输出是不同类别的评分。在最后一层（往往是全连接层），网络依旧有一个损失函数（比如SVM或Softmax），并且在神经">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-03-05T12:16:23.125Z">
+<meta property="og:updated_time" content="2018-03-10T13:41:47.814Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="cs231n笔记 - lecture5">
-<meta name="twitter:description" content="start form zero">
+<meta name="twitter:description" content="Convolution Neural Network卷积神经网络和上一章讲的常规神经网络非常相似：它们都是由神经元组成，神经元中有具有学习能力的权重和偏差。每个神经元都得到一些输入数据，进行内积运算后再进行激活函数运算。整个网络依旧是一个可导的评分函数：该函数的输入是原始的图像像素，输出是不同类别的评分。在最后一层（往往是全连接层），网络依旧有一个损失函数（比如SVM或Softmax），并且在神经">
 
 
 
@@ -351,7 +351,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  0
+                  304
                 </span>
               
 
@@ -388,7 +388,14 @@
       
 
       
-        
+        <h1 id="Convolution-Neural-Network"><a href="#Convolution-Neural-Network" class="headerlink" title="Convolution Neural Network"></a>Convolution Neural Network</h1><p>卷积神经网络和上一章讲的常规神经网络非常相似：它们都是由神经元组成，神经元中有具有学习能力的权重和偏差。每个神经元都得到一些输入数据，进行内积运算后再进行激活函数运算。整个网络依旧是一个可导的评分函数：该函数的输入是原始的图像像素，输出是不同类别的评分。在最后一层（往往是全连接层），网络依旧有一个损失函数（比如SVM或Softmax），并且在神经网络中我们实现的各种技巧和要点依旧适用于卷积神经网络。</p>
+<p>卷积神经网络的结构基于一个假设，即输入数据是图像，基于该假设，我们就向结构中添加了一些特有的性质（卷积层）。这些特有属性使得前向传播函数实现起来更高效，并且大幅度降低了网络中参数的数量。</p>
+<h1 id="A-bit-of-history"><a href="#A-bit-of-history" class="headerlink" title="A bit of history"></a>A bit of history</h1><p>首先介绍了神经网络的历史和卷积神经网络的发明：</p>
+<ol>
+<li>1957年，Frank Rosenblatt发明了Mark I 感知机</li>
+<li>​</li>
+</ol>
+
       
     </div>
     
@@ -484,8 +491,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -502,7 +518,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-count">18</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -524,7 +540,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -563,6 +579,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Convolution-Neural-Network"><span class="nav-number">1.</span> <span class="nav-text">Convolution Neural Network</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#A-bit-of-history"><span class="nav-number">2.</span> <span class="nav-text">A bit of history</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -803,6 +835,8 @@ Powered by <a class="theme-link" href="http://hexo.io" rel="external nofollow no
   
 
   
+  
+
 
   
 

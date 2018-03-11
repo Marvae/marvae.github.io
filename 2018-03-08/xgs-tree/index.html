@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="decision tree,machine learning,">
+  <meta name="keywords" content="machine learning,decision tree,">
 
 
 
@@ -79,22 +79,22 @@
 
 
 
-<meta name="description" content="决策树基本流程决策树是基于树结构来进行决策的，类似于人类面临决策问题时的处理机制，决策过程的最终结论对应了我们所希望的判定结果。 决策过程中提出的每一个判定问题就是对某个属性的测试，测试结果是导出最终结论或是进一步的判定问题，且考虑范围是在上次决策结果的限定范围之内。 训练一棵决策树大致需要这么几个步骤：  根节点包含所有的样本，对于根节点： 为这个节点选取最优划分属性。 根据节点属性取值将节点中">
-<meta name="keywords" content="decision tree,machine learning">
+<meta name="description" content="基本流程决策树是基于树结构来进行决策的，类似于人类面临决策问题时的处理机制，决策过程的最终结论对应了我们所希望的判定结果。 决策过程中提出的每一个判定问题就是对某个属性的测试，测试结果是导出最终结论或是进一步的判定问题，且考虑范围是在上次决策结果的限定范围之内。 训练一棵决策树大致需要这么几个步骤：  根节点包含所有的样本，对于根节点： 为这个节点选取最优划分属性。 根据节点属性取值将节点中样本分">
+<meta name="keywords" content="machine learning,decision tree">
 <meta property="og:type" content="article">
 <meta property="og:title" content="吃瓜吃瓜 - 决策树">
 <meta property="og:url" content="http://marvae.github.io/2018-03-08/xgs-tree/index.html">
 <meta property="og:site_name" content="Marvae&#39;s blog">
-<meta property="og:description" content="决策树基本流程决策树是基于树结构来进行决策的，类似于人类面临决策问题时的处理机制，决策过程的最终结论对应了我们所希望的判定结果。 决策过程中提出的每一个判定问题就是对某个属性的测试，测试结果是导出最终结论或是进一步的判定问题，且考虑范围是在上次决策结果的限定范围之内。 训练一棵决策树大致需要这么几个步骤：  根节点包含所有的样本，对于根节点： 为这个节点选取最优划分属性。 根据节点属性取值将节点中">
+<meta property="og:description" content="基本流程决策树是基于树结构来进行决策的，类似于人类面临决策问题时的处理机制，决策过程的最终结论对应了我们所希望的判定结果。 决策过程中提出的每一个判定问题就是对某个属性的测试，测试结果是导出最终结论或是进一步的判定问题，且考虑范围是在上次决策结果的限定范围之内。 训练一棵决策树大致需要这么几个步骤：  根节点包含所有的样本，对于根节点： 为这个节点选取最优划分属性。 根据节点属性取值将节点中样本分">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://p0a3iqhpa.bkt.clouddn.com/static/images/xgs/4/2.png">
 <meta property="og:image" content="http://p0a3iqhpa.bkt.clouddn.com/static/images/xgs/4/3.png">
 <meta property="og:image" content="http://p0a3iqhpa.bkt.clouddn.com/static/images/xgs/4/4.png">
 <meta property="og:image" content="http://p0a3iqhpa.bkt.clouddn.com/static/images/xgs/4/5.png">
-<meta property="og:updated_time" content="2018-03-08T11:08:13.559Z">
+<meta property="og:updated_time" content="2018-03-11T10:28:28.638Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="吃瓜吃瓜 - 决策树">
-<meta name="twitter:description" content="决策树基本流程决策树是基于树结构来进行决策的，类似于人类面临决策问题时的处理机制，决策过程的最终结论对应了我们所希望的判定结果。 决策过程中提出的每一个判定问题就是对某个属性的测试，测试结果是导出最终结论或是进一步的判定问题，且考虑范围是在上次决策结果的限定范围之内。 训练一棵决策树大致需要这么几个步骤：  根节点包含所有的样本，对于根节点： 为这个节点选取最优划分属性。 根据节点属性取值将节点中">
+<meta name="twitter:description" content="基本流程决策树是基于树结构来进行决策的，类似于人类面临决策问题时的处理机制，决策过程的最终结论对应了我们所希望的判定结果。 决策过程中提出的每一个判定问题就是对某个属性的测试，测试结果是导出最终结论或是进一步的判定问题，且考虑范围是在上次决策结果的限定范围之内。 训练一棵决策树大致需要这么几个步骤：  根节点包含所有的样本，对于根节点： 为这个节点选取最优划分属性。 根据节点属性取值将节点中样本分">
 <meta name="twitter:image" content="http://p0a3iqhpa.bkt.clouddn.com/static/images/xgs/4/2.png">
 
 
@@ -356,7 +356,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  1,094
+                  1,091
                 </span>
               
 
@@ -393,7 +393,7 @@
       
 
       
-        <h1 id="决策树"><a href="#决策树" class="headerlink" title="决策树"></a>决策树</h1><h2 id="基本流程"><a href="#基本流程" class="headerlink" title="基本流程"></a>基本流程</h2><p>决策树是基于树结构来进行决策的，类似于人类面临决策问题时的处理机制，决策过程的最终结论对应了我们所希望的判定结果。</p>
+        <h1 id="基本流程"><a href="#基本流程" class="headerlink" title="基本流程"></a>基本流程</h1><p>决策树是基于树结构来进行决策的，类似于人类面临决策问题时的处理机制，决策过程的最终结论对应了我们所希望的判定结果。</p>
 <p>决策过程中提出的每一个判定问题就是对某个属性的测试，测试结果是导出最终结论或是进一步的判定问题，且考虑范围是在上次决策结果的限定范围之内。</p>
 <p>训练一棵决策树大致需要这么几个步骤：</p>
 <ol>
@@ -408,22 +408,22 @@
 </li>
 </ol>
 <p>在得到一棵决策树后，最终叶节点对应决策结果，其他节点对应属性测试。对于新来样本按照属性取值从根节点流过决策树，到叶子节点后获取其分类。这是一个分而治之的策略。</p>
-<h2 id="划分选择"><a href="#划分选择" class="headerlink" title="划分选择"></a>划分选择</h2><p>决策树生成的算法的关键是如何选择最优化分属性。我们认为：如果一个属性将节点样本划分得“纯度”（purity）越高，则性能越好。如何衡量划分纯度，有这么几种方法：</p>
-<h3 id="信息增益"><a href="#信息增益" class="headerlink" title="信息增益"></a>信息增益</h3><p><img src="http://p0a3iqhpa.bkt.clouddn.com/static/images/xgs/4/2.png" style="zoom:80%"></p>
+<h1 id="划分选择"><a href="#划分选择" class="headerlink" title="划分选择"></a>划分选择</h1><p>决策树生成的算法的关键是如何选择最优化分属性。我们认为：如果一个属性将节点样本划分得“纯度”（purity）越高，则性能越好。如何衡量划分纯度，有这么几种方法：</p>
+<h2 id="信息增益"><a href="#信息增益" class="headerlink" title="信息增益"></a>信息增益</h2><p><img src="http://p0a3iqhpa.bkt.clouddn.com/static/images/xgs/4/2.png" style="zoom:80%"></p>
 <p>我们需要的就是选择有最优的信息增益的属性来划分。</p>
-<h3 id="增益率"><a href="#增益率" class="headerlink" title="增益率"></a>增益率</h3><p><img src="http://p0a3iqhpa.bkt.clouddn.com/static/images/xgs/4/3.png" style="zoom:80%"></p>
-<h3 id="基尼系数"><a href="#基尼系数" class="headerlink" title="基尼系数"></a>基尼系数</h3><p><img src="http://p0a3iqhpa.bkt.clouddn.com/static/images/xgs/4/4.png" style="zoom:80%"></p>
-<h2 id="剪枝处理"><a href="#剪枝处理" class="headerlink" title="剪枝处理"></a>剪枝处理</h2><p>剪枝是决策树学习算法对付过拟合的主要手段，通过主动去掉一些分支来降低过拟合的风险。基本策略有预剪枝和后剪枝：</p>
+<h2 id="增益率"><a href="#增益率" class="headerlink" title="增益率"></a>增益率</h2><p><img src="http://p0a3iqhpa.bkt.clouddn.com/static/images/xgs/4/3.png" style="zoom:80%"></p>
+<h2 id="基尼系数"><a href="#基尼系数" class="headerlink" title="基尼系数"></a>基尼系数</h2><p><img src="http://p0a3iqhpa.bkt.clouddn.com/static/images/xgs/4/4.png" style="zoom:80%"></p>
+<h1 id="剪枝处理"><a href="#剪枝处理" class="headerlink" title="剪枝处理"></a>剪枝处理</h1><p>剪枝是决策树学习算法对付过拟合的主要手段，通过主动去掉一些分支来降低过拟合的风险。基本策略有预剪枝和后剪枝：</p>
 <ul>
 <li><strong>预剪枝 (prepruning)</strong>：在使用训练集训练决策树时不断在测试集上进行验证，将当前节点使用最优属性进行划分，划分得到若干个节点作为叶节点分类，得到的分类正确率若不高于使用原本的节点作为叶节点分类正确率，那么这个节点将不再被扩展划分：预剪枝使得决策树十分精简，训练时间开销也很小，不过可能造成欠拟合的现象。</li>
 <li><strong>后剪枝 (postpruning)</strong>：在训练完整棵决策树后自底向上进行验证，若某个节点的划分在训练集上没有对分类正确率有正向促进，就进行剪枝。后剪枝效果更好，不过时间开销必然要远高于预剪枝——它在训练完整棵树后再进行更多的操作！</li>
 </ul>
-<h2 id="连续与缺失枝"><a href="#连续与缺失枝" class="headerlink" title="连续与缺失枝"></a>连续与缺失枝</h2><h3 id="连续值处理"><a href="#连续值处理" class="headerlink" title="连续值处理"></a>连续值处理</h3><p>简单的想法是对取值连续的属性进行二分处理：对训练集中该属性上的取值从小到大排个序，然后取任意两个相邻值的中位数作为一个分割点，样本就可以在这个属性上被分为两个分支。取分割点同样可以使用信息增益最大的一个。</p>
-<h3 id="缺失值处理"><a href="#缺失值处理" class="headerlink" title="缺失值处理"></a>缺失值处理</h3><p><img src="http://p0a3iqhpa.bkt.clouddn.com/static/images/xgs/4/5.png" style="zoom:80%"></p>
-<h2 id="多变量决策树"><a href="#多变量决策树" class="headerlink" title="多变量决策树"></a>多变量决策树</h2><p>分类问题都是在空间中寻找分类边界，决策树所形成的分类边界有一个明显的特点：轴平行，即它的分类边界由若干个与坐标轴平行的分段组成。但是真实的分类任务中属性过多时，必须使用很多划分才能获得较好的近似，而且很难解释。</p>
+<h1 id="连续与缺失枝"><a href="#连续与缺失枝" class="headerlink" title="连续与缺失枝"></a>连续与缺失枝</h1><h2 id="连续值处理"><a href="#连续值处理" class="headerlink" title="连续值处理"></a>连续值处理</h2><p>简单的想法是对取值连续的属性进行二分处理：对训练集中该属性上的取值从小到大排个序，然后取任意两个相邻值的中位数作为一个分割点，样本就可以在这个属性上被分为两个分支。取分割点同样可以使用信息增益最大的一个。</p>
+<h2 id="缺失值处理"><a href="#缺失值处理" class="headerlink" title="缺失值处理"></a>缺失值处理</h2><p><img src="http://p0a3iqhpa.bkt.clouddn.com/static/images/xgs/4/5.png" style="zoom:80%"></p>
+<h1 id="多变量决策树"><a href="#多变量决策树" class="headerlink" title="多变量决策树"></a>多变量决策树</h1><p>分类问题都是在空间中寻找分类边界，决策树所形成的分类边界有一个明显的特点：轴平行，即它的分类边界由若干个与坐标轴平行的分段组成。但是真实的分类任务中属性过多时，必须使用很多划分才能获得较好的近似，而且很难解释。</p>
 <p>一个看起来更简单的决策树对每个节点使用多个属性的线性组合来作为划分依据，称作“多变量决策树” (multivariate decision tree)。相较于传统决策树的分类边界平行于坐标轴，多变量决策树可以实现斜向的分类边界，或许更符合样本的分布。</p>
 <p>主要算法有OC1，或者嵌入神经网络。</p>
-<h2 id="REFERENCE"><a href="#REFERENCE" class="headerlink" title="REFERENCE"></a>REFERENCE</h2><p>[1] <a href="http://hotlinkqiu.github.io/2016/06/13/啃西瓜书（4）－这是-一棵树！/" rel="external nofollow noopener noreferrer" target="_blank">http://hotlinkqiu.github.io/2016/06/13/啃西瓜书（4）－这是-一棵树！/</a></p>
+<h1 id="REFERENCE"><a href="#REFERENCE" class="headerlink" title="REFERENCE"></a>REFERENCE</h1><p>[1] <a href="http://hotlinkqiu.github.io/2016/06/13/啃西瓜书（4）－这是-一棵树！/" rel="external nofollow noopener noreferrer" target="_blank">http://hotlinkqiu.github.io/2016/06/13/啃西瓜书（4）－这是-一棵树！/</a></p>
 
       
     </div>
@@ -441,13 +441,13 @@
       
         <div class="post-tags">
           
-            <a href="/tags/decision-tree/" rel="tag"><i class="fa fa-tag"></i>
-
- decision tree</a>
-          
             <a href="/tags/machine-learning/" rel="tag"><i class="fa fa-tag"></i>
 
  machine learning</a>
+          
+            <a href="/tags/decision-tree/" rel="tag"><i class="fa fa-tag"></i>
+
+ decision tree</a>
           
         </div>
       
@@ -469,6 +469,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018-03-11/xgs-svm/" rel="prev" title="吃瓜 - 支持向量机">
+                吃瓜 - 支持向量机 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -547,7 +551,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-count">18</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -569,7 +573,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -618,7 +622,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#决策树"><span class="nav-number">1.</span> <span class="nav-text">决策树</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本流程"><span class="nav-number">1.1.</span> <span class="nav-text">基本流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#划分选择"><span class="nav-number">1.2.</span> <span class="nav-text">划分选择</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#信息增益"><span class="nav-number">1.2.1.</span> <span class="nav-text">信息增益</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#增益率"><span class="nav-number">1.2.2.</span> <span class="nav-text">增益率</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基尼系数"><span class="nav-number">1.2.3.</span> <span class="nav-text">基尼系数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#剪枝处理"><span class="nav-number">1.3.</span> <span class="nav-text">剪枝处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#连续与缺失枝"><span class="nav-number">1.4.</span> <span class="nav-text">连续与缺失枝</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#连续值处理"><span class="nav-number">1.4.1.</span> <span class="nav-text">连续值处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缺失值处理"><span class="nav-number">1.4.2.</span> <span class="nav-text">缺失值处理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多变量决策树"><span class="nav-number">1.5.</span> <span class="nav-text">多变量决策树</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#REFERENCE"><span class="nav-number">1.6.</span> <span class="nav-text">REFERENCE</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基本流程"><span class="nav-number">1.</span> <span class="nav-text">基本流程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#划分选择"><span class="nav-number">2.</span> <span class="nav-text">划分选择</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#信息增益"><span class="nav-number">2.1.</span> <span class="nav-text">信息增益</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#增益率"><span class="nav-number">2.2.</span> <span class="nav-text">增益率</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基尼系数"><span class="nav-number">2.3.</span> <span class="nav-text">基尼系数</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#剪枝处理"><span class="nav-number">3.</span> <span class="nav-text">剪枝处理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#连续与缺失枝"><span class="nav-number">4.</span> <span class="nav-text">连续与缺失枝</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#连续值处理"><span class="nav-number">4.1.</span> <span class="nav-text">连续值处理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#缺失值处理"><span class="nav-number">4.2.</span> <span class="nav-text">缺失值处理</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#多变量决策树"><span class="nav-number">5.</span> <span class="nav-text">多变量决策树</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#REFERENCE"><span class="nav-number">6.</span> <span class="nav-text">REFERENCE</span></a></li></ol></div>
             
 
           </div>
@@ -864,6 +868,8 @@ Powered by <a class="theme-link" href="http://hexo.io" rel="external nofollow no
   
 
   
+  
+
 
   
 
