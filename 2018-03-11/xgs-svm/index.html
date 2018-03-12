@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="machine learning,SVM,">
+  <meta name="keywords" content="SVM,machine learning,">
 
 
 
@@ -80,7 +80,7 @@
 
 
 <meta name="description" content="间隔与支持向量对于给定训练样本集$D = {( \boldsymbol{x}_1,y_1),(\boldsymbol{x}_2,y_2),…,(\boldsymbol{x}_m,y_m)}$，分类学习最基本的想法就是基于训练集$D$在样本空间中找到一个划分超平面将不同类别的样本分开。 但是实际上存在多种划分方式，如图所示，理论上来说正中间红色的划分超平面是最好的，因为对训练样本的局部扰动容忍性最好">
-<meta name="keywords" content="machine learning,SVM">
+<meta name="keywords" content="SVM,machine learning">
 <meta property="og:type" content="article">
 <meta property="og:title" content="吃瓜 - 支持向量机">
 <meta property="og:url" content="http://marvae.github.io/2018-03-11/xgs-svm/index.html">
@@ -93,7 +93,10 @@
 <meta property="og:image" content="http://p0a3iqhpa.bkt.clouddn.com/static/images/xgs/6/4.png">
 <meta property="og:image" content="http://p0a3iqhpa.bkt.clouddn.com/static/images/xgs/6/5.png">
 <meta property="og:image" content="http://p0a3iqhpa.bkt.clouddn.com/static/images/xgs/6/6.png">
-<meta property="og:updated_time" content="2018-03-11T11:12:19.832Z">
+<meta property="og:image" content="http://p0a3iqhpa.bkt.clouddn.com/static/images/xgs/6/7.png">
+<meta property="og:image" content="http://p0a3iqhpa.bkt.clouddn.com/static/images/xgs/6/8.png">
+<meta property="og:image" content="http://p0a3iqhpa.bkt.clouddn.com/static/images/xgs/6/9.png">
+<meta property="og:updated_time" content="2018-03-12T02:33:57.097Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="吃瓜 - 支持向量机">
 <meta name="twitter:description" content="间隔与支持向量对于给定训练样本集$D = {( \boldsymbol{x}_1,y_1),(\boldsymbol{x}_2,y_2),…,(\boldsymbol{x}_m,y_m)}$，分类学习最基本的想法就是基于训练集$D$在样本空间中找到一个划分超平面将不同类别的样本分开。 但是实际上存在多种划分方式，如图所示，理论上来说正中间红色的划分超平面是最好的，因为对训练样本的局部扰动容忍性最好">
@@ -358,7 +361,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  917
+                  1,771
                 </span>
               
 
@@ -374,7 +377,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  3
+                  6
                 </span>
               
             </div>
@@ -426,9 +429,30 @@
 <p>称作核函数 (kernal function)。有定理表明：只要一个对称函数对应的核矩阵半正定，它就能作为核函数使用。几种常用的核函数有：</p>
 <p><img src="http://p0a3iqhpa.bkt.clouddn.com/static/images/xgs/6/6.png" style="zoom:100%"></p>
 <p>如何选择核函数将样本映射到真正显示其分布规律的高维空间非常重要。</p>
-<h1 id="软间隔与正则化"><a href="#软间隔与正则化" class="headerlink" title="软间隔与正则化"></a>软间隔与正则化</h1><h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p>[1]<a href="http://hotlinkqiu.github.io/2016/06/26/啃西瓜书（6）－支持向量机/" rel="external nofollow noopener noreferrer" target="_blank">http://hotlinkqiu.github.io/2016/06/26/啃西瓜书（6）－支持向量机/</a></p>
-<p>[2]<a href="http://blog.csdn.net/shennongzhaizhu/article/details/51956796" rel="external nofollow noopener noreferrer" target="_blank">http://blog.csdn.net/shennongzhaizhu/article/details/51956796</a></p>
-<p>[3]<a href="https://www.cnblogs.com/graphics/archive/2010/07/10/1774809.html" rel="external nofollow noopener noreferrer" target="_blank">https://www.cnblogs.com/graphics/archive/2010/07/10/1774809.html</a></p>
+<h1 id="软间隔与正则化"><a href="#软间隔与正则化" class="headerlink" title="软间隔与正则化"></a>软间隔与正则化</h1><p>实际上很多问题并不能简单地归结为线性可分线性不可分，一些问题的样本空间看来是线性可分的，但总有几个样本跑到了敌对阵营，就为此强行线性可分就可能出现过拟合的情况。于是引入了软间隔 (soft margin)：允许有若干个样本被线性空间划分错误。前文中要求所有样本均满足约束的情况称为硬间隔。</p>
+<p>软间隔时允许某些样本不满足约束$$y_i(\boldsymbol{w}^T\boldsymbol{x_i}+b)\geq 1$$</p>
+<p>此时的优化目标变为：</p>
+<p><img src="http://p0a3iqhpa.bkt.clouddn.com/static/images/xgs/6/7.png" style="zoom:50%"></p>
+<p>其中$C$是一个常数，可以理解问允许多少个样本被分错，而$ℓ0/1$是0/1损失函数，当样本被分错时，它的取值为1，否则为0。这个函数直观，简单，然而非凸，非连续，常用一些替代函数：</p>
+<ul>
+<li>hinge损失：$ℓhinge(z)=max(0,1,1−z)$</li>
+<li>指数损失 (exponential loss)：$ℓexp(z)=exp(−z)$</li>
+<li>对率损失 (logistic loss)：$ℓlog(z)=log(1+exp(−z))$</li>
+</ul>
+<p>其中hinge损失比较常用。</p>
+<p>代入优化目标后同样可以找到它们的对偶问题进行求解。实际上此时的优化目标可以看作两部分：第一项描述划分超平面的间隔大小，第二项描述数据集上的误差。对于误差还有更一般的形式：</p>
+<p><img src="http://p0a3iqhpa.bkt.clouddn.com/static/images/xgs/6/8.png" style="zoom:50%"></p>
+<p>其中$Ω(f)$称为结构风险(structural risk)，用于描述f的某些性质；后一项称为经验风险(emprircal risk)，用于描述模型与训练数据的契合程度；$C$用于对二者进行折中。结构风险方便引入领域知识和用户意图：用户希望得到何种性质的模型，同时它也有助于削减假设空间。这个式子称为正则化 (regularization)。</p>
+<h1 id="支持向量回归"><a href="#支持向量回归" class="headerlink" title="支持向量回归"></a>支持向量回归</h1><p>普通的回归问题计算损失为函数预测值与真实值的差，而使用支持向量回归 (Support Vector Regression, SVR)，我们容忍ϵ的误差，那就相当于在预测函数两端建立了一个宽为$2ϵ$的隔离带，在此间隔带种的样本被默认为预测正确，而在此间隔带外的样本计算它的真实值与预测函数得到值的差作为损失，就此SVR问题可形式化为：</p>
+<p><img src="http://p0a3iqhpa.bkt.clouddn.com/static/images/xgs/6/9.png" style="zoom:50%"></p>
+<p>同样可通过拉格朗日乘子法解出。</p>
+<p>若考虑特征向高维映射，也可引入核函数。</p>
+<h1 id="核方法"><a href="#核方法" class="headerlink" title="核方法"></a>核方法</h1><p>根据数学推导，在给定训练样本，不考虑偏移项$b$的情况下，SVM和SVR问题学得的模型总可以表示成核函数的线性组合，由“表示定理”保证。由此人们发展了一系列基于核函数的学习方法，统称为核方法 (kernel methods)。最常见的就是引入核函数来将线性学习器拓展为非线性学习器，从而得到核线性判别分析 (Kernelized Linear Discriminant Analysis)。</p>
+<p>核函数直接决定了支持向量机与核方法的最终性能，但遗憾的是，核函数的选择是一个未决问题，多核学习（multiple kernel learning）借助集成学习机制，使用多个核函数并通过学习获得其最优化凸组合作为最终的核函数。</p>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><p>[1] <a href="http://hotlinkqiu.github.io/2016/06/26/啃西瓜书（6）－支持向量机/" rel="external nofollow noopener noreferrer" target="_blank">http://hotlinkqiu.github.io/2016/06/26/啃西瓜书（6）－支持向量机/</a></p>
+<p>[2] <a href="http://blog.csdn.net/shennongzhaizhu/article/details/51956796" rel="external nofollow noopener noreferrer" target="_blank">http://blog.csdn.net/shennongzhaizhu/article/details/51956796</a></p>
+<p>[3] <a href="https://www.cnblogs.com/graphics/archive/2010/07/10/1774809.html" rel="external nofollow noopener noreferrer" target="_blank">https://www.cnblogs.com/graphics/archive/2010/07/10/1774809.html</a></p>
+<p>最后，希望有时间可以深入学习一下convex optimization</p>
 
       
     </div>
@@ -446,13 +470,13 @@
       
         <div class="post-tags">
           
-            <a href="/tags/machine-learning/" rel="tag"><i class="fa fa-tag"></i>
-
- machine learning</a>
-          
             <a href="/tags/SVM/" rel="tag"><i class="fa fa-tag"></i>
 
  SVM</a>
+          
+            <a href="/tags/machine-learning/" rel="tag"><i class="fa fa-tag"></i>
+
+ machine learning</a>
           
         </div>
       
@@ -465,8 +489,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018-03-08/xgs-tree/" rel="next" title="吃瓜吃瓜 - 决策树">
-                <i class="fa fa-chevron-left"></i> 吃瓜吃瓜 - 决策树
+              <a href="/2018-03-08/xgs-tree/" rel="next" title="吃瓜 - 决策树">
+                <i class="fa fa-chevron-left"></i> 吃瓜 - 决策树
               </a>
             
           </div>
@@ -623,7 +647,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#间隔与支持向量"><span class="nav-number">1.</span> <span class="nav-text">间隔与支持向量</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#对偶问题"><span class="nav-number">2.</span> <span class="nav-text">对偶问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#核函数"><span class="nav-number">3.</span> <span class="nav-text">核函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#软间隔与正则化"><span class="nav-number">4.</span> <span class="nav-text">软间隔与正则化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-number">5.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#间隔与支持向量"><span class="nav-number">1.</span> <span class="nav-text">间隔与支持向量</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#对偶问题"><span class="nav-number">2.</span> <span class="nav-text">对偶问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#核函数"><span class="nav-number">3.</span> <span class="nav-text">核函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#软间隔与正则化"><span class="nav-number">4.</span> <span class="nav-text">软间隔与正则化</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#支持向量回归"><span class="nav-number">5.</span> <span class="nav-text">支持向量回归</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#核方法"><span class="nav-number">6.</span> <span class="nav-text">核方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-number">7.</span> <span class="nav-text">Reference</span></a></li></ol></div>
             
 
           </div>
