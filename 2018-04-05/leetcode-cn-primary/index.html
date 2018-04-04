@@ -88,7 +88,7 @@
 <meta property="og:description" content="最近在努力的找工作，所以开始刷算法题了。昨天突然发现leetcode的官方中文版，但是没有讨论版面，好的一点是探索功能里有刷题指南，适合我这个懒人。好久没写算法了，从初级开始！  然后许个愿可以找到心仪的工作。 数组从排序数组中删除重复项给定一个有序数组，你需要原地删除其中的重复内容，使每个元素只出现一次,并返回新的长度。 不要另外定义一个数组，您必须通过用 O(1) 额外内存原地修改输入的数组来">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://p0a3iqhpa.bkt.clouddn.com/static/images/algorithm/1.png">
-<meta property="og:updated_time" content="2018-04-04T17:16:49.411Z">
+<meta property="og:updated_time" content="2018-04-04T17:32:13.406Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="leetcode升级记-初级">
 <meta name="twitter:description" content="最近在努力的找工作，所以开始刷算法题了。昨天突然发现leetcode的官方中文版，但是没有讨论版面，好的一点是探索功能里有刷题指南，适合我这个懒人。好久没写算法了，从初级开始！  然后许个愿可以找到心仪的工作。 数组从排序数组中删除重复项给定一个有序数组，你需要原地删除其中的重复内容，使每个元素只出现一次,并返回新的长度。 不要另外定义一个数组，您必须通过用 O(1) 额外内存原地修改输入的数组来">
@@ -353,7 +353,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  806
+                  894
                 </span>
               
 
@@ -369,7 +369,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  3
+                  4
                 </span>
               
             </div>
@@ -417,12 +417,14 @@
 <p>你的算法应该是一个线性时间复杂度。 你可以不用额外空间来实现它吗？</p>
 <p>正常思路是用set或者新建一个不重复的思路，都是额外空间复杂度$O(N)$。分享两个比较诡谲的思路：</p>
 <ol>
-<li>异或，可以实现没有额外空间。</li>
+<li>异或，可以实现没有额外空间。这个<a href="https://www.lijinma.com/blog/2014/05/29/amazing-xor/" rel="external nofollow noopener noreferrer" target="_blank">blog</a>对异或解释非常清晰，适合深入了解一下。</li>
 </ol>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">singleNumber</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span>(nums.empty())&#123;</div><div class="line">            <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(nums.size()==<span class="number">1</span>)&#123;</div><div class="line">            <span class="keyword">return</span> nums[<span class="number">0</span>];</div><div class="line">        &#125;  </div><div class="line">        <span class="keyword">int</span> result = nums[<span class="number">0</span>];</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>; i&lt;nums.size(); i++)&#123;</div><div class="line">            result ^= nums[i];</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> result;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
 <ol>
-<li><code>2 * sum(set(nums)) - sum(nums)</code>，这个的空间复杂度是$O(N)$</li>
+<li><figure class="highlight plain"><figcaption><span>- sum(nums) ```，这个的空间复杂度是$O(N)$，这个用python写了。就这一行，2333。</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">```python</div><div class="line">class Solution:</div><div class="line">    def singleNumber(self, nums):</div><div class="line">        &quot;&quot;&quot;</div><div class="line">        :type nums: List[int]</div><div class="line">        :rtype: int</div><div class="line">        &quot;&quot;&quot;</div><div class="line">        return  2*sum(set(nums)) - sum(nums)</div></pre></td></tr></table></figure>
+</li>
 </ol>
+<p>明天继续….</p>
 
       
     </div>
@@ -863,6 +865,26 @@ Powered by <a class="theme-link" href="http://hexo.io" rel="external nofollow no
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 
