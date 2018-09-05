@@ -5,7 +5,7 @@
     
   <url>
     <loc>http://marvae.github.io/2018-04-05/leetcode-cn-primary/</loc>
-    <lastmod>2018-04-15T08:27:54.979Z</lastmod>
+    <lastmod>2018-09-05T16:12:32.377Z</lastmod>
     <data>
         <display>
         <title>leetcode升级记-初级</title>
@@ -18,7 +18,29 @@
          
            
              
-              <breadCrumb title="algorithm" url="http://marvae.github.io/categories/algorithm/"/>
+              <breadCrumb title="Algorithm" url="http://marvae.github.io/categories/Algorithm/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://marvae.github.io/2018-09-06/opencv-install/</loc>
+    <lastmod>2018-09-05T16:12:09.972Z</lastmod>
+    <data>
+        <display>
+        <title>ubuntu安装并配置Clion+OpenCV</title>
+        <pubTime>2018-09-05T16:02:00.000Z</pubTime>
+        
+        <tag>Computer Vision</tag>
+         
+        <tag>OpenCV</tag>
+         
+         
+           
+             
+              <breadCrumb title="CV" url="http://marvae.github.io/categories/CV/"/>
           
         </display>
     </data>
