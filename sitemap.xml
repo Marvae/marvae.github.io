@@ -2,16 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://marvae.github.io/2018-04-05/leetcode-cn-primary/</loc>
+    <loc>http://marvae.github.io/2018-09-06/opencv-install/</loc>
     
-    <lastmod>2018-09-05T16:12:32.377Z</lastmod>
+    <lastmod>2018-09-08T04:07:26.004Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://marvae.github.io/2018-09-06/opencv-install/</loc>
+    <loc>http://marvae.github.io/about/index.html</loc>
     
-    <lastmod>2018-09-05T16:12:09.972Z</lastmod>
+    <lastmod>2018-09-05T16:17:54.037Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://marvae.github.io/2018-04-05/leetcode-cn-primary/</loc>
+    
+    <lastmod>2018-09-05T16:12:32.377Z</lastmod>
     
   </url>
   
@@ -82,13 +89,6 @@
     <loc>http://marvae.github.io/2017-12-08/PythonNumpyTutorial/</loc>
     
     <lastmod>2018-02-16T11:23:53.581Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://marvae.github.io/about/index.html</loc>
-    
-    <lastmod>2018-02-15T10:46:28.268Z</lastmod>
     
   </url>
   

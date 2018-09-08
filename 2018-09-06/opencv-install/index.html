@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="start form zero">
+<meta name="description" content="安装OpenCV3Step 1：更新12sudo apt-get updatesudo apt-get upgrade Step 2: 安装OS包注意一定要确保都安装了，不然后面可能有问题 123456789101112131415161718192021222324252627sudo apt-get remove x264 libx264-dev # Install dependencies">
 <meta name="keywords" content="Computer Vision,OpenCV">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ubuntu安装并配置Clion+OpenCV">
 <meta property="og:url" content="http://marvae.github.io/2018-09-06/opencv-install/index.html">
 <meta property="og:site_name" content="Marvae&#39;s blog">
-<meta property="og:description" content="start form zero">
+<meta property="og:description" content="安装OpenCV3Step 1：更新12sudo apt-get updatesudo apt-get upgrade Step 2: 安装OS包注意一定要确保都安装了，不然后面可能有问题 123456789101112131415161718192021222324252627sudo apt-get remove x264 libx264-dev # Install dependencies">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-09-05T16:12:09.972Z">
+<meta property="og:updated_time" content="2018-09-08T04:07:26.004Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ubuntu安装并配置Clion+OpenCV">
-<meta name="twitter:description" content="start form zero">
+<meta name="twitter:description" content="安装OpenCV3Step 1：更新12sudo apt-get updatesudo apt-get upgrade Step 2: 安装OS包注意一定要确保都安装了，不然后面可能有问题 123456789101112131415161718192021222324252627sudo apt-get remove x264 libx264-dev # Install dependencies">
 
 
 
@@ -351,7 +351,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  0
+                  770
                 </span>
               
 
@@ -367,7 +367,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  1
+                  4
                 </span>
               
             </div>
@@ -388,7 +388,29 @@
       
 
       
-        
+        <h1 id="安装OpenCV3"><a href="#安装OpenCV3" class="headerlink" title="安装OpenCV3"></a>安装OpenCV3</h1><h2 id="Step-1：更新"><a href="#Step-1：更新" class="headerlink" title="Step 1：更新"></a>Step 1：更新</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo apt-get update</div><div class="line">sudo apt-get upgrade</div></pre></td></tr></table></figure>
+<h2 id="Step-2-安装OS包"><a href="#Step-2-安装OS包" class="headerlink" title="Step 2: 安装OS包"></a>Step 2: 安装OS包</h2><p>注意一定要确保都安装了，不然后面可能有问题</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">sudo apt-get remove x264 libx264-dev</div><div class="line"> </div><div class="line"><span class="meta">#</span> Install dependencies now</div><div class="line"> </div><div class="line">sudo apt-get install build-essential checkinstall cmake pkg-config yasm</div><div class="line">sudo apt-get install git gfortran</div><div class="line">sudo apt-get install libjpeg8-dev libjasper-dev libpng12-dev</div><div class="line"> </div><div class="line"><span class="meta">#</span> Ubuntu 14.04</div><div class="line">sudo apt-get install libtiff4-dev</div><div class="line"><span class="meta">#</span> Ubuntu 16.04</div><div class="line">sudo apt-get install libtiff5-dev</div><div class="line"> </div><div class="line">sudo apt-get install libavcodec-dev libavformat-dev libswscale-dev libdc1394-22-dev</div><div class="line">sudo apt-get install libxine2-dev libv4l-dev</div><div class="line">sudo apt-get install libgstreamer0.10-dev libgstreamer-plugins-base0.10-dev</div><div class="line">sudo apt-get install qt5-default libgtk2.0-dev libtbb-dev</div><div class="line">sudo apt-get install libatlas-base-dev</div><div class="line">sudo apt-get install libfaac-dev libmp3lame-dev libtheora-dev</div><div class="line">sudo apt-get install libvorbis-dev libxvidcore-dev</div><div class="line">sudo apt-get install libopencore-amrnb-dev libopencore-amrwb-dev</div><div class="line">sudo apt-get install x264 v4l-utils</div><div class="line"> </div><div class="line"><span class="meta">#</span> Optional dependencies</div><div class="line">sudo apt-get install libprotobuf-dev protobuf-compiler</div><div class="line">sudo apt-get install libgoogle-glog-dev libgflags-dev</div><div class="line">sudo apt-get install libgphoto2-dev libeigen3-dev libhdf5-dev doxygen</div></pre></td></tr></table></figure>
+<h2 id="Step-3：下载OpenCV和OpenCV-contrib"><a href="#Step-3：下载OpenCV和OpenCV-contrib" class="headerlink" title="Step 3：下载OpenCV和OpenCV_contrib"></a>Step 3：下载OpenCV和OpenCV_contrib</h2><p>直接从GitHub仓库上下载</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span> opencv</div><div class="line">git clone https://github.com/opencv/opencv.git</div><div class="line">cd opencv </div><div class="line">git checkout 3.3.1 </div><div class="line">cd ..</div><div class="line"></div><div class="line"><span class="meta">#</span> opencv_contrib</div><div class="line">git clone https://github.com/opencv/opencv_contrib.git</div><div class="line">cd opencv_contrib</div><div class="line">git checkout 3.3.1</div><div class="line">cd ..</div></pre></td></tr></table></figure>
+<h2 id="Step-4：编译和安装OpenCV及contrib模块"><a href="#Step-4：编译和安装OpenCV及contrib模块" class="headerlink" title="Step 4：编译和安装OpenCV及contrib模块"></a>Step 4：编译和安装OpenCV及contrib模块</h2><h3 id="创建一个build的目录"><a href="#创建一个build的目录" class="headerlink" title="创建一个build的目录"></a>创建一个build的目录</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">cd opencv</div><div class="line">mkdir build</div><div class="line">cd build</div></pre></td></tr></table></figure>
+<h3 id="cmake"><a href="#cmake" class="headerlink" title="cmake"></a>cmake</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">cmake -D CMAKE_BUILD_TYPE=RELEASE \</div><div class="line">      -D CMAKE_INSTALL_PREFIX=/usr/local \</div><div class="line">      -D INSTALL_C_EXAMPLES=ON \</div><div class="line">      -D INSTALL_PYTHON_EXAMPLES=ON \</div><div class="line">      -D WITH_TBB=ON \</div><div class="line">      -D WITH_V4L=ON \</div><div class="line">      -D WITH_QT=ON \</div><div class="line">      -D WITH_OPENGL=ON \</div><div class="line">      -D OPENCV_EXTRA_MODULES_PATH=../../opencv_contrib/modules \</div><div class="line">      -D BUILD_EXAMPLES=ON ..</div></pre></td></tr></table></figure>
+<h3 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span> find out number of CPU cores in your machine</div><div class="line">nproc</div><div class="line"><span class="meta">#</span> substitute 8 by output of nproc</div><div class="line">make -j8</div><div class="line">sudo make install</div><div class="line">sudo sh -c 'echo "/usr/local/lib" &gt;&gt; /etc/ld.so.conf.d/opencv.conf'</div><div class="line">sudo ldconfig</div></pre></td></tr></table></figure>
+<h1 id="Step-5：测试OpenCV3"><a href="#Step-5：测试OpenCV3" class="headerlink" title="Step 5：测试OpenCV3"></a>Step 5：测试OpenCV3</h1><p>这里运行一个用OpenCV写的红眼移除的程序来测试一下，下载<a href="https://www.learnopencv.com/wp-content/uploads/2017/06/RedEyeRemover.zip" rel="external nofollow noopener noreferrer" target="_blank">RedEyeRemover.zip</a>，并解压到任意目录下，记得切换到相应的目录下再进行编译和运行。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#</span> compile</div><div class="line"><span class="meta">#</span> There are backticks ( ` ) around pkg-config command not single quotes</div><div class="line">g++ -std=c++11 removeRedEyes.cpp `pkg-config --libs --cflags opencv` -o removeRedEyes</div><div class="line"><span class="meta">#</span> run</div><div class="line">./removeRedEyes</div></pre></td></tr></table></figure>
+<p>在这一步如果前面的依赖没有装好，编译就会出错。我遇到了一个问题是这样的</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Perhaps you should add the directory containing `opencv.pc'</div><div class="line">to the PKG_CONFIG_PATH environment variable</div></pre></td></tr></table></figure>
+<p>尝试了这个<a href="https://github.com/go-opencv/go-opencv/issues/57" rel="external nofollow noopener noreferrer" target="_blank">链接</a>里的方法弄好了，有同样问题的可以尝试一下</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apt-get install libopencv-dev</div></pre></td></tr></table></figure>
+<p>运行以后会弹出两个图片，一个是有红眼的，一个是去除以后的。这就代表安装完成了，接下来配置CLion的cmake</p>
+<h1 id="配置CLion"><a href="#配置CLion" class="headerlink" title="配置CLion"></a>配置CLion</h1><h2 id="Step-1：新建工程"><a href="#Step-1：新建工程" class="headerlink" title="Step 1：新建工程"></a>Step 1：新建工程</h2><p>我新建了一个工程就叫opencv</p>
+<h2 id="Step2：-修改CMakeLists-txt文件"><a href="#Step2：-修改CMakeLists-txt文件" class="headerlink" title="Step2： 修改CMakeLists.txt文件"></a>Step2： 修改CMakeLists.txt文件</h2><p>在CMakeLists里导入OpenCV相关的包，配置如下：</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">cmake_minimum_required</span>(VERSION <span class="number">3.6</span>)</div><div class="line"><span class="keyword">project</span>(opencv)</div><div class="line"></div><div class="line"><span class="keyword">find_package</span>(OpenCV REQUIRED)</div><div class="line"><span class="keyword">include_directories</span>(<span class="variable">$&#123;OpenCV_INCLUDE_DIRS&#125;</span>)</div><div class="line"></div><div class="line"><span class="keyword">set</span>(CMAKE_CXX_STANDARD <span class="number">14</span>)</div><div class="line"><span class="keyword">set</span>(SOURCE_FILES main.cpp)</div><div class="line"></div><div class="line"><span class="keyword">add_executable</span>(opencv main.cpp)</div><div class="line"><span class="keyword">target_link_libraries</span>(opencv <span class="variable">$&#123;OpenCV_LIBS&#125;</span>)</div></pre></td></tr></table></figure>
+<p>最后两行是告诉Cmake，把main.cpp编译成了一个可执行文件opencv，然后让这个可以执行的文件去连接OpenCV的动态库。</p>
+<h2 id="Step-3：测试示例程序"><a href="#Step-3：测试示例程序" class="headerlink" title="Step 3：测试示例程序"></a>Step 3：测试示例程序</h2><p>在main.cpp里添加下面的代码</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"opencv2/core/core.hpp"</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"opencv2/opencv.hpp"</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"opencv2/highgui/highgui.hpp"</span></span></div><div class="line"></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> cv;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</div><div class="line">    Mat img = imread(<span class="string">"../cat.jpg"</span>);</div><div class="line">    namedWindow(<span class="string">"DisplayImage"</span>);</div><div class="line">    imshow(<span class="string">"Cat"</span>, img);</div><div class="line">    waitKey();</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>记得下载一个喜欢的猫咪图片放在刚才创建的project目录下，或者把路径换成绝对路径。运行就能看到一个萌萌的猫咪图片了，这时配置就完成了。</p>
+
       
     </div>
     
@@ -484,8 +506,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -563,6 +594,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安装OpenCV3"><span class="nav-number">1.</span> <span class="nav-text">安装OpenCV3</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-1：更新"><span class="nav-number">1.1.</span> <span class="nav-text">Step 1：更新</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-2-安装OS包"><span class="nav-number">1.2.</span> <span class="nav-text">Step 2: 安装OS包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-3：下载OpenCV和OpenCV-contrib"><span class="nav-number">1.3.</span> <span class="nav-text">Step 3：下载OpenCV和OpenCV_contrib</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-4：编译和安装OpenCV及contrib模块"><span class="nav-number">1.4.</span> <span class="nav-text">Step 4：编译和安装OpenCV及contrib模块</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建一个build的目录"><span class="nav-number">1.4.1.</span> <span class="nav-text">创建一个build的目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cmake"><span class="nav-number">1.4.2.</span> <span class="nav-text">cmake</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编译"><span class="nav-number">1.4.3.</span> <span class="nav-text">编译</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Step-5：测试OpenCV3"><span class="nav-number">2.</span> <span class="nav-text">Step 5：测试OpenCV3</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#配置CLion"><span class="nav-number">3.</span> <span class="nav-text">配置CLion</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-1：新建工程"><span class="nav-number">3.1.</span> <span class="nav-text">Step 1：新建工程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step2：-修改CMakeLists-txt文件"><span class="nav-number">3.2.</span> <span class="nav-text">Step2： 修改CMakeLists.txt文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Step-3：测试示例程序"><span class="nav-number">3.3.</span> <span class="nav-text">Step 3：测试示例程序</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

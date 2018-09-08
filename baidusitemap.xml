@@ -4,6 +4,29 @@
 
     
   <url>
+    <loc>http://marvae.github.io/2018-09-06/opencv-install/</loc>
+    <lastmod>2018-09-08T04:07:26.004Z</lastmod>
+    <data>
+        <display>
+        <title>ubuntu安装并配置Clion+OpenCV</title>
+        <pubTime>2018-09-05T16:02:00.000Z</pubTime>
+        
+        <tag>Computer Vision</tag>
+         
+        <tag>OpenCV</tag>
+         
+         
+           
+             
+              <breadCrumb title="CV" url="http://marvae.github.io/categories/CV/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+    
+  <url>
     <loc>http://marvae.github.io/2018-04-05/leetcode-cn-primary/</loc>
     <lastmod>2018-09-05T16:12:32.377Z</lastmod>
     <data>
@@ -26,28 +49,6 @@
 
     
   <url>
-    <loc>http://marvae.github.io/2018-09-06/opencv-install/</loc>
-    <lastmod>2018-09-05T16:12:09.972Z</lastmod>
-    <data>
-        <display>
-        <title>ubuntu安装并配置Clion+OpenCV</title>
-        <pubTime>2018-09-05T16:02:00.000Z</pubTime>
-        
-        <tag>Computer Vision</tag>
-         
-        <tag>OpenCV</tag>
-         
-         
-           
-             
-              <breadCrumb title="CV" url="http://marvae.github.io/categories/CV/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://marvae.github.io/2018-03-08/xgs-tree/</loc>
     <lastmod>2018-03-12T02:34:16.689Z</lastmod>
     <data>
@@ -55,9 +56,9 @@
         <title>吃瓜 - 决策树</title>
         <pubTime>2018-03-08T10:39:42.000Z</pubTime>
         
-        <tag>machine learning</tag>
-         
         <tag>decision tree</tag>
+         
+        <tag>machine learning</tag>
          
          
            
@@ -77,9 +78,9 @@
         <title>吃瓜 - 支持向量机</title>
         <pubTime>2018-03-11T10:27:15.000Z</pubTime>
         
-        <tag>SVM</tag>
-         
         <tag>machine learning</tag>
+         
+        <tag>SVM</tag>
          
          
            
@@ -252,7 +253,6 @@
     </data>
     </url>
 
-    
     
     
   <url>
