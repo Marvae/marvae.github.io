@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Sort,">
+  <meta name="keywords" content="deep learning,">
 
 
 
@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="start form zero">
-<meta name="keywords" content="Sort">
+<meta name="description" content="分割 定位 识别 - spatial pixels in images 语义分割：在一张图中分割聚类出不同物体的pixel 物体识别：多物体 2d 和 3d sematic segmentation + object detection = instance segmentation 语义分割 input：图片，output：图片中每个像素做分类 缺陷：实际上是对于每一个像素做分类操作，所以不能区">
+<meta name="keywords" content="deep learning">
 <meta property="og:type" content="article">
-<meta property="og:title" content="排序算法及Python实现">
-<meta property="og:url" content="http://marvae.github.io/2018-02-05/sort/index.html">
+<meta property="og:title" content="cs231n-notes11">
+<meta property="og:url" content="http://marvae.github.io/2018-09-14/cs231n-notes11/index.html">
 <meta property="og:site_name" content="Marvae&#39;s blog">
-<meta property="og:description" content="start form zero">
+<meta property="og:description" content="分割 定位 识别 - spatial pixels in images 语义分割：在一张图中分割聚类出不同物体的pixel 物体识别：多物体 2d 和 3d sematic segmentation + object detection = instance segmentation 语义分割 input：图片，output：图片中每个像素做分类 缺陷：实际上是对于每一个像素做分类操作，所以不能区">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-02-15T10:39:08.142Z">
+<meta property="og:updated_time" content="2018-09-14T10:54:20.714Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="排序算法及Python实现">
-<meta name="twitter:description" content="start form zero">
+<meta name="twitter:title" content="cs231n-notes11">
+<meta name="twitter:description" content="分割 定位 识别 - spatial pixels in images 语义分割：在一张图中分割聚类出不同物体的pixel 物体识别：多物体 2d 和 3d sematic segmentation + object detection = instance segmentation 语义分割 input：图片，output：图片中每个像素做分类 缺陷：实际上是对于每一个像素做分类操作，所以不能区">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://marvae.github.io/2018-02-05/sort/">
+  <link rel="canonical" href="http://marvae.github.io/2018-09-14/cs231n-notes11/">
 
 
 
 
 
-  <title>排序算法及Python实现 | Marvae's blog</title>
+  <title>cs231n-notes11 | Marvae's blog</title>
   
 
 
@@ -263,7 +263,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://marvae.github.io/2018-02-05/sort/">
+    <link itemprop="mainEntityOfPage" href="http://marvae.github.io/2018-09-14/cs231n-notes11/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Marvae">
@@ -280,7 +280,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">排序算法及Python实现</h1>
+          <h1 class="post-title" itemprop="name headline">cs231n-notes11</h1>
         
 
         <div class="post-meta">
@@ -292,8 +292,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-05T19:39:48+08:00">
-                2018-02-05
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-14T18:53:52+08:00">
+                2018-09-14
               </time>
             
 
@@ -315,8 +315,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/Algorithm/" itemprop="url" rel="index">
-                    <span itemprop="name">Algorithm</span>
+                  <a href="/categories/cs231n/" itemprop="url" rel="index">
+                    <span itemprop="name">cs231n</span>
                   </a>
                 </span>
 
@@ -351,7 +351,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  0
+                  805
                 </span>
               
 
@@ -367,7 +367,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  1
+                  3
                 </span>
               
             </div>
@@ -388,7 +388,55 @@
       
 
       
-        
+        <p>分割 定位 识别 - spatial pixels in images</p>
+<p>语义分割：在一张图中分割聚类出不同物体的pixel</p>
+<p>物体识别：多物体 2d 和 3d</p>
+<p>sematic segmentation + object detection = instance segmentation</p>
+<h3 id="语义分割"><a href="#语义分割" class="headerlink" title="语义分割"></a>语义分割</h3><ul>
+<li>input：图片，output：图片中每个像素做分类</li>
+<li>缺陷：实际上是对于每一个像素做分类操作，所以不能区别同一类别的不同物体</li>
+<li>dataset：VOC2012 和MSCOCO 是语义分割方面最重要的数据库</li>
+<li>评价标准：<ol>
+<li>像素精度：每一类像素正确分类的个数/每一类像素的实际个数</li>
+<li>均像素精度：每一类像素精度的平均值</li>
+<li>平均交叉比：求出每一类的IOU取平均值。IOU是指两块区域相交的部分/两个部分的并集。</li>
+<li>权频交并比：每一类出现的频率作为权重</li>
+</ol>
+</li>
+</ul>
+<h3 id="idea"><a href="#idea" class="headerlink" title="idea"></a>idea</h3><h5 id="sliding-window"><a href="#sliding-window" class="headerlink" title="sliding window"></a>sliding window</h5><ul>
+<li>对于每一个小的patch，判断它的中心像素属于哪一类</li>
+<li>problem：需要对每一个像素搞一个patch，计算负责度很高 supersupersuper expensive，同时patch之间有overlap所以重复计算很多</li>
+</ul>
+<h5 id="Fully-convolutional-networks"><a href="#Fully-convolutional-networks" class="headerlink" title="Fully-convolutional networks"></a>Fully-convolutional networks</h5><ul>
+<li>仅有卷积层和zero-padding的cnn，保持输入图像的原有尺寸，最后输出一个tensor，尺寸是C*H*W，其中C是类的数量。</li>
+<li>loss function：每个像素的分类损失(交叉熵)做平均</li>
+<li>problem：没有pooling层，而且用的保持长宽的卷积层，计算量非常大，非常耗内存</li>
+</ul>
+<h5 id="Downsampling-amp-upsampling"><a href="#Downsampling-amp-upsampling" class="headerlink" title="Downsampling &amp; upsampling"></a>Downsampling &amp; upsampling</h5><ul>
+<li>仅对一部分卷积层做原清晰度处理，然后用stried convolution来下采样，相当于一个分类网络，不同的是后面不是fully-connected层</li>
+<li>后半部分上采样，使输出可以维持现有尺寸</li>
+<li>好处：计算量变小，可以让网络变的更深</li>
+</ul>
+<h4 id="Upsampling"><a href="#Upsampling" class="headerlink" title="Upsampling"></a>Upsampling</h4><h5 id="Unpooling-average-pooling"><a href="#Unpooling-average-pooling" class="headerlink" title="Unpooling - average pooling"></a>Unpooling - average pooling</h5><ul>
+<li>Nearest Neighbor: 都填相同数字</li>
+<li>Bed of Nails: 只有左上角填相应数字,其余均为0</li>
+</ul>
+<h5 id="Max-Unpooling-max-pooling的对称"><a href="#Max-Unpooling-max-pooling的对称" class="headerlink" title="Max Unpooling - max pooling的对称"></a>Max Unpooling - max pooling的对称</h5><ul>
+<li>max pooling时记下区域的哪个元素是最大的,在max unpooling的时候类似于钉床的操作,但是把元素放在max pooling对应的位置上,剩下的为0</li>
+<li>原因：做分割的时候，我们希望基于像素的预测结果尽可能好，希望找到边界，并让这些细节体现在预测中。如果我们做最大池化，这种不均匀性就会凸现出来，但是低resolution会丢失一些细节。用max unpooling，可以更好的处理细节，存储池化的时候丢失的位置信息</li>
+<li>在反向传播时，存储这些信息占的位置并不多，所以不影响</li>
+</ul>
+<h5 id="Transpose-Convolution-转置卷积"><a href="#Transpose-Convolution-转置卷积" class="headerlink" title="Transpose Convolution 转置卷积"></a>Transpose Convolution 转置卷积</h5><ul>
+<li>learnable upsampling：既能用来做上采样，又能学习权重</li>
+<li>recall normal convolution，计算时算的是内积</li>
+<li>input:2*2, output:4*4,计算时用每个像素的标量乘上卷积核，再以3*3的方式复制这些值作为输出，感受野overlap的时候加起来。</li>
+<li>也会叫deconvolution/upconvolution(去卷积/重卷积)</li>
+<li>更好理解的1D example</li>
+<li>解释一下为啥lecturer认为转置卷积这个名字更好，因为计算其实相当于是转置的计算</li>
+<li>3*3 stride2 upsampling 有时候会出现棋盘效应</li>
+</ul>
+
       
     </div>
     
@@ -405,9 +453,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Sort/" rel="tag"><i class="fa fa-tag"></i>
+            <a href="/tags/deep-learning/" rel="tag"><i class="fa fa-tag"></i>
 
- Sort</a>
+ deep learning</a>
           
         </div>
       
@@ -420,8 +468,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017-12-08/PythonNumpyTutorial/" rel="next" title="Python和Numpy教程---来自cs231n">
-                <i class="fa fa-chevron-left"></i> Python和Numpy教程---来自cs231n
+              <a href="/2018-09-06/opencv-install/" rel="next" title="ubuntu安装并配置Clion+OpenCV">
+                <i class="fa fa-chevron-left"></i> ubuntu安装并配置Clion+OpenCV
               </a>
             
           </div>
@@ -429,10 +477,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018-02-13/sklearn-md/" rel="prev" title="Some Notes about Sickt-learn from Coursera">
-                Some Notes about Sickt-learn from Coursera <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -484,8 +528,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -563,6 +616,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#语义分割"><span class="nav-number">1.</span> <span class="nav-text">语义分割</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#idea"><span class="nav-number">2.</span> <span class="nav-text">idea</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#sliding-window"><span class="nav-number">2.0.1.</span> <span class="nav-text">sliding window</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Fully-convolutional-networks"><span class="nav-number">2.0.2.</span> <span class="nav-text">Fully-convolutional networks</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Downsampling-amp-upsampling"><span class="nav-number">2.0.3.</span> <span class="nav-text">Downsampling & upsampling</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Upsampling"><span class="nav-number">2.1.</span> <span class="nav-text">Upsampling</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Unpooling-average-pooling"><span class="nav-number">2.1.1.</span> <span class="nav-text">Unpooling - average pooling</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Max-Unpooling-max-pooling的对称"><span class="nav-number">2.1.2.</span> <span class="nav-text">Max Unpooling - max pooling的对称</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Transpose-Convolution-转置卷积"><span class="nav-number">2.1.3.</span> <span class="nav-text">Transpose Convolution 转置卷积</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
