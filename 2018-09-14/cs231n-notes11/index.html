@@ -82,14 +82,14 @@
 <meta name="description" content="分割 定位 识别 - spatial pixels in images 语义分割：在一张图中分割聚类出不同物体的pixel 物体识别：多物体 2d 和 3d sematic segmentation + object detection = instance segmentation 语义分割 input：图片，output：图片中每个像素做分类 缺陷：实际上是对于每一个像素做分类操作，所以不能区">
 <meta name="keywords" content="deep learning">
 <meta property="og:type" content="article">
-<meta property="og:title" content="cs231n-notes11">
+<meta property="og:title" content="cs231n笔记 - lecture11">
 <meta property="og:url" content="http://marvae.github.io/2018-09-14/cs231n-notes11/index.html">
 <meta property="og:site_name" content="Marvae&#39;s blog">
 <meta property="og:description" content="分割 定位 识别 - spatial pixels in images 语义分割：在一张图中分割聚类出不同物体的pixel 物体识别：多物体 2d 和 3d sematic segmentation + object detection = instance segmentation 语义分割 input：图片，output：图片中每个像素做分类 缺陷：实际上是对于每一个像素做分类操作，所以不能区">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-09-14T10:54:20.714Z">
+<meta property="og:updated_time" content="2018-09-14T11:25:34.736Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="cs231n-notes11">
+<meta name="twitter:title" content="cs231n笔记 - lecture11">
 <meta name="twitter:description" content="分割 定位 识别 - spatial pixels in images 语义分割：在一张图中分割聚类出不同物体的pixel 物体识别：多物体 2d 和 3d sematic segmentation + object detection = instance segmentation 语义分割 input：图片，output：图片中每个像素做分类 缺陷：实际上是对于每一个像素做分类操作，所以不能区">
 
 
@@ -126,7 +126,7 @@
 
 
 
-  <title>cs231n-notes11 | Marvae's blog</title>
+  <title>cs231n笔记 - lecture11 | Marvae's blog</title>
   
 
 
@@ -280,7 +280,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">cs231n-notes11</h1>
+          <h1 class="post-title" itemprop="name headline">cs231n笔记 - lecture11</h1>
         
 
         <div class="post-meta">
@@ -351,7 +351,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  805
+                  1,109
                 </span>
               
 
@@ -367,7 +367,7 @@
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
                 <span title="Reading time">
-                  3
+                  4
                 </span>
               
             </div>
@@ -408,7 +408,7 @@
 <li>对于每一个小的patch，判断它的中心像素属于哪一类</li>
 <li>problem：需要对每一个像素搞一个patch，计算负责度很高 supersupersuper expensive，同时patch之间有overlap所以重复计算很多</li>
 </ul>
-<h5 id="Fully-convolutional-networks"><a href="#Fully-convolutional-networks" class="headerlink" title="Fully-convolutional networks"></a>Fully-convolutional networks</h5><ul>
+<h5 id="Fully-convolutional-networks-FCN"><a href="#Fully-convolutional-networks-FCN" class="headerlink" title="Fully-convolutional networks - FCN"></a>Fully-convolutional networks - FCN</h5><ul>
 <li>仅有卷积层和zero-padding的cnn，保持输入图像的原有尺寸，最后输出一个tensor，尺寸是C*H*W，其中C是类的数量。</li>
 <li>loss function：每个像素的分类损失(交叉熵)做平均</li>
 <li>problem：没有pooling层，而且用的保持长宽的卷积层，计算量非常大，非常耗内存</li>
@@ -422,7 +422,7 @@
 <li>Nearest Neighbor: 都填相同数字</li>
 <li>Bed of Nails: 只有左上角填相应数字,其余均为0</li>
 </ul>
-<h5 id="Max-Unpooling-max-pooling的对称"><a href="#Max-Unpooling-max-pooling的对称" class="headerlink" title="Max Unpooling - max pooling的对称"></a>Max Unpooling - max pooling的对称</h5><ul>
+<h5 id="Max-Unpooling-max-pooling的对称-SegNet"><a href="#Max-Unpooling-max-pooling的对称-SegNet" class="headerlink" title="Max Unpooling - max pooling的对称 - SegNet"></a>Max Unpooling - max pooling的对称 - SegNet</h5><ul>
 <li>max pooling时记下区域的哪个元素是最大的,在max unpooling的时候类似于钉床的操作,但是把元素放在max pooling对应的位置上,剩下的为0</li>
 <li>原因：做分割的时候，我们希望基于像素的预测结果尽可能好，希望找到边界，并让这些细节体现在预测中。如果我们做最大池化，这种不均匀性就会凸现出来，但是低resolution会丢失一些细节。用max unpooling，可以更好的处理细节，存储池化的时候丢失的位置信息</li>
 <li>在反向传播时，存储这些信息占的位置并不多，所以不影响</li>
@@ -436,6 +436,45 @@
 <li>解释一下为啥lecturer认为转置卷积这个名字更好，因为计算其实相当于是转置的计算</li>
 <li>3*3 stride2 upsampling 有时候会出现棋盘效应</li>
 </ul>
+<h3 id="发展"><a href="#发展" class="headerlink" title="发展"></a>发展</h3><h5 id="FCN"><a href="#FCN" class="headerlink" title="FCN"></a>FCN</h5><ul>
+<li>全连接层换成卷积层</li>
+<li>不同尺度的信息融合</li>
+</ul>
+<h5 id="U-net"><a href="#U-net" class="headerlink" title="U-net"></a>U-net</h5><h5 id="SegNet"><a href="#SegNet" class="headerlink" title="SegNet"></a>SegNet</h5><ul>
+<li>带有坐标的池化</li>
+</ul>
+<h5 id="Deeplab-v1"><a href="#Deeplab-v1" class="headerlink" title="Deeplab v1"></a>Deeplab v1</h5><ul>
+<li>带孔卷积(Atrus conv)</li>
+<li>CRF：利用像素之间的关联信息，相邻的像素或者颜色相近的像素有更大可能属于同一个class</li>
+</ul>
+<h5 id="PSPnet"><a href="#PSPnet" class="headerlink" title="PSPnet"></a>PSPnet</h5><ul>
+<li>使用了空间金字塔池化，得到一组感受野大小不同的feature map，最后联系起来，完成多层次的语义特征融合</li>
+</ul>
+<h5 id="Deeplab-v2"><a href="#Deeplab-v2" class="headerlink" title="Deeplab v2"></a>Deeplab v2</h5><ul>
+<li>ASPP(Atrus Spatial Pyramid Pooling)：融合不同级别的语义信息</li>
+</ul>
+<h5 id="Deeplab-v3"><a href="#Deeplab-v3" class="headerlink" title="Deeplab v3"></a>Deeplab v3</h5><ul>
+<li>引进新的ASPP模块：<ol>
+<li>Batch Normal</li>
+<li>全局平均池化</li>
+</ol>
+</li>
+<li>引入ResNet Block</li>
+<li>丢弃CRF</li>
+</ul>
+<h5 id="Deeplab-v3-1"><a href="#Deeplab-v3-1" class="headerlink" title="Deeplab v3+"></a>Deeplab v3+</h5><ul>
+<li>把deeplab v3作为了编码器，同时加入了Xception的结构减少了参数数量，提高运行速度。见mobilenet</li>
+</ul>
+<p>套路：</p>
+<ol>
+<li>全卷积网络</li>
+<li>感受野的控制：pooling+upsample -&gt; Atrous conv</li>
+<li>不同level的融合：统一尺寸后add/contact+conv，SPP，ASPP</li>
+<li>考虑相邻像素的关系：CRF</li>
+<li>条件允许的情况，图像越大越好</li>
+<li>对特定类别分割，可以考虑先验知识+对结果进行形态学处理</li>
+<li>其他方向：实时语义分割，视频语义分割</li>
+</ol>
 
       
     </div>
@@ -596,12 +635,6 @@
                       <i class="fa fa-fw fa-github"></i>GitHub</a>
                 </span>
               
-                <span class="links-of-author-item">
-                  <a href="https://www.weibo.com/titanail" target="_blank" title="weibo" rel="external nofollow noopener noreferrer">
-                    
-                      <i class="fa fa-fw fa-weibo"></i>weibo</a>
-                </span>
-              
             
           </div>
 
@@ -626,7 +659,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#语义分割"><span class="nav-number">1.</span> <span class="nav-text">语义分割</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#idea"><span class="nav-number">2.</span> <span class="nav-text">idea</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#sliding-window"><span class="nav-number">2.0.1.</span> <span class="nav-text">sliding window</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Fully-convolutional-networks"><span class="nav-number">2.0.2.</span> <span class="nav-text">Fully-convolutional networks</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Downsampling-amp-upsampling"><span class="nav-number">2.0.3.</span> <span class="nav-text">Downsampling & upsampling</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Upsampling"><span class="nav-number">2.1.</span> <span class="nav-text">Upsampling</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Unpooling-average-pooling"><span class="nav-number">2.1.1.</span> <span class="nav-text">Unpooling - average pooling</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Max-Unpooling-max-pooling的对称"><span class="nav-number">2.1.2.</span> <span class="nav-text">Max Unpooling - max pooling的对称</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Transpose-Convolution-转置卷积"><span class="nav-number">2.1.3.</span> <span class="nav-text">Transpose Convolution 转置卷积</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#语义分割"><span class="nav-number">1.</span> <span class="nav-text">语义分割</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#idea"><span class="nav-number">2.</span> <span class="nav-text">idea</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#sliding-window"><span class="nav-number">2.0.1.</span> <span class="nav-text">sliding window</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Fully-convolutional-networks-FCN"><span class="nav-number">2.0.2.</span> <span class="nav-text">Fully-convolutional networks - FCN</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Downsampling-amp-upsampling"><span class="nav-number">2.0.3.</span> <span class="nav-text">Downsampling & upsampling</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Upsampling"><span class="nav-number">2.1.</span> <span class="nav-text">Upsampling</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Unpooling-average-pooling"><span class="nav-number">2.1.1.</span> <span class="nav-text">Unpooling - average pooling</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Max-Unpooling-max-pooling的对称-SegNet"><span class="nav-number">2.1.2.</span> <span class="nav-text">Max Unpooling - max pooling的对称 - SegNet</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Transpose-Convolution-转置卷积"><span class="nav-number">2.1.3.</span> <span class="nav-text">Transpose Convolution 转置卷积</span></a></li></ol></li></ol><li class="nav-item nav-level-3"><a class="nav-link" href="#发展"><span class="nav-number">3.</span> <span class="nav-text">发展</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#FCN"><span class="nav-number">3.0.1.</span> <span class="nav-text">FCN</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#U-net"><span class="nav-number">3.0.2.</span> <span class="nav-text">U-net</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#SegNet"><span class="nav-number">3.0.3.</span> <span class="nav-text">SegNet</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Deeplab-v1"><span class="nav-number">3.0.4.</span> <span class="nav-text">Deeplab v1</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#PSPnet"><span class="nav-number">3.0.5.</span> <span class="nav-text">PSPnet</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Deeplab-v2"><span class="nav-number">3.0.6.</span> <span class="nav-text">Deeplab v2</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Deeplab-v3"><span class="nav-number">3.0.7.</span> <span class="nav-text">Deeplab v3</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Deeplab-v3-1"><span class="nav-number">3.0.8.</span> <span class="nav-text">Deeplab v3+</span></a></li></ol></li></div>
             
 
           </div>
